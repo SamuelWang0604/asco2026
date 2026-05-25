@@ -3,7 +3,7 @@ ASCO26-Abstracts-Full-Proceedings.pdf
 
 # Intermediate/legacy files
 dashboard.html
-index.html
+# index.html is now the entry point for GitHub Pages
 extract_all.py
 extract_v2.py
 extract_v5.py
