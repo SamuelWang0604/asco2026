@@ -645,6 +645,12 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
   </div>
 </div>
 
+<!-- Global Footer -->
+<footer style="text-align:center;padding:20px 24px;border-top:1px solid var(--border);margin-top:0;color:var(--text-muted);font-size:11px;line-height:1.8;background:var(--bg-secondary);">
+  <p>由 Samuel Wang 汇总 &nbsp;|&nbsp; 所有的数据统计和分析由 AI 生成，使用时请核实真实性</p>
+  <p style="margin-top:2px;">数据来源：ASCO 2026 Annual Meeting Full Proceedings PDF &nbsp;·&nbsp; 覆盖 3,440 篇摘要（Online Publications 约 4,200+ 篇未包含）</p>
+</footer>
+
 <!-- Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalContent"></div>
@@ -654,10 +660,28 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
 
 <!-- Loading overlay -->
 <div id="loadingOverlay" style="position:fixed;inset:0;background:var(--bg-primary);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .3s;">
-  <div style="width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;"></div>
-  <div style="color:var(--text-secondary);font-size:14px;">正在加载 ASCO 2026 数据...</div>
+  <div id="loadingSpinner" style="width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;"></div>
+  <div id="loadingText" style="color:var(--text-secondary);font-size:14px;">正在加载 ASCO 2026 数据...</div>
+  <div id="loadingError" style="display:none;flex-direction:column;align-items:center;gap:12px;">
+    <div style="color:var(--accent-red);font-size:14px;">⚠️ 数据加载超时</div>
+    <button onclick="location.reload()" style="padding:8px 24px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-ui);">刷新页面</button>
+  </div>
 </div>
 <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<script>
+// Loading timeout: show retry button after 20 seconds
+setTimeout(function(){
+  var overlay = document.getElementById('loadingOverlay');
+  if (overlay && overlay.parentNode) {
+    var spinner = document.getElementById('loadingSpinner');
+    var text = document.getElementById('loadingText');
+    var err = document.getElementById('loadingError');
+    if (spinner) spinner.style.display = 'none';
+    if (text) text.style.display = 'none';
+    if (err) err.style.display = 'flex';
+  }
+}, 20000);
+</script>
 
 <!-- Load embedded data before main script -->
 <script src="embedded_data.js" onerror="console.warn('embedded_data.js not found, relying on JSON fetch')"></script>
@@ -793,47 +817,52 @@ function getAbstractTypeClass(a) { return getAbstractType(a).toLowerCase(); }
 // LOAD DATA
 // ============================================================
 async function loadData() {
-  // Priority 1: Use EMBEDDED_DATA (already loaded via embedded_data.js)
-  if (typeof EMBEDDED_DATA !== 'undefined' && EMBEDDED_DATA.length > 0) {
-    ALL_DATA = EMBEDDED_DATA;
-    console.log(`[loadData] Using EMBEDDED_DATA: ${ALL_DATA.length} abstracts`);
-  } else {
-    // Priority 2: Fetch JSON as fallback
-    try {
-      const resp = await fetch('all_abstracts_asco2026.json');
-      if (resp.ok) {
-        ALL_DATA = await resp.json();
-        console.log(`[loadData] Fetched JSON: ${ALL_DATA.length} abstracts`);
+  try {
+    // Priority 1: Use EMBEDDED_DATA (already loaded via embedded_data.js)
+    if (typeof EMBEDDED_DATA !== 'undefined' && EMBEDDED_DATA.length > 0) {
+      ALL_DATA = EMBEDDED_DATA;
+      console.log(`[loadData] Using EMBEDDED_DATA: ${ALL_DATA.length} abstracts`);
+    } else {
+      // Priority 2: Fetch JSON as fallback
+      try {
+        const resp = await fetch('all_abstracts_asco2026.json');
+        if (resp.ok) {
+          ALL_DATA = await resp.json();
+          console.log(`[loadData] Fetched JSON: ${ALL_DATA.length} abstracts`);
+        }
+      } catch(e) {
+        console.error('[loadData] JSON fetch failed:', e);
       }
-    } catch(e) {
-      console.error('[loadData] Both EMBEDDED_DATA and JSON fetch failed:', e);
     }
+
+    if (ALL_DATA.length === 0) {
+      showToast('⚠️ 数据加载失败，请刷新页面重试');
+      return;
+    }
+
+    document.getElementById('badgeOverview').textContent = ALL_DATA.length;
+    document.getElementById('badgeList').textContent = ALL_DATA.length;
+
+    // Init overview
+    ovFiltered = [...ALL_DATA];
+    populateOvFilterSelects();
+    renderOverview();
+    renderTrackBar();
+
+    // Init list
+    listFiltered = [...ALL_DATA];
+    populateListFilterSelects();
+    renderListAbstractCards();
+
+    updateHeaderStats();
+  } catch(e) {
+    console.error('[loadData] Fatal error:', e);
+    showToast('⚠️ 初始化失败: ' + e.message);
+  } finally {
+    // Always hide loading overlay (even on error)
+    const overlay = document.getElementById('loadingOverlay');
+    if (overlay) { overlay.style.opacity = '0'; setTimeout(() => overlay.remove(), 300); }
   }
-
-  if (ALL_DATA.length === 0) {
-    showToast('⚠️ 数据加载失败，请刷新页面重试');
-    return;
-  }
-
-  document.getElementById('badgeOverview').textContent = ALL_DATA.length;
-  document.getElementById('badgeList').textContent = ALL_DATA.length;
-
-  // Init overview
-  ovFiltered = [...ALL_DATA];
-  populateOvFilterSelects();
-  renderOverview();
-  renderTrackBar();
-
-  // Init list
-  listFiltered = [...ALL_DATA];
-  populateListFilterSelects();
-  renderListAbstractCards();
-
-  updateHeaderStats();
-
-  // Hide loading overlay
-  const overlay = document.getElementById('loadingOverlay');
-  if (overlay) { overlay.style.opacity = '0'; setTimeout(() => overlay.remove(), 300); }
 }
 
 // ============================================================
@@ -1636,7 +1665,20 @@ function renderAbstractCard(a) {
 // ============================================================
 async function loadFullData() {
   if (FULL_DATA_MAP) return FULL_DATA_MAP;
-  // Full text is now embedded in ALL_DATA (background/methods/results/conclusion included)
+  // Try fetching full JSON (includes background/methods/results/conclusion)
+  try {
+    const resp = await fetch('all_abstracts_asco2026.json');
+    if (resp.ok) {
+      const fullData = await resp.json();
+      FULL_DATA_MAP = {};
+      fullData.forEach(a => { FULL_DATA_MAP[a.abstract_number] = a; });
+      console.log(`[loadFullData] Loaded ${Object.keys(FULL_DATA_MAP).length} full abstracts from JSON`);
+      return FULL_DATA_MAP;
+    }
+  } catch(e) {
+    console.warn('[loadFullData] JSON fetch failed, using slim data:', e);
+  }
+  // Fallback: use slim data from ALL_DATA (no full text)
   FULL_DATA_MAP = {};
   ALL_DATA.forEach(a => { FULL_DATA_MAP[a.abstract_number] = a; });
   return FULL_DATA_MAP;
@@ -1746,7 +1788,5 @@ document.addEventListener('keydown', e => {
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => { loadData(); });
 </script>
-</body>
-</html>
 </body>
 </html>
