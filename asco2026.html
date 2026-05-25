@@ -203,6 +203,7 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
   <button class="nav-tab active" data-page="overview" onclick="switchPage('overview')">🏠 全景浏览<span class="badge" id="badgeOverview">—</span></button>
   <button class="nav-tab" data-page="tracks" onclick="switchPage('tracks')">📊 分Track看板</button>
   <button class="nav-tab" data-page="list" onclick="switchPage('list')">📋 全量摘要列表<span class="badge" id="badgeList">—</span></button>
+  <button class="nav-tab" data-page="track" onclick="switchPage('track')">🎯 赛道对比</button>
 </nav>
 
 <!-- Track sub-nav (only visible on tracks page) -->
@@ -252,7 +253,7 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
     <button class="filter-chip" id="ovChipPhase3" onclick="toggleOvQuick('phase3')">Phase 3</button>
     <button class="filter-chip" id="ovChipChina" onclick="toggleOvQuick('china')">中国参与</button>
     <button class="filter-chip" id="ovChipLBA" onclick="toggleOvQuick('lba')">LBA</button>
-    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="ovSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onOverviewFilter()"></div>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="ovSearchInput" placeholder="智能搜索：肺癌 三期 中国 / HER2 ADC / 关键词..." oninput="onOverviewFilter()"></div>
     <button class="filter-clear" id="ovFilterClear" onclick="clearOvFilters()">清除筛选</button>
   </div>
   <!-- Overview Abstract List -->
@@ -307,7 +308,7 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
     <button class="filter-chip" id="trChipPhase3" onclick="toggleTrQuick('phase3')">Phase 3</button>
     <button class="filter-chip" id="trChipChina" onclick="toggleTrQuick('china')">中国参与</button>
     <button class="filter-chip" id="trChipLBA" onclick="toggleTrQuick('lba')">LBA</button>
-    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="trSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onTrackFilter()"></div>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="trSearchInput" placeholder="智能搜索：肺癌 三期 中国 / HER2 ADC / 关键词..." oninput="onTrackFilter()"></div>
     <button class="filter-clear" id="trFilterClear" onclick="clearTrFilters()">清除筛选</button>
   </div>
   <div class="abstract-list-header"><span class="abstract-list-title">摘要列表</span><span class="abstract-list-count" id="trListCount"></span></div>
@@ -330,11 +331,65 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
     <button class="filter-chip" id="listChipPhase3" onclick="toggleListQuick('phase3')">Phase 3</button>
     <button class="filter-chip" id="listChipChina" onclick="toggleListQuick('china')">中国参与</button>
     <button class="filter-chip" id="listChipLBA" onclick="toggleListQuick('lba')">LBA</button>
-    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="listSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onListFilter()"></div>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="listSearchInput" placeholder="智能搜索：肺癌 三期 中国 / HER2 ADC / 关键词..." oninput="onListFilter()"></div>
     <button class="filter-clear" id="listFilterClear" onclick="clearListFilters()">清除筛选</button>
   </div>
   <div class="abstract-list-header"><span class="abstract-list-title">全量摘要列表</span><span class="abstract-list-count" id="listListCount"></span></div>
   <div class="abstract-cards" id="listAbstractCards" style="max-height:calc(100vh - 280px)"></div>
+</div>
+
+<!-- ====== PAGE 4: TRACK COMPARISON ====== -->
+<div class="main page" id="pageTrack">
+  <div class="kpi-row" style="margin-bottom:16px;">
+    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
+      <div class="kpi-val" id="tkKpiTotal" style="font-size:28px;font-weight:700;color:var(--accent-light);">—</div>
+      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">赛道研究总数</div>
+    </div>
+    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
+      <div class="kpi-val" id="tkKpiP1" style="font-size:28px;font-weight:700;color:#10b981;">—</div>
+      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 1</div>
+    </div>
+    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
+      <div class="kpi-val" id="tkKpiP2" style="font-size:28px;font-weight:700;color:#f59e0b;">—</div>
+      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 2</div>
+    </div>
+    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
+      <div class="kpi-val" id="tkKpiP3" style="font-size:28px;font-weight:700;color:#ef4444;">—</div>
+      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 3</div>
+    </div>
+    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
+      <div class="kpi-val" id="tkKpiChina" style="font-size:28px;font-weight:700;color:#8b5cf6;">—</div>
+      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">中国参与</div>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar" style="margin-bottom:16px;">
+    <div class="filter-section"><span class="filter-section-label">赛道类型</span>
+      <select class="filter-select" id="tkFilterType" onchange="populateTkFilterTargets();onTrackCompareFilter()">
+        <option value="target">靶点赛道</option>
+        <option value="therapy">治疗模式</option>
+      </select>
+    </div>
+    <div class="filter-section"><span class="filter-section-label">选择赛道</span>
+      <select class="filter-select" id="tkFilterTarget" onchange="onTrackCompareFilter()"></select>
+    </div>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="tkSearchInput" placeholder="在赛道内搜索..." oninput="onTrackCompareFilter()"></div>
+  </div>
+
+  <!-- Charts grid -->
+  <div class="charts-grid" style="grid-template-columns: 1fr 1fr; margin-bottom:16px;">
+    <div class="chart-card"><div class="chart-title">瘤种分布</div><div class="chart-box" id="tkChartTumor" style="height:320px;"></div></div>
+    <div class="chart-card"><div class="chart-title">研究阶段分布</div><div class="chart-box" id="tkChartPhase" style="height:320px;"></div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns: 1fr 1fr; margin-bottom:16px;">
+    <div class="chart-card"><div class="chart-title">Top 药物/分子</div><div class="chart-box" id="tkChartAgent" style="height:320px;"></div></div>
+    <div class="chart-card"><div class="chart-title">中国参与率（按瘤种）</div><div class="chart-box" id="tkChartChina" style="height:320px;"></div></div>
+  </div>
+
+  <!-- Abstract list within track -->
+  <div class="abstract-list-header"><span class="abstract-list-title">赛道研究列表</span><span class="abstract-list-count" id="tkListCount"></span></div>
+  <div class="abstract-cards" id="tkAbstractCards" style="max-height:calc(100vh - 780px)"></div>
 </div>
 
 <!-- Detail Modal -->
@@ -521,6 +576,10 @@ function switchPage(page) {
     document.getElementById('pageList').classList.add('active');
     document.getElementById('trackBar').style.display = 'none';
     renderListAbstractCards();
+  } else if (page === 'track') {
+    document.getElementById('pageTrack').classList.add('active');
+    document.getElementById('trackBar').style.display = 'none';
+    initTrackCompare();
   }
   updateHeaderStats();
 }
@@ -692,6 +751,270 @@ function renderOvChartAgent() {
   }, true);
 }
 
+// ============ SMART SEARCH ============
+// Natural language query parser: converts Chinese queries to filter conditions
+function parseSmartQuery(raw) {
+  const q = raw.trim();
+  if (!q) return { keywords: [], filters: {} };
+  const filters = {};
+  let remaining = q;
+
+  // Phase detection
+  if (/[三3]期|phase\s*3|iii期/i.test(remaining)) { filters.phase = 'Phase 3'; remaining = remaining.replace(/[三3]期|phase\s*3|iii期/gi, ''); }
+  else if (/[二2]期|phase\s*2|ii期/i.test(remaining)) { filters.phase = 'Phase 2'; remaining = remaining.replace(/[二2]期|phase\s*2|ii期/gi, ''); }
+  else if (/[一1]期|phase\s*1|i期/i.test(remaining)) { filters.phase = 'Phase 1'; remaining = remaining.replace(/[一1]期|phase\s*1|i期/gi, ''); }
+
+  // China participation
+  if (/中国|国内|china/i.test(remaining)) { filters.china = 'Yes'; remaining = remaining.replace(/中国|国内|china/gi, ''); }
+
+  // LBA
+  if (/lba|late.breaking/i.test(remaining)) { filters.absType = 'LBA'; remaining = remaining.replace(/lba|late.breaking/gi, ''); }
+
+  // Therapy type detection
+  const therapyMap = {
+    '免疫': 'Immunotherapy', '免疫治疗': 'Immunotherapy', 'immunotherapy': 'Immunotherapy', 'io': 'Immunotherapy',
+    '靶向': 'Targeted Therapy', '靶向治疗': 'Targeted Therapy', 'targeted': 'Targeted Therapy',
+    '化疗': 'Chemotherapy', '化学治疗': 'Chemotherapy', 'chemotherapy': 'Chemotherapy',
+    '细胞治疗': 'Cell Therapy', 'car-t': 'Cell Therapy', 'cart': 'Cell Therapy', 'cell therapy': 'Cell Therapy',
+    'adc': 'ADC', '抗体偶联': 'ADC',
+    '双抗': 'Bispecific Antibody', '双特异性': 'Bispecific Antibody', 'bispecific': 'Bispecific Antibody',
+    '放疗': 'Radiotherapy', '放射': 'Radiotherapy', 'radiotherapy': 'Radiotherapy',
+    '内分泌': 'Hormonal Therapy', '激素': 'Hormonal Therapy', 'hormonal': 'Hormonal Therapy',
+    '疫苗': 'Vaccine/Virus Therapy', 'vaccine': 'Vaccine/Virus Therapy'
+  };
+  for (const [cn, en] of Object.entries(therapyMap)) {
+    const re = new RegExp(cn, 'i');
+    if (re.test(remaining)) { filters.therapy = en; remaining = remaining.replace(re, ''); break; }
+  }
+
+  // Tumor type detection
+  const tumorMap = {
+    '肺癌': 'NSCLC', 'nsclc': 'NSCLC', '非小细胞': 'NSCLC',
+    '乳腺癌': 'Breast Cancer', 'breast': 'Breast Cancer',
+    '消化道': 'GI Cancer', '胃癌': 'GI Cancer', '食管': 'GI Cancer', 'gi': 'GI Cancer',
+    '结直肠': 'Colorectal Cancer', 'crc': 'Colorectal Cancer', '肠癌': 'Colorectal Cancer',
+    '泌尿': 'GU Cancer', 'gu': 'GU Cancer', '膀胱': 'GU Cancer', '前列腺': 'GU Cancer', '肾癌': 'GU Cancer',
+    '血液': 'Hematologic', '白血病': 'Hematologic', '淋巴瘤': 'Hematologic', 'hematologic': 'Hematologic',
+    '妇科': 'Gynecologic Cancer', '卵巢': 'Gynecologic Cancer', '宫颈': 'Gynecologic Cancer',
+    '头颈': 'Head & Neck Cancer', 'head.*neck': 'Head & Neck Cancer',
+    '黑色素': 'Melanoma', 'melanoma': 'Melanoma',
+    '脑瘤': 'CNS Tumors', '胶质': 'CNS Tumors', 'gbm': 'CNS Tumors', 'cns': 'CNS Tumors',
+    '肉瘤': 'Sarcoma', 'sarcoma': 'Sarcoma',
+    '儿童': 'Pediatric', 'pediatric': 'Pediatric'
+  };
+  for (const [cn, en] of Object.entries(tumorMap)) {
+    const re = new RegExp(cn, 'i');
+    if (re.test(remaining)) { filters.tumor = en; remaining = remaining.replace(re, ''); break; }
+  }
+
+  // Remaining as keywords
+  const keywords = remaining.replace(/[的有哪些？?哪些包含参与]/g, '').trim().split(/\s+/).filter(k => k.length > 0);
+  return { keywords, filters };
+}
+
+// Full-text search including abstract body
+function smartMatch(abstract, keywords) {
+  if (!keywords || keywords.length === 0) return true;
+  const fields = [
+    abstract.title, abstract.first_author, abstract.institution,
+    abstract.investigational_agent, abstract.nct_number, abstract.sponsor,
+    (abstract.therapy_type || []).join(' '),
+    abstract.background, abstract.methods, abstract.results, abstract.conclusion
+  ].map(s => (s || '').toLowerCase());
+  return keywords.every(kw => fields.some(f => f.includes(kw.toLowerCase())));
+}
+
+// Apply smart search + filters to a dataset
+function applySmartFilter(data, rawQuery, extraFilters, quickFilters) {
+  const { keywords, filters } = parseSmartQuery(rawQuery);
+  const phase = extraFilters.phase || filters.phase;
+  const therapy = extraFilters.therapy || filters.therapy;
+  const china = extraFilters.china || filters.china;
+  const absType = extraFilters.absType || filters.absType;
+  const tumor = extraFilters.tumor || filters.tumor;
+
+  return data.filter(a => {
+    if (tumor && a.tumor_category !== tumor) return false;
+    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
+    if (therapy && !(a.therapy_type || []).includes(therapy)) return false;
+    if (china && (a.china_participation || 'No') !== china) return false;
+    if (absType && getAbstractType(a) !== absType) return false;
+    if (quickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
+    if (quickFilters.china && a.china_participation !== 'Yes') return false;
+    if (quickFilters.lba && getAbstractType(a) !== 'LBA') return false;
+    if (keywords.length > 0 && !smartMatch(a, keywords)) return false;
+    return true;
+  });
+}
+
+// ============ TRACK COMPARE (PAGE 4) ============
+let tkInited = false;
+let tkFiltered = [];
+
+function initTrackCompare() {
+  if (tkInited) { onTrackCompareFilter(); return; }
+  tkInited = true;
+  populateTkFilterTargets();
+  onTrackCompareFilter();
+}
+
+function populateTkFilterTargets() {
+  const type = document.getElementById('tkFilterType').value;
+  const sel = document.getElementById('tkFilterTarget');
+
+  if (type === 'target') {
+    // Build target map from investigational_agent
+    const agentCounts = {};
+    ALL_DATA.forEach(a => {
+      const ag = (a.investigational_agent || '').trim();
+      if (ag && ag !== 'N/A') {
+        ag.split(';').map(s => s.trim()).filter(Boolean).forEach(g => {
+          agentCounts[g] = (agentCounts[g] || 0) + 1;
+        });
+      }
+    });
+    const top = Object.entries(agentCounts).sort((a,b) => b[1] - a[1]).slice(0, 30);
+    sel.innerHTML = top.map(([name, count]) => `<option value="${name}">${name} (${count})</option>`).join('');
+  } else {
+    // Therapy type categories
+    const therapySet = new Set();
+    ALL_DATA.forEach(a => (a.therapy_type || []).forEach(t => therapySet.add(t)));
+    sel.innerHTML = Array.from(therapySet).sort().map(t => `<option value="${t}">${t}</option>`).join('');
+  }
+}
+
+// Re-populate when type changes
+document.addEventListener('DOMContentLoaded', () => {
+  const typeSelect = document.getElementById('tkFilterType');
+  if (typeSelect) typeSelect.addEventListener('change', () => { populateTkFilterTargets(); onTrackCompareFilter(); });
+});
+
+function onTrackCompareFilter() {
+  const type = document.getElementById('tkFilterType').value;
+  const target = document.getElementById('tkFilterTarget').value;
+  const search = document.getElementById('tkSearchInput').value.trim();
+
+  // Filter data
+  if (type === 'target') {
+    tkFiltered = ALL_DATA.filter(a => {
+      const ag = (a.investigational_agent || '').trim();
+      return ag && ag !== 'N/A' && ag.split(';').map(s => s.trim()).includes(target);
+    });
+  } else {
+    tkFiltered = ALL_DATA.filter(a => (a.therapy_type || []).includes(target));
+  }
+
+  // Apply search within track
+  if (search) {
+    const { keywords } = parseSmartQuery(search);
+    tkFiltered = tkFiltered.filter(a => smartMatch(a, keywords));
+  }
+
+  // Update KPIs
+  document.getElementById('tkKpiTotal').textContent = tkFiltered.length;
+  const phases = { p1: 0, p2: 0, p3: 0 };
+  tkFiltered.forEach(a => {
+    const p = normalizePhases(a.study_phase);
+    if (p.includes('Phase 1')) phases.p1++;
+    if (p.includes('Phase 2')) phases.p2++;
+    if (p.includes('Phase 3')) phases.p3++;
+  });
+  document.getElementById('tkKpiP1').textContent = phases.p1;
+  document.getElementById('tkKpiP2').textContent = phases.p2;
+  document.getElementById('tkKpiP3').textContent = phases.p3;
+  const chinaN = tkFiltered.filter(a => a.china_participation === 'Yes').length;
+  document.getElementById('tkKpiChina').textContent = chinaN + (tkFiltered.length > 0 ? ` (${(chinaN*100/tkFiltered.length).toFixed(0)}%)` : '');
+
+  // Render charts
+  renderTkChartTumor();
+  renderTkChartPhase();
+  renderTkChartAgent();
+  renderTkChartChina();
+
+  // Render abstract list
+  renderTkAbstractCards();
+}
+
+const TK_TT = { backgroundColor: 'transparent', textStyle: { color: '#e5e7eb', fontSize: 12 } };
+
+function renderTkChartTumor() {
+  const tumorMap = {};
+  tkFiltered.forEach(a => { const t = a.tumor_category || 'N/A'; tumorMap[t] = (tumorMap[t] || 0) + 1; });
+  const data = Object.entries(tumorMap).sort((a,b) => b[1] - a[1]).slice(0, 12);
+  getChart('tkChartTumor').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 130, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d => TUMOR_DISPLAY[d[0]] || d[0]).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 11, width: 120, overflow: 'truncate', ellipsis: '...' } },
+    series: [{ type: 'bar', data: data.map(d => d[1]).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#3b82f6'},{offset:1,color:'#60a5fa'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11 } }]
+  }, true);
+}
+
+function renderTkChartPhase() {
+  const phaseMap = { 'Phase 1': 0, 'Phase 2': 0, 'Phase 3': 0, 'N/A': 0 };
+  tkFiltered.forEach(a => {
+    const p = normalizePhases(a.study_phase);
+    if (p.includes('Phase 3')) phaseMap['Phase 3']++;
+    else if (p.includes('Phase 2')) phaseMap['Phase 2']++;
+    else if (p.includes('Phase 1')) phaseMap['Phase 1']++;
+    else phaseMap['N/A']++;
+  });
+  const colors = ['#10b981', '#f59e0b', '#ef4444', '#64748b'];
+  getChart('tkChartPhase').setOption({
+    tooltip: { trigger: 'item' },
+    series: [{ type: 'pie', radius: ['38%', '72%'], center: ['50%', '52%'],
+      data: Object.entries(phaseMap).map(([k,v],i) => ({ name: k, value: v, itemStyle: { color: colors[i] } })),
+      label: { color: '#94a3b8', fontSize: 11, formatter: '{b}\n{c} ({d}%)' },
+      labelLine: { lineStyle: { color: '#2a3548' } }
+    }]
+  }, true);
+}
+
+function renderTkChartAgent() {
+  const agentMap = {};
+  tkFiltered.forEach(a => {
+    const ag = (a.investigational_agent || '').trim();
+    if (ag && ag !== 'N/A') ag.split(';').map(s=>s.trim()).filter(Boolean).forEach(g => { agentMap[g] = (agentMap[g]||0)+1; });
+  });
+  const data = Object.entries(agentMap).sort((a,b) => b[1]-a[1]).slice(0, 10);
+  getChart('tkChartAgent').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 130, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d=>d[0]).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 11, width: 120, overflow: 'truncate', ellipsis: '...' } },
+    series: [{ type: 'bar', data: data.map(d=>d[1]).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#8b5cf6'},{offset:1,color:'#a78bfa'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11 } }]
+  }, true);
+}
+
+function renderTkChartChina() {
+  const tumorChina = {};
+  tkFiltered.forEach(a => {
+    const t = TUMOR_DISPLAY[a.tumor_category] || a.tumor_category || 'N/A';
+    if (!tumorChina[t]) tumorChina[t] = [0, 0];
+    tumorChina[t][1]++;
+    if (a.china_participation === 'Yes') tumorChina[t][0]++;
+  });
+  const data = Object.entries(tumorChina)
+    .filter(([_, [cn, tot]]) => tot >= 2)
+    .map(([name, [cn, tot]]) => ({ name, pct: Math.round(cn * 100 / tot), cn, tot }))
+    .sort((a,b) => b.pct - a.pct).slice(0, 12);
+
+  getChart('tkChartChina').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: p => `${p[0].name}<br/>中国参与率: ${p[0].value}%<br/>中国/总数: ${data[p[0].dataIndex]?.cn}/${data[p[0].dataIndex]?.tot}` },
+    grid: { left: 130, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', max: 100, axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8', formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d=>d.name).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 11, width: 120, overflow: 'truncate', ellipsis: '...' } },
+    series: [{ type: 'bar', data: data.map(d=>d.pct).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#8b5cf6'},{offset:1,color:'#c084fc'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11, formatter: '{c}%' } }]
+  }, true);
+}
+
+function renderTkAbstractCards() {
+  const container = document.getElementById('tkAbstractCards');
+  document.getElementById('tkListCount').textContent = `${tkFiltered.length} 项`;
+  if (tkFiltered.length === 0) { container.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-muted);">暂无匹配研究</div>'; return; }
+  container.innerHTML = tkFiltered.slice(0, 100).map(a => buildAbstractCard(a)).join('');
+}
+
 // Overview filter logic
 function populateOvFilterSelects() {
   const tumors = [...new Set(ALL_DATA.map(a => a.tumor_category))].sort();
@@ -707,23 +1030,12 @@ function onOverviewFilter() {
   const therapy = document.getElementById('ovFilterTherapy').value;
   const china = document.getElementById('ovFilterChina').value;
   const absType = document.getElementById('ovFilterAbsType').value;
-  const search = document.getElementById('ovSearchInput').value.toLowerCase().trim();
+  const search = document.getElementById('ovSearchInput').value.trim();
 
-  ovFiltered = ALL_DATA.filter(a => {
-    if (tumor && a.tumor_category !== tumor) return false;
-    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
-    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
-    if (china && (a.china_participation||'No') !== china) return false;
-    if (absType && getAbstractType(a) !== absType) return false;
-    if (ovQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
-    if (ovQuickFilters.china && a.china_participation !== 'Yes') return false;
-    if (ovQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
-    if (search) {
-      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
-      if (!fields.some(f=>f.includes(search))) return false;
-    }
-    return true;
-  });
+  ovFiltered = applySmartFilter(ALL_DATA, search,
+    { tumor, phase, therapy, china, absType },
+    ovQuickFilters
+  );
 
   const hasFilter = tumor||phase||therapy||china||absType||search||ovQuickFilters.phase3||ovQuickFilters.china||ovQuickFilters.lba;
   document.getElementById('ovFilterClear').classList.toggle('visible', !!hasFilter);
@@ -897,22 +1209,26 @@ function onTrackFilter() {
   const line = document.getElementById('trFilterLine').value;
   const china = document.getElementById('trFilterChina').value;
   const absType = document.getElementById('trFilterAbsType').value;
-  const search = document.getElementById('trSearchInput').value.toLowerCase().trim();
+  const search = document.getElementById('trSearchInput').value.trim();
   const trackData = getTrackData();
 
+  // Use smart filter for search, then apply line filter separately
+  const { keywords, filters } = parseSmartQuery(search);
+  const mergedPhase = phase || filters.phase;
+  const mergedTherapy = therapy || filters.therapy;
+  const mergedChina = china || filters.china;
+  const mergedAbsType = absType || filters.absType;
+
   trackFiltered = trackData.filter(a => {
-    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
-    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
+    if (mergedPhase && !normalizePhases(a.study_phase).includes(mergedPhase)) return false;
+    if (mergedTherapy && !(a.therapy_type||[]).includes(mergedTherapy)) return false;
     if (line && (a.treatment_line||'N/A') !== line) return false;
-    if (china && (a.china_participation||'No') !== china) return false;
-    if (absType && getAbstractType(a) !== absType) return false;
+    if (mergedChina && (a.china_participation||'No') !== mergedChina) return false;
+    if (mergedAbsType && getAbstractType(a) !== mergedAbsType) return false;
     if (trackQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
     if (trackQuickFilters.china && a.china_participation !== 'Yes') return false;
     if (trackQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
-    if (search) {
-      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
-      if (!fields.some(f=>f.includes(search))) return false;
-    }
+    if (keywords.length > 0 && !smartMatch(a, keywords)) return false;
     return true;
   });
 
@@ -964,23 +1280,12 @@ function onListFilter() {
   const therapy = document.getElementById('listFilterTherapy').value;
   const china = document.getElementById('listFilterChina').value;
   const absType = document.getElementById('listFilterAbsType').value;
-  const search = document.getElementById('listSearchInput').value.toLowerCase().trim();
+  const search = document.getElementById('listSearchInput').value.trim();
 
-  listFiltered = ALL_DATA.filter(a => {
-    if (tumor && a.tumor_category !== tumor) return false;
-    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
-    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
-    if (china && (a.china_participation||'No') !== china) return false;
-    if (absType && getAbstractType(a) !== absType) return false;
-    if (listQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
-    if (listQuickFilters.china && a.china_participation !== 'Yes') return false;
-    if (listQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
-    if (search) {
-      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
-      if (!fields.some(f=>f.includes(search))) return false;
-    }
-    return true;
-  });
+  listFiltered = applySmartFilter(ALL_DATA, search,
+    { tumor, phase, therapy, china, absType },
+    listQuickFilters
+  );
 
   const hasFilter = tumor||phase||therapy||china||absType||search||listQuickFilters.phase3||listQuickFilters.china||listQuickFilters.lba;
   document.getElementById('listFilterClear').classList.toggle('visible', !!hasFilter);
