@@ -177,6 +177,25 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1200px) { .charts-grid { grid-template-columns: repeat(2, 1fr); } .kpi-row { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } .kpi-row { grid-template-columns: repeat(2, 1fr); } .filter-bar { flex-direction: column; align-items: stretch; } .filter-search { margin-left: 0; } .filter-search input { width: 100%; } .abstract-card { grid-template-columns: 1fr; } .ac-left { flex-direction: row; } .ac-right { align-items: flex-start; } }
+
+/* ============ REPORT PAGE ============ */
+.report-section { margin-bottom: 40px; }
+.report-section-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px; padding-left: 14px; border-left: 4px solid var(--accent); }
+.report-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.report-table th { background: var(--bg-card); color: var(--text-secondary); font-weight: 600; text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
+.report-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
+.report-table tr:hover td { background: rgba(59,130,246,0.06); }
+.report-table .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.report-table .highlight { color: var(--accent-gold); font-weight: 700; }
+.report-insight { background: var(--bg-card); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; border-left: 3px solid var(--accent); color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+.report-insight strong { color: var(--text-primary); }
+.rtag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; margin: 1px 2px; }
+.rtag.blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.rtag.red { background: rgba(239,68,68,0.15); color: #f87171; }
+.rtag.green { background: rgba(16,185,129,0.15); color: #34d399; }
+.rtag.orange { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.rtag.purple { background: rgba(139,92,246,0.15); color: #a78bfa; }
+@media (max-width: 900px) { #pageReport > div { padding: 16px; } #pageReport .kpi-row { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
@@ -204,6 +223,7 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
   <button class="nav-tab" data-page="tracks" onclick="switchPage('tracks')">📊 分Track看板</button>
   <button class="nav-tab" data-page="list" onclick="switchPage('list')">📋 全量摘要列表<span class="badge" id="badgeList">—</span></button>
   <button class="nav-tab" data-page="track" onclick="switchPage('track')">🎯 赛道对比</button>
+  <button class="nav-tab" data-page="report" onclick="switchPage('report')">📑 深度报告</button>
 </nav>
 
 <!-- Track sub-nav (only visible on tracks page) -->
@@ -390,12 +410,254 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
   <div class="abstract-cards" id="tkAbstractCards" style="max-height:calc(100vh - 680px)"></div>
 </div>
 
+<!-- ====== PAGE 5: REPORT ====== -->
+<div class="main page" id="pageReport">
+  <div style="max-width:1200px;margin:0 auto;padding:24px 32px;">
+    <div style="text-align:center;padding:24px 0 20px;border-bottom:2px solid var(--border);margin-bottom:32px;">
+      <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent-light),var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ASCO 2026 全瘤种概览深度分析报告</h1>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">基于 Full Proceedings 3,440 篇摘要 · 16 个瘤种 · 26 个 Track · 数据截止 2026年5月</div>
+    </div>
+
+    <!-- 1. 执行摘要 -->
+    <div class="report-section">
+      <h2 class="report-section-title">执行摘要</h2>
+      <div class="kpi-row" style="margin-bottom:16px;">
+        <div class="kpi-card"><div class="kpi-val" style="color:var(--accent-light)">3,440</div><div class="kpi-label">摘要总数</div><div class="kpi-sub">LBA 58 / TPS 379</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#10b981">695</div><div class="kpi-label">Phase 1</div><div class="kpi-sub">20.2%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#f59e0b">344</div><div class="kpi-label">Phase 2</div><div class="kpi-sub">10.0%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#ef4444">201</div><div class="kpi-label">Phase 3</div><div class="kpi-sub">5.8%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#8b5cf6">985</div><div class="kpi-label">中国参与</div><div class="kpi-sub">28.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:var(--accent-cyan)">1,381</div><div class="kpi-label">NCT注册</div><div class="kpi-sub">40.1%</div></div>
+      </div>
+      <div class="report-insight" style="border-left-color:var(--accent)"><strong>核心洞察 1：</strong>消化道肿瘤（GI Cancer）中国参与率高达 42%，显著高于整体平均 28.6%，反映中国药企在消化肿瘤领域布局最深。</div>
+      <div class="report-insight" style="border-left-color:var(--accent)"><strong>核心洞察 2：</strong>GU Cancer Phase 3 研究达 38 项（占全部 Phase 3 的 18.9%），泌尿生殖肿瘤是临床最成熟赛道。</div>
+      <div class="report-insight" style="border-left-color:var(--accent)"><strong>核心洞察 3：</strong>Cell Therapy 达 778 项（22.6%），首次与 Immunotherapy（805 项）接近，细胞治疗已从血液肿瘤扩展至实体瘤。</div>
+      <div class="report-insight" style="border-left-color:var(--accent)"><strong>核心洞察 4：</strong>ADC 模式 250 项（7.3%）、双抗 160 项（4.7%），新兴治疗模式快速增长，HER2、CLDN18、TROP2 是核心靶点。</div>
+      <div class="report-insight" style="border-left-color:var(--accent)"><strong>核心洞察 5：</strong>Phase 1 研究中 Multi-tumor 占比最高（153/695=22%），说明新药早期开发仍以 basket 设计为主流策略。</div>
+    </div>
+
+    <!-- 2. 瘤种全景 -->
+    <div class="report-section">
+      <h2 class="report-section-title" style="border-left-color:#10b981">瘤种全景</h2>
+      <div style="overflow-x:auto;">
+        <table class="report-table">
+          <thead><tr><th>瘤种</th><th class="num">总数</th><th class="num">Phase 1</th><th class="num">Phase 2</th><th class="num">Phase 3</th><th class="num">中国参与</th><th>主导治疗</th><th>核心药物</th></tr></thead>
+          <tbody>
+            <tr><td>支持治疗</td><td class="num">557</td><td class="num">30</td><td class="num">24</td><td class="num">4</td><td class="num">17%</td><td>—</td><td>—</td></tr>
+            <tr><td>多瘤种</td><td class="num">393</td><td class="num highlight">153</td><td class="num">27</td><td class="num">12</td><td class="num">35%</td><td>—</td><td>TP53</td></tr>
+            <tr><td>乳腺癌</td><td class="num">317</td><td class="num">52</td><td class="num">37</td><td class="num">19</td><td class="num">29%</td><td>Targeted/Chemo</td><td>HER2</td></tr>
+            <tr><td>非小细胞肺癌</td><td class="num">313</td><td class="num">66</td><td class="num">49</td><td class="num">23</td><td class="num highlight">35%</td><td>Immuno/Targeted</td><td>Tarlatamab</td></tr>
+            <tr><td>血液肿瘤</td><td class="num">298</td><td class="num">43</td><td class="num">26</td><td class="num highlight">27</td><td class="num">20%</td><td>Cell Therapy</td><td>TP53</td></tr>
+            <tr><td>泌尿生殖</td><td class="num">288</td><td class="num">60</td><td class="num">35</td><td class="num highlight">38</td><td class="num">34%</td><td>Immuno/Targeted</td><td>Enfortumab</td></tr>
+            <tr><td>消化道肿瘤</td><td class="num">257</td><td class="num">76</td><td class="num">40</td><td class="num">24</td><td class="num highlight">42%</td><td>Targeted/Chemo</td><td>CLDN18</td></tr>
+            <tr><td>结直肠癌</td><td class="num">181</td><td class="num">39</td><td class="num">23</td><td class="num">13</td><td class="num">33%</td><td>Targeted/Chemo</td><td>BRAF V600E</td></tr>
+            <tr><td>妇科肿瘤</td><td class="num">143</td><td class="num">38</td><td class="num">11</td><td class="num">11</td><td class="num">26%</td><td>Immuno</td><td>Pembrolizumab</td></tr>
+            <tr><td>头颈癌</td><td class="num">140</td><td class="num">43</td><td class="num">25</td><td class="num">9</td><td class="num">39%</td><td>Immuno</td><td>Nivolumab</td></tr>
+            <tr><td>预防</td><td class="num">130</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">26%</td><td>—</td><td>—</td></tr>
+            <tr><td>黑色素瘤</td><td class="num">116</td><td class="num">27</td><td class="num">20</td><td class="num">6</td><td class="num">13%</td><td>Immuno</td><td>—</td></tr>
+            <tr><td>CNS肿瘤</td><td class="num">103</td><td class="num">24</td><td class="num">12</td><td class="num">9</td><td class="num">24%</td><td>Targeted</td><td>—</td></tr>
+            <tr><td>肉瘤</td><td class="num">99</td><td class="num">33</td><td class="num">8</td><td class="num">6</td><td class="num">30%</td><td>Targeted</td><td>Pimicotinib</td></tr>
+            <tr><td>儿童肿瘤</td><td class="num">58</td><td class="num">9</td><td class="num">5</td><td class="num">0</td><td class="num">24%</td><td>Cell Therapy</td><td>Dinutuximab</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. 研究阶段 -->
+    <div class="report-section">
+      <h2 class="report-section-title" style="border-left-color:#ef4444">研究阶段深度分析</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <h3 style="color:#fff;margin-bottom:12px;font-size:15px;">Phase 3 分布（201 项）</h3>
+          <table class="report-table">
+            <thead><tr><th>瘤种</th><th class="num">Phase 3</th><th class="num">占比</th></tr></thead>
+            <tbody>
+              <tr><td>泌尿生殖 GU</td><td class="num highlight">38</td><td class="num">18.9%</td></tr>
+              <tr><td>血液肿瘤</td><td class="num">27</td><td class="num">13.4%</td></tr>
+              <tr><td>消化道 GI</td><td class="num">24</td><td class="num">11.9%</td></tr>
+              <tr><td>NSCLC</td><td class="num">23</td><td class="num">11.4%</td></tr>
+              <tr><td>乳腺癌</td><td class="num">19</td><td class="num">9.5%</td></tr>
+              <tr><td>结直肠癌</td><td class="num">13</td><td class="num">6.5%</td></tr>
+              <tr><td>多瘤种</td><td class="num">12</td><td class="num">6.0%</td></tr>
+              <tr><td>妇科肿瘤</td><td class="num">11</td><td class="num">5.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 style="color:#fff;margin-bottom:12px;font-size:15px;">Phase 1 分布（695 项）</h3>
+          <table class="report-table">
+            <thead><tr><th>瘤种</th><th class="num">Phase 1</th><th class="num">占比</th></tr></thead>
+            <tbody>
+              <tr><td>多瘤种</td><td class="num highlight">153</td><td class="num">22.0%</td></tr>
+              <tr><td>消化道 GI</td><td class="num">76</td><td class="num">10.9%</td></tr>
+              <tr><td>NSCLC</td><td class="num">66</td><td class="num">9.5%</td></tr>
+              <tr><td>泌尿生殖 GU</td><td class="num">60</td><td class="num">8.6%</td></tr>
+              <tr><td>乳腺癌</td><td class="num">52</td><td class="num">7.5%</td></tr>
+              <tr><td>血液肿瘤</td><td class="num">43</td><td class="num">6.2%</td></tr>
+              <tr><td>头颈癌</td><td class="num">43</td><td class="num">6.2%</td></tr>
+              <tr><td>肉瘤</td><td class="num">33</td><td class="num">4.7%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="report-insight" style="margin-top:16px;border-left-color:#ef4444">
+        <strong>Phase 3 关键发现：</strong>GU Cancer（38项）领先所有瘤种，Enfortumab + Pembrolizumab 一线UC已改变实践，后续适应症拓展活跃。血液肿瘤 Phase 3 占比 13.4%（27项），CAR-T 细胞治疗竞争白热化。Phase 1 中 basket 设计（多瘤种 153 项）占绝对主导，说明新靶点/新机制药物仍处于早期探索阶段。
+      </div>
+    </div>
+
+    <!-- 4. 治疗模式 -->
+    <div class="report-section">
+      <h2 class="report-section-title" style="border-left-color:#10b981">治疗模式分析</h2>
+      <div class="kpi-row" style="margin-bottom:16px;">
+        <div class="kpi-card"><div class="kpi-val" style="color:var(--accent-light);font-size:24px">1,018</div><div class="kpi-label">Chemotherapy</div><div class="kpi-sub">29.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#10b981;font-size:24px">1,013</div><div class="kpi-label">Targeted Therapy</div><div class="kpi-sub">29.4%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#f59e0b;font-size:24px">805</div><div class="kpi-label">Immunotherapy</div><div class="kpi-sub">23.4%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#8b5cf6;font-size:24px">778</div><div class="kpi-label">Cell Therapy</div><div class="kpi-sub">22.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#ef4444;font-size:24px">250</div><div class="kpi-label">ADC</div><div class="kpi-sub">7.3%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:var(--accent-cyan);font-size:24px">160</div><div class="kpi-label">Bispecific Ab</div><div class="kpi-sub">4.7%</div></div>
+      </div>
+      <h3 style="color:#fff;margin-bottom:12px;font-size:15px;">联合治疗主流方案</h3>
+      <table class="report-table">
+        <thead><tr><th>联合方案</th><th class="num">研究数</th><th>典型场景</th></tr></thead>
+        <tbody>
+          <tr><td>Chemo + Immuno</td><td class="num">119</td><td>NSCLC/GI/GU 一线标准治疗基石</td></tr>
+          <tr><td>Chemo + Targeted</td><td class="num">116</td><td>HER2+/BRCA突变/ADC联合</td></tr>
+          <tr><td>Cell + Targeted</td><td class="num">71</td><td>CAR-T + 靶向维持</td></tr>
+          <tr><td>Immuno + Targeted</td><td class="num">64</td><td>IO+TKI/IO+ADC 新组合</td></tr>
+          <tr><td>Chemo + Targeted + Immuno</td><td class="num">50</td><td>三联方案探索，消化道/NSCLC为主</td></tr>
+          <tr><td>ADC + Targeted</td><td class="num">47</td><td>ADC联合靶向，乳腺癌/GI为主</td></tr>
+        </tbody>
+      </table>
+      <div class="report-insight" style="margin-top:16px;border-left-color:#10b981">
+        <strong>治疗模式趋势：</strong>Cell Therapy（778项）已逼近 Immunotherapy（805项），标志着细胞治疗正式进入主流。ADC（250项）和双抗（160项）是增速最快的新兴模式，合计占 12%。Chemo+Immuno（119项）仍是实体瘤联合治疗的金标准组合。
+      </div>
+    </div>
+
+    <!-- 5. 中国参与 -->
+    <div class="report-section">
+      <h2 class="report-section-title" style="border-left-color:#f59e0b">中国参与度深度分析</h2>
+      <div class="kpi-row" style="margin-bottom:16px;">
+        <div class="kpi-card"><div class="kpi-val" style="color:#f59e0b">985</div><div class="kpi-label">中国参与研究</div><div class="kpi-sub">占总数 28.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:var(--accent-light);font-size:24px">292</div><div class="kpi-label">Phase 1</div><div class="kpi-sub">占中国研究 29.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#10b981;font-size:24px">134</div><div class="kpi-label">Phase 2</div><div class="kpi-sub">占中国研究 13.6%</div></div>
+        <div class="kpi-card"><div class="kpi-val" style="color:#ef4444;font-size:24px">54</div><div class="kpi-label">Phase 3</div><div class="kpi-sub">占全部Phase3 26.9%</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <h3 style="color:#fff;margin-bottom:12px;font-size:15px;">中国参与 Top 10 瘤种</h3>
+          <table class="report-table">
+            <thead><tr><th>瘤种</th><th class="num">数量</th><th class="num">参与率</th></tr></thead>
+            <tbody>
+              <tr><td>多瘤种</td><td class="num">139</td><td class="num">35%</td></tr>
+              <tr><td>NSCLC</td><td class="num">110</td><td class="num">35%</td></tr>
+              <tr><td>消化道 GI</td><td class="num highlight">109</td><td class="num highlight">42%</td></tr>
+              <tr><td>泌尿生殖 GU</td><td class="num">100</td><td class="num">34%</td></tr>
+              <tr><td>支持治疗</td><td class="num">98</td><td class="num">17%</td></tr>
+              <tr><td>乳腺癌</td><td class="num">93</td><td class="num">29%</td></tr>
+              <tr><td>结直肠癌</td><td class="num">60</td><td class="num">33%</td></tr>
+              <tr><td>血液肿瘤</td><td class="num">60</td><td class="num">20%</td></tr>
+              <tr><td>头颈癌</td><td class="num">55</td><td class="num">39%</td></tr>
+              <tr><td>妇科肿瘤</td><td class="num">38</td><td class="num">26%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 style="color:#fff;margin-bottom:12px;font-size:15px;">中国参与 Top 药物</h3>
+          <table class="report-table">
+            <thead><tr><th>药物/靶点</th><th class="num">研究数</th></tr></thead>
+            <tbody>
+              <tr><td>HER2</td><td class="num">8</td></tr>
+              <tr><td>TP53</td><td class="num">6</td></tr>
+              <tr><td>CLDN18</td><td class="num">5</td></tr>
+              <tr><td>Trastuzumab</td><td class="num">4</td></tr>
+              <tr><td>Cadonilimab (AK104)</td><td class="num">4</td></tr>
+              <tr><td>Ivonescimab</td><td class="num">3</td></tr>
+              <tr><td>Tislelizumab</td><td class="num">3</td></tr>
+              <tr><td>BRAF V600E</td><td class="num">3</td></tr>
+              <tr><td>QL1706</td><td class="num">3</td></tr>
+              <tr><td>ZG006</td><td class="num">3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="report-insight" style="margin-top:16px;border-left-color:#f59e0b">
+        <strong>中国参与度核心发现：</strong>GI Cancer 中国参与率 42% 为最高，CLDN18 ADC/GI-TKI 是中国药企重点方向；中国参与药物中 Cadonilimab（康方双抗）、Ivonescimab（依沃西单抗）、Tislelizumab（百济替雷利珠单抗）等均为本土创新药；中国 Phase 3 参与 54 项（26.9%），说明中国临床研究正从早期向注册阶段加速过渡。
+      </div>
+    </div>
+
+    <!-- 6. 核心药物/靶点赛道 -->
+    <div class="report-section">
+      <h2 class="report-section-title" style="border-left-color:#8b5cf6">核心药物/靶点赛道</h2>
+      <table class="report-table">
+        <thead><tr><th>药物/靶点</th><th class="num">研究数</th><th>主要瘤种</th><th>标签</th></tr></thead>
+        <tbody>
+          <tr><td><strong>HER2</strong></td><td class="num">30</td><td>乳腺癌、GI、Multi-tumor</td><td><span class="rtag blue">靶向</span><span class="rtag red">ADC</span></td></tr>
+          <tr><td><strong>TP53</strong></td><td class="num">25</td><td>Multi-tumor、Hematologic</td><td><span class="rtag blue">靶向</span><span class="rtag purple">新靶点</span></td></tr>
+          <tr><td><strong>CD19</strong></td><td class="num">13</td><td>Hematologic</td><td><span class="rtag green">细胞治疗</span></td></tr>
+          <tr><td><strong>Trastuzumab</strong></td><td class="num">9</td><td>乳腺癌、GI Cancer</td><td><span class="rtag blue">靶向</span><span class="rtag red">ADC</span></td></tr>
+          <tr><td><strong>Enfortumab vedotin</strong></td><td class="num">9</td><td>GU Cancer</td><td><span class="rtag red">ADC</span></td></tr>
+          <tr><td><strong>Tarlatamab</strong></td><td class="num">8</td><td>NSCLC (SCLC)</td><td><span class="rtag purple">双抗</span></td></tr>
+          <tr><td><strong>Pembrolizumab</strong></td><td class="num">7</td><td>NSCLC、GI、妇科</td><td><span class="rtag orange">免疫</span></td></tr>
+          <tr><td><strong>CLDN18.2</strong></td><td class="num">7</td><td>GI Cancer</td><td><span class="rtag blue">靶向</span><span class="rtag red">ADC</span><span class="rtag purple">新靶点</span></td></tr>
+          <tr><td><strong>BRAF V600E</strong></td><td class="num">7</td><td>CRC、Melanoma</td><td><span class="rtag blue">靶向</span></td></tr>
+          <tr><td><strong>Nivolumab</strong></td><td class="num">6</td><td>GU、头颈、NSCLC</td><td><span class="rtag orange">免疫</span></td></tr>
+          <tr><td><strong>BT8009</strong></td><td class="num">5</td><td>GU Cancer</td><td><span class="rtag red">ADC</span></td></tr>
+          <tr><td><strong>Zongertinib</strong></td><td class="num">4</td><td>NSCLC (HER2)</td><td><span class="rtag blue">靶向</span><span class="rtag purple">新靶点</span></td></tr>
+          <tr><td><strong>Cadonilimab</strong></td><td class="num">4</td><td>GI、头颈</td><td><span class="rtag purple">双抗</span><span class="rtag orange">中国创新</span></td></tr>
+        </tbody>
+      </table>
+      <div class="report-insight" style="margin-top:16px;border-left-color:#8b5cf6">
+        <strong>靶点赛道趋势：</strong>HER2 持续领跑（30项），已从乳腺癌扩展至 GI/NSCLC；TP53（25项）作为"不可成药"靶点出现大量研究；CLDN18.2（7项）是中国药企最具差异化竞争力的靶点；Tarlatamab（8项）代表 SCLC 双抗赛道已获 FDA 批准。
+      </div>
+    </div>
+
+    <!-- 7. 结论与建议 -->
+    <div class="report-section">
+      <h2 class="report-section-title">结论与行动建议</h2>
+      <div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08));border:1px solid rgba(59,130,246,0.15);border-radius:var(--radius);padding:20px;margin-bottom:20px;">
+        <h3 style="color:#fff;margin-bottom:12px;">🔑 五条关键结论</h3>
+        <ol style="padding-left:20px;color:var(--text-secondary);line-height:1.8;">
+          <li><strong style="color:var(--text-primary)">实体瘤免疫联合仍为基石</strong> — Chemo+Immuno（119项）是实体瘤一线治疗的标准组合，但差异化空间收窄，需向 IO+ADC/IO+双抗方向演进。</li>
+          <li><strong style="color:var(--text-primary)">细胞治疗跨越血液肿瘤边界</strong> — Cell Therapy 778项与 Immunotherapy 805项几乎持平，实体瘤 CAR-T/TIL/TCR-T 已从概念验证进入 Phase 2。</li>
+          <li><strong style="color:var(--text-primary)">ADC 和双抗是增速最快的治疗模式</strong> — ADC 250项、双抗 160项，合计占比 12%，HER2、TROP2、CLDN18.2 是三大 ADC 靶点。</li>
+          <li><strong style="color:var(--text-primary)">中国参与全面渗透</strong> — 985项（28.6%）覆盖所有主要瘤种，GI Cancer 42% 的参与率表明消化肿瘤是中国药企的差异化主场。</li>
+          <li><strong style="color:var(--text-primary)">Phase 1 basket 设计主导新药早期开发</strong> — 153项 Multi-tumor Phase 1 研究说明精准肿瘤学 basket trial 仍是新靶点/新机制药物的首选策略。</li>
+        </ol>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(204,51,0,0.08));border:1px solid rgba(245,158,11,0.15);border-radius:var(--radius);padding:20px;">
+        <h3 style="color:#fff;margin-bottom:12px;">🎯 对中国药企的行动建议</h3>
+        <ol style="padding-left:20px;color:var(--text-secondary);line-height:1.8;">
+          <li><strong style="color:var(--text-primary)">深耕 CLDN18.2 赛道</strong> — GI Cancer 中国参与率 42%，CLDN18.2 ADC 是全球竞争中的中国优势赛道，建议加速注册临床布局。</li>
+          <li><strong style="color:var(--text-primary)">布局 IO+ADC 联合方案</strong> — Chemo+Immuno 空间收窄，下一波差异化来自 IO+ADC（如 Cadonilimab+ADC），率先探索可获先发优势。</li>
+          <li><strong style="color:var(--text-primary)">关注 TP53 通路药物</strong> — 25项研究预示 p53 靶向药物即将突破，早期布局 TP53 恢复剂/降解剂有高回报潜力。</li>
+          <li><strong style="color:var(--text-primary)">推进实体瘤细胞治疗</strong> — Cell Therapy 从血液瘤向实体瘤扩展，TCR-T/TIL 在 NSCLC/Melanoma 已有 Phase 2 数据，中国应加速追赶。</li>
+          <li><strong style="color:var(--text-primary)">利用 basket trial 策略加速早期开发</strong> — Multi-tumor Phase 1 占比 22%，精准肿瘤学 basket 设计可缩短开发周期。</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:24px 0;border-top:1px solid var(--border);margin-top:32px;color:var(--text-muted);font-size:12px;">
+      <p>ASCO 2026 全瘤种概览深度分析报告 · 基于 Full Proceedings 3,440 篇摘要</p>
+      <p style="margin-top:4px;">数据来源：ASCO 2026 Annual Meeting Full Proceedings PDF · 分析引擎：智数分析专家团</p>
+      <p style="margin-top:4px;">注：本报告仅覆盖 Proceedings 约 3,440 篇，Online Publications 约 4,200+ 篇未包含在内</p>
+    </div>
+  </div>
+</div>
+
 <!-- Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalContent"></div>
 </div>
 <!-- Toast -->
 <div class="toast" id="toast"></div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" style="position:fixed;inset:0;background:var(--bg-primary);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .3s;">
+  <div style="width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;"></div>
+  <div style="color:var(--text-secondary);font-size:14px;">正在加载 ASCO 2026 数据...</div>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
 <!-- Load embedded data before main script -->
 <script src="embedded_data.js" onerror="console.warn('embedded_data.js not found, relying on JSON fetch')"></script>
@@ -531,12 +793,26 @@ function getAbstractTypeClass(a) { return getAbstractType(a).toLowerCase(); }
 // LOAD DATA
 // ============================================================
 async function loadData() {
-  try {
-    const resp = await fetch('all_abstracts_asco2026.json');
-    if (resp.ok) { ALL_DATA = await resp.json(); }
-    else throw new Error('fetch failed');
-  } catch(e) {
-    ALL_DATA = typeof EMBEDDED_DATA !== 'undefined' ? EMBEDDED_DATA : [];
+  // Priority 1: Use EMBEDDED_DATA (already loaded via embedded_data.js)
+  if (typeof EMBEDDED_DATA !== 'undefined' && EMBEDDED_DATA.length > 0) {
+    ALL_DATA = EMBEDDED_DATA;
+    console.log(`[loadData] Using EMBEDDED_DATA: ${ALL_DATA.length} abstracts`);
+  } else {
+    // Priority 2: Fetch JSON as fallback
+    try {
+      const resp = await fetch('all_abstracts_asco2026.json');
+      if (resp.ok) {
+        ALL_DATA = await resp.json();
+        console.log(`[loadData] Fetched JSON: ${ALL_DATA.length} abstracts`);
+      }
+    } catch(e) {
+      console.error('[loadData] Both EMBEDDED_DATA and JSON fetch failed:', e);
+    }
+  }
+
+  if (ALL_DATA.length === 0) {
+    showToast('⚠️ 数据加载失败，请刷新页面重试');
+    return;
   }
 
   document.getElementById('badgeOverview').textContent = ALL_DATA.length;
@@ -554,6 +830,10 @@ async function loadData() {
   renderListAbstractCards();
 
   updateHeaderStats();
+
+  // Hide loading overlay
+  const overlay = document.getElementById('loadingOverlay');
+  if (overlay) { overlay.style.opacity = '0'; setTimeout(() => overlay.remove(), 300); }
 }
 
 // ============================================================
@@ -581,6 +861,9 @@ function switchPage(page) {
     document.getElementById('pageTrack').classList.add('active');
     document.getElementById('trackBar').style.display = 'none';
     initTrackCompare();
+  } else if (page === 'report') {
+    document.getElementById('pageReport').classList.add('active');
+    document.getElementById('trackBar').style.display = 'none';
   }
   updateHeaderStats();
 }
