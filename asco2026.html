@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCO 2026 · 全景看板</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root {
+  --bg-primary: #0b1017;
+  --bg-secondary: #111827;
+  --bg-card: #1a2235;
+  --bg-hover: #1f2b3d;
+  --border: #2a3548;
+  --border-light: #354160;
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+
+/* ============ HEADER ============ */
+.header { background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.header-brand { display: flex; align-items: center; gap: 12px; }
+.header-logo { width: 34px; height: 34px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: #fff; }
+.header-title { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+.header-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.header-stats { display: flex; gap: 20px; align-items: center; }
+.header-stat { text-align: right; }
+.header-stat-val { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; background: linear-gradient(135deg, var(--accent-light), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+
+/* ============ NAV TABS ============ */
+.nav-bar { background: var(--bg-secondary); border-bottom: 1px solid var(--border); display: flex; gap: 0; padding: 0 24px; overflow-x: auto; }
+.nav-tab { padding: 12px 20px; font-size: 13px; font-weight: 500; color: var(--text-muted); cursor: pointer; border: none; border-bottom: 2px solid transparent; background: none; font-family: var(--font-ui); white-space: nowrap; transition: all .15s; }
+.nav-tab:hover { color: var(--text-secondary); }
+.nav-tab.active { color: #fff; border-bottom-color: var(--accent); font-weight: 600; }
+.nav-tab .badge { display: inline-block; background: var(--border); color: var(--text-secondary); font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 10px; margin-left: 6px; }
+.nav-tab.active .badge { background: var(--accent); color: #fff; }
+
+/* ============ TRACK TABS (sub-nav for track page) ============ */
+.track-bar { background: var(--bg-secondary); border-bottom: 1px solid var(--border); display: flex; gap: 0; padding: 0 24px; overflow-x: auto; }
+.track-tab { padding: 10px 16px; font-size: 12px; font-weight: 500; color: var(--text-muted); cursor: pointer; border: none; border-bottom: 2px solid transparent; background: none; font-family: var(--font-ui); white-space: nowrap; transition: all .15s; }
+.track-tab:hover { color: var(--text-secondary); }
+.track-tab.active { color: #fff; border-bottom-color: var(--accent-purple); font-weight: 600; }
+.track-tab .badge { display: inline-block; background: var(--border); color: var(--text-secondary); font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+.track-tab.active .badge { background: var(--accent-purple); color: #fff; }
+
+/* ============ MAIN ============ */
+.main { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+.page { display: none; }
+.page.active { display: block; }
+
+/* KPI Row */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.kpi-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; cursor: pointer; transition: all .15s; position: relative; }
+.kpi-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.kpi-card.active { border-color: var(--accent); background: rgba(59,130,246,0.08); }
+.kpi-card.active::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); border-radius: 3px 0 0 3px; }
+.kpi-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+.kpi-val { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.kpi-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+/* Charts Grid */
+.charts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+.chart-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; transition: all .15s; }
+.chart-card:hover { border-color: var(--border-light); }
+.chart-card.span-2 { grid-column: span 2; }
+.chart-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.chart-card-title { font-size: 12px; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+.chart-card-title .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.chart-card-hint { font-size: 10px; color: var(--text-muted); }
+.chart-wrap { width: 100%; height: 260px; }
+.chart-wrap.tall { height: 280px; }
+
+/* ============ FILTER BAR ============ */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+.filter-section { display: flex; align-items: center; gap: 6px; }
+.filter-section-label { font-size: 11px; font-weight: 600; color: var(--text-muted); white-space: nowrap; min-width: fit-content; }
+.filter-select { padding: 5px 28px 5px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 12px; font-family: var(--font-ui); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748b'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; max-width: 150px; }
+.filter-select:focus { border-color: var(--accent); }
+.filter-chip { padding: 5px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); transition: all .12s; font-family: var(--font-ui); white-space: nowrap; }
+.filter-chip:hover { border-color: var(--accent); color: var(--accent-light); }
+.filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.filter-search { margin-left: auto; position: relative; }
+.filter-search input { padding: 6px 12px 6px 30px; border: 1px solid var(--border); border-radius: 16px; font-size: 12px; font-family: var(--font-ui); background: var(--bg-secondary); color: var(--text-primary); width: 260px; outline: none; transition: all .15s; }
+.filter-search input:focus { border-color: var(--accent-light); box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }
+.filter-search input::placeholder { color: var(--text-muted); }
+.filter-search .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px; }
+.filter-clear { font-size: 11px; color: var(--accent-red); cursor: pointer; font-weight: 600; border: none; background: none; font-family: var(--font-ui); padding: 4px 10px; border-radius: 4px; white-space: nowrap; display: none; }
+.filter-clear.visible { display: inline-block; }
+.filter-clear:hover { background: rgba(239,68,68,0.1); }
+.filter-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+
+/* ============ ABSTRACT LIST ============ */
+.abstract-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.abstract-list-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.abstract-list-count { font-size: 12px; color: var(--text-muted); }
+.abstract-cards { display: grid; grid-template-columns: 1fr; gap: 8px; max-height: 650px; overflow-y: auto; }
+.abstract-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; cursor: pointer; transition: all .15s; display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: start; }
+.abstract-card:hover { border-color: var(--accent); background: var(--bg-hover); transform: translateX(2px); }
+.ac-left { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 52px; }
+.ac-number { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ac-number.regular { color: var(--accent-light); background: rgba(59,130,246,0.1); }
+.ac-number.lba { color: var(--accent-gold); background: rgba(245,158,11,0.12); }
+.ac-number.tps { color: var(--accent-purple); background: rgba(139,92,246,0.1); }
+.ac-phase-tag { font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.3px; }
+.ac-phase-tag.p1 { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.ac-phase-tag.p2 { background: rgba(16,185,129,0.15); color: #34d399; }
+.ac-phase-tag.p3 { background: rgba(239,68,68,0.15); color: #f87171; }
+.ac-phase-tag.na { background: rgba(100,116,139,0.15); color: #94a3b8; }
+.ac-middle { min-width: 0; }
+.ac-title { font-size: 13px; font-weight: 500; line-height: 1.45; color: var(--text-primary); margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ac-meta { display: flex; gap: 14px; font-size: 11px; color: var(--text-muted); flex-wrap: wrap; }
+.ac-meta span { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+.ac-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+.ac-tag { font-size: 10px; padding: 1px 7px; border-radius: 3px; background: rgba(59,130,246,0.06); color: var(--text-secondary); }
+.ac-tag.china { background: rgba(239,68,68,0.08); color: var(--accent-red); }
+.ac-tag.lba-tag { background: rgba(245,158,11,0.1); color: var(--accent-gold); }
+.ac-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; min-width: 100px; text-align: right; }
+.ac-efficacy { display: flex; flex-direction: column; gap: 2px; }
+.ac-eff-item { font-size: 10px; color: var(--text-muted); }
+.ac-eff-item .eff-val { font-weight: 700; color: var(--accent-green); font-variant-numeric: tabular-nums; }
+.ac-nct { font-size: 10px; color: var(--accent-cyan); font-variant-numeric: tabular-nums; }
+
+/* ============ MODAL ============ */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; backdrop-filter: blur(4px); }
+.modal-overlay.visible { display: flex; }
+.modal { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); width: 90%; max-width: 820px; overflow: hidden; }
+.modal-header { padding: 24px 28px 16px; border-bottom: 1px solid var(--border); position: relative; }
+.modal-close { position: absolute; right: 16px; top: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--text-muted); transition: all .12s; }
+.modal-close:hover { background: var(--bg-hover); color: var(--text-primary); }
+.modal-id { font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+.modal-id.lba { color: var(--accent-gold); }
+.modal-id.tps { color: var(--accent-purple); }
+.modal-id.regular { color: var(--accent-light); }
+.modal-title { font-size: 17px; font-weight: 600; line-height: 1.35; padding-right: 40px; margin-bottom: 8px; }
+.modal-meta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.modal-meta-chip { font-size: 11px; padding: 3px 10px; border-radius: 4px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); }
+.modal-body { padding: 20px 28px 28px; }
+.modal-section { margin-bottom: 18px; }
+.modal-section:last-child { margin-bottom: 0; }
+.modal-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent-light); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.modal-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.modal-section-content { font-size: 14px; line-height: 1.7; color: var(--text-secondary); }
+.modal-efficacies { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.modal-eff-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+.modal-eff-chip .eff-val { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-green); }
+.modal-eff-chip .eff-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
+.modal-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 16px; }
+.modal-info-item { display: flex; gap: 8px; font-size: 12px; }
+.modal-info-label { color: var(--text-muted); min-width: 70px; white-space: nowrap; }
+.modal-info-value { color: var(--text-primary); word-break: break-all; }
+
+/* ============ TOAST ============ */
+.toast { position: fixed; bottom: 20px; right: 20px; background: var(--accent-green); color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 13px; z-index: 2000; transform: translateY(100px); opacity: 0; transition: all .3s; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error { background: var(--accent-red); }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1200px) { .charts-grid { grid-template-columns: repeat(2, 1fr); } .kpi-row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } .kpi-row { grid-template-columns: repeat(2, 1fr); } .filter-bar { flex-direction: column; align-items: stretch; } .filter-search { margin-left: 0; } .filter-search input { width: 100%; } .abstract-card { grid-template-columns: 1fr; } .ac-left { flex-direction: row; } .ac-right { align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-brand">
+    <div class="header-logo">A</div>
+    <div>
+      <div class="header-title">ASCO 2026 全景看板</div>
+      <div class="header-sub">Oncology Abstract Dashboard · May 30 – June 3, Chicago</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="header-stat"><div class="header-stat-val" id="statTotal">—</div><div class="header-stat-label">摘要总数</div></div>
+    <div class="header-stat"><div class="header-stat-val" id="statPhase3">—</div><div class="header-stat-label">Phase 3</div></div>
+    <div class="header-stat"><div class="header-stat-val" id="statChina">—</div><div class="header-stat-label">中国参与</div></div>
+    <div class="header-stat"><div class="header-stat-val" id="statFiltered">—</div><div class="header-stat-label">当前筛选</div></div>
+  </div>
+</header>
+
+<!-- Navigation Tabs -->
+<nav class="nav-bar" id="navBar">
+  <button class="nav-tab active" data-page="overview" onclick="switchPage('overview')">🏠 全景浏览<span class="badge" id="badgeOverview">—</span></button>
+  <button class="nav-tab" data-page="tracks" onclick="switchPage('tracks')">📊 分Track看板</button>
+  <button class="nav-tab" data-page="list" onclick="switchPage('list')">📋 全量摘要列表<span class="badge" id="badgeList">—</span></button>
+</nav>
+
+<!-- Track sub-nav (only visible on tracks page) -->
+<nav class="track-bar" id="trackBar" style="display:none"></nav>
+
+<!-- ============ PAGE: OVERVIEW ============ -->
+<div class="main page active" id="pageOverview">
+  <div class="kpi-row" id="overviewKPIs"></div>
+  <div class="charts-grid" id="overviewCharts">
+    <div class="chart-card span-2">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>瘤种分布</span><span class="chart-card-hint">点击柱状条筛选</span></div>
+      <div class="chart-wrap tall" id="ovChartTumor"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>研究阶段分布</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="ovChartPhase"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>摘要类型</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="ovChartType"></div>
+    </div>
+    <div class="chart-card span-2">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>治疗类型</span><span class="chart-card-hint">点击扇区筛选</span></div>
+      <div class="chart-wrap tall" id="ovChartTherapy"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>中国参与</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="ovChartChina"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>研究药物 Top 10</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="ovChartAgent"></div>
+    </div>
+  </div>
+  <!-- Overview Filter Bar -->
+  <div class="filter-bar" id="overviewFilterBar">
+    <div class="filter-section"><span class="filter-section-label">瘤种</span><select class="filter-select" id="ovFilterTumor" onchange="onOverviewFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">研究阶段</span><select class="filter-select" id="ovFilterPhase" onchange="onOverviewFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">治疗类型</span><select class="filter-select" id="ovFilterTherapy" onchange="onOverviewFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">中国参与</span><select class="filter-select" id="ovFilterChina" onchange="onOverviewFilter()"><option value="">全部</option><option value="Yes">中国参与</option><option value="No">无中国参与</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">摘要类型</span><select class="filter-select" id="ovFilterAbsType" onchange="onOverviewFilter()"><option value="">全部</option><option value="LBA">LBA</option><option value="TPS">TPS</option><option value="Regular">常规</option></select></div>
+    <div class="filter-divider"></div>
+    <button class="filter-chip" id="ovChipPhase3" onclick="toggleOvQuick('phase3')">Phase 3</button>
+    <button class="filter-chip" id="ovChipChina" onclick="toggleOvQuick('china')">中国参与</button>
+    <button class="filter-chip" id="ovChipLBA" onclick="toggleOvQuick('lba')">LBA</button>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="ovSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onOverviewFilter()"></div>
+    <button class="filter-clear" id="ovFilterClear" onclick="clearOvFilters()">清除筛选</button>
+  </div>
+  <!-- Overview Abstract List -->
+  <div class="abstract-list-header"><span class="abstract-list-title">匹配摘要</span><span class="abstract-list-count" id="ovListCount"></span></div>
+  <div class="abstract-cards" id="ovAbstractCards"></div>
+</div>
+
+<!-- ============ PAGE: TRACKS ============ -->
+<div class="main page" id="pageTracks">
+  <div class="kpi-row" id="trackKPIs"></div>
+  <div class="charts-grid" id="trackCharts">
+    <div class="chart-card span-2">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>研究阶段分布</span><span class="chart-card-hint">点击柱状条筛选</span></div>
+      <div class="chart-wrap tall" id="trChartPhase"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>治疗类型</span><span class="chart-card-hint">点击扇区筛选</span></div>
+      <div class="chart-wrap" id="trChartTherapy"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>摘要类型</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="trChartType"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>治疗线数</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="trChartLine"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>中国参与</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="trChartChina"></div>
+    </div>
+    <div class="chart-card span-2">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>研究药物 Top 10</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="trChartAgent"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>申办方</span><span class="chart-card-hint">点击筛选</span></div>
+      <div class="chart-wrap" id="trChartSponsor"></div>
+    </div>
+  </div>
+  <div class="filter-bar" id="trackFilterBar">
+    <div class="filter-section"><span class="filter-section-label">研究阶段</span><select class="filter-select" id="trFilterPhase" onchange="onTrackFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">治疗类型</span><select class="filter-select" id="trFilterTherapy" onchange="onTrackFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">治疗线数</span><select class="filter-select" id="trFilterLine" onchange="onTrackFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">中国参与</span><select class="filter-select" id="trFilterChina" onchange="onTrackFilter()"><option value="">全部</option><option value="Yes">中国参与</option><option value="No">无中国参与</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">摘要类型</span><select class="filter-select" id="trFilterAbsType" onchange="onTrackFilter()"><option value="">全部</option><option value="LBA">LBA</option><option value="TPS">TPS</option><option value="Regular">常规</option></select></div>
+    <div class="filter-divider"></div>
+    <button class="filter-chip" id="trChipPhase3" onclick="toggleTrQuick('phase3')">Phase 3</button>
+    <button class="filter-chip" id="trChipChina" onclick="toggleTrQuick('china')">中国参与</button>
+    <button class="filter-chip" id="trChipLBA" onclick="toggleTrQuick('lba')">LBA</button>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="trSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onTrackFilter()"></div>
+    <button class="filter-clear" id="trFilterClear" onclick="clearTrFilters()">清除筛选</button>
+  </div>
+  <div class="abstract-list-header"><span class="abstract-list-title">摘要列表</span><span class="abstract-list-count" id="trListCount"></span></div>
+  <div class="abstract-cards" id="trAbstractCards"></div>
+</div>
+
+<!-- ============ PAGE: FULL LIST ============ -->
+<div class="main page" id="pageList">
+  <div class="filter-bar" id="listFilterBar">
+    <div class="filter-section"><span class="filter-section-label">瘤种</span><select class="filter-select" id="listFilterTumor" onchange="onListFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">研究阶段</span><select class="filter-select" id="listFilterPhase" onchange="onListFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">治疗类型</span><select class="filter-select" id="listFilterTherapy" onchange="onListFilter()"><option value="">全部</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">中国参与</span><select class="filter-select" id="listFilterChina" onchange="onListFilter()"><option value="">全部</option><option value="Yes">中国参与</option><option value="No">无中国参与</option></select></div>
+    <div class="filter-divider"></div>
+    <div class="filter-section"><span class="filter-section-label">摘要类型</span><select class="filter-select" id="listFilterAbsType" onchange="onListFilter()"><option value="">全部</option><option value="LBA">LBA</option><option value="TPS">TPS</option><option value="Regular">常规</option></select></div>
+    <div class="filter-divider"></div>
+    <button class="filter-chip" id="listChipPhase3" onclick="toggleListQuick('phase3')">Phase 3</button>
+    <button class="filter-chip" id="listChipChina" onclick="toggleListQuick('china')">中国参与</button>
+    <button class="filter-chip" id="listChipLBA" onclick="toggleListQuick('lba')">LBA</button>
+    <div class="filter-search"><span class="search-icon">🔍</span><input type="text" id="listSearchInput" placeholder="搜索标题、作者、药物、NCT..." oninput="onListFilter()"></div>
+    <button class="filter-clear" id="listFilterClear" onclick="clearListFilters()">清除筛选</button>
+  </div>
+  <div class="abstract-list-header"><span class="abstract-list-title">全量摘要列表</span><span class="abstract-list-count" id="listListCount"></span></div>
+  <div class="abstract-cards" id="listAbstractCards" style="max-height:calc(100vh - 280px)"></div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// DATA & STATE
+// ============================================================
+let ALL_DATA = [];           // All 3440 abstracts (slim, no full text)
+let FULL_DATA_MAP = null;    // Lazy-loaded full data with Background/Methods/Results/Conclusion
+let currentPage = 'overview';
+let currentTrack = '';
+
+// Overview state
+let ovFiltered = [];
+let ovQuickFilters = { phase3: false, china: false, lba: false };
+
+// Track state
+let trackFiltered = [];
+let trackQuickFilters = { phase3: false, china: false, lba: false };
+
+// List state
+let listFiltered = [];
+let listQuickFilters = { phase3: false, china: false, lba: false };
+
+let charts = {};
+const COLORS = ['#3b82f6','#ef4444','#10b981','#f59e0b','#8b5cf6','#06b6d4','#ec4899','#f97316','#14b8a6','#6366f1','#84cc16','#f43f5e'];
+const COLORS_PIE = ['#3b82f6','#10b981','#f59e0b','#8b5cf6','#ef4444','#06b6d4','#ec4899','#f97316','#14b8a6','#6366f1'];
+
+const TUMOR_CATEGORIES = ['Breast Cancer','CNS Tumors','Colorectal Cancer','GI Cancer','GU Cancer','Gynecologic Cancer','Head & Neck Cancer','Hematologic','Melanoma','Multi-tumor','NSCLC','Pediatric','Prevention','Renal Cell Carcinoma','Sarcoma','Supportive Care','Education'];
+const TUMOR_DISPLAY = {
+  'Breast Cancer':'乳腺癌','CNS Tumors':'中枢神经系统肿瘤','Colorectal Cancer':'结直肠癌','GI Cancer':'消化道肿瘤','GU Cancer':'泌尿生殖系统肿瘤',
+  'Gynecologic Cancer':'妇科肿瘤','Head & Neck Cancer':'头颈部肿瘤','Hematologic':'血液系统肿瘤',
+  'Melanoma':'黑色素瘤','Multi-tumor':'多瘤种','NSCLC':'非小细胞肺癌',
+  'Pancreatic Cancer':'胰腺癌','Pediatric':'儿童肿瘤','Prevention':'预防',
+  'Renal Cell Carcinoma':'肾细胞癌','Sarcoma':'肉瘤','Supportive Care':'支持治疗','Education':'医学教育'
+};
+
+const TRACKS = [
+  { id:'plenary', name:'大会报告', tumor:'Multi-tumor' },
+  { id:'clinical-sci', name:'临床科学研讨会', tumor:'Multi-tumor' },
+  { id:'breast-local', name:'乳腺癌(局限期)', tumor:'Breast Cancer' },
+  { id:'breast-meta', name:'乳腺癌(转移性)', tumor:'Breast Cancer' },
+  { id:'care-delivery', name:'照护模式', tumor:'Supportive Care' },
+  { id:'cns', name:'中枢神经系统肿瘤', tumor:'CNS Tumors' },
+  { id:'dev-ther-1', name:'研发治疗-免疫治疗', tumor:'Multi-tumor' },
+  { id:'dev-ther-2', name:'研发治疗-靶向药物', tumor:'Multi-tumor' },
+  { id:'gi-crc', name:'消化道肿瘤-结直肠癌', tumor:'Colorectal Cancer' },
+  { id:'gi-pancreas', name:'消化道肿瘤-上消化/胰腺/肝胆', tumor:'GI Cancer' },
+  { id:'gu-renal', name:'泌尿生殖-肾/膀胱', tumor:'Renal Cell Carcinoma' },
+  { id:'gu-prostate', name:'泌尿生殖-前列腺/睾丸', tumor:'GU Cancer' },
+  { id:'gyn', name:'妇科肿瘤', tumor:'Gynecologic Cancer' },
+  { id:'head-neck', name:'头颈部肿瘤', tumor:'Head & Neck Cancer' },
+  { id:'heme-1', name:'血液肿瘤-白血病/MDS', tumor:'Hematologic' },
+  { id:'heme-2', name:'血液肿瘤-淋巴瘤/CLL', tumor:'Hematologic' },
+  { id:'heme-3', name:'血液肿瘤-浆细胞疾病', tumor:'Hematologic' },
+  { id:'nsclc-1', name:'非小细胞肺癌-局限期/小细胞', tumor:'NSCLC' },
+  { id:'nsclc-2', name:'非小细胞肺癌-转移性', tumor:'NSCLC' },
+  { id:'med-edu', name:'医学教育', tumor:'Education' },
+  { id:'melanoma', name:'黑色素瘤/皮肤癌', tumor:'Melanoma' },
+  { id:'pediatric', name:'儿童肿瘤', tumor:'Pediatric' },
+  { id:'prevention', name:'预防/风险降低/遗传', tumor:'Prevention' },
+  { id:'quality-care', name:'质量照护/卫生服务', tumor:'Supportive Care' },
+  { id:'sarcoma', name:'肉瘤', tumor:'Sarcoma' },
+  { id:'symptom-sci', name:'症状科学/姑息治疗', tumor:'Supportive Care' },
+];
+
+// ============================================================
+// PHASE NORMALIZATION (same logic as before, verified correct)
+// ============================================================
+function normalizePhases(raw) {
+  if (!raw || raw === 'N/A' || raw === 'TPS' || raw === 'LBA') return ['N/A'];
+  const phases = new Set();
+  const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
+  for (const part of parts) {
+    const p = part.toLowerCase();
+    if (p.includes('initiative')) continue;
+    // V13: Roman numeral normalization approach
+    // Step 1: Replace Roman numerals to digits (order matters!)
+    let n = p;
+    // Handle IV/V first (non-phase Roman numerals, mark as X4/X5)
+    n = n.replace(/\biv\b/g, 'X4');
+    n = n.replace(/\bv\b/g, 'X5');
+    // IIIa, IIIb etc -> 3a, 3b
+    n = n.replace(/\biii([a-z])\b/g, '3$1');
+    // III -> 3
+    n = n.replace(/\biii\b/g, '3');
+    // IIa, IIb etc -> 2a, 2b
+    n = n.replace(/\bii([a-z])\b/g, '2$1');
+    // II -> 2
+    n = n.replace(/\bii\b/g, '2');
+    // Ia, Ib etc -> 1a, 1b (IV already handled above)
+    n = n.replace(/\bi([a-z])\b/g, '1$1');
+    // I (standalone) -> 1
+    n = n.replace(/\bi\b/g, '1');
+    // Step 2: Extract phase numbers (only 1, 2, 3)
+    const re = /\b([123])([a-z])?(?:\/([123X])([a-z])?)?\b/g;
+    let m;
+    while ((m = re.exec(n)) !== null) {
+      if (['1','2','3'].includes(m[1])) phases.add('Phase ' + m[1]);
+      if (m[3] && ['1','2','3'].includes(m[3])) phases.add('Phase ' + m[3]);
+    }
+  }
+  const result = Array.from(phases).sort((a,b) => {
+    const order = {'Phase 1':1,'Phase 2':2,'Phase 3':3,'N/A':4};
+    return (order[a]||5) - (order[b]||5);
+  });
+  return result.length > 0 ? result : ['N/A'];
+}
+
+function getPrimaryPhase(raw) {
+  const phases = normalizePhases(raw);
+  if (phases.includes('Phase 3')) return 'Phase 3';
+  if (phases.includes('Phase 2')) return 'Phase 2';
+  if (phases.includes('Phase 1')) return 'Phase 1';
+  return 'N/A';
+}
+function getPhaseClass(phase) {
+  if (!phase || phase === 'N/A') return 'na';
+  if (phase === 'Phase 3') return 'p3';
+  if (phase === 'Phase 2') return 'p2';
+  if (phase === 'Phase 1') return 'p1';
+  return 'na';
+}
+function getAbstractType(a) {
+  if (a.is_lba) return 'LBA';
+  if (a.abstract_number && a.abstract_number.startsWith('TPS')) return 'TPS';
+  return 'Regular';
+}
+function getAbstractTypeClass(a) { return getAbstractType(a).toLowerCase(); }
+
+// ============================================================
+// LOAD DATA
+// ============================================================
+async function loadData() {
+  try {
+    const resp = await fetch('all_abstracts_asco2026.json');
+    if (resp.ok) { ALL_DATA = await resp.json(); }
+    else throw new Error('fetch failed');
+  } catch(e) {
+    ALL_DATA = typeof EMBEDDED_DATA !== 'undefined' ? EMBEDDED_DATA : [];
+  }
+
+  document.getElementById('badgeOverview').textContent = ALL_DATA.length;
+  document.getElementById('badgeList').textContent = ALL_DATA.length;
+
+  // Init overview
+  ovFiltered = [...ALL_DATA];
+  populateOvFilterSelects();
+  renderOverview();
+  renderTrackBar();
+
+  // Init list
+  listFiltered = [...ALL_DATA];
+  populateListFilterSelects();
+  renderListAbstractCards();
+
+  updateHeaderStats();
+}
+
+// ============================================================
+// PAGE SWITCHING
+// ============================================================
+function switchPage(page) {
+  currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.page === page));
+
+  if (page === 'overview') {
+    document.getElementById('pageOverview').classList.add('active');
+    document.getElementById('trackBar').style.display = 'none';
+    resizeCharts('ov');
+  } else if (page === 'tracks') {
+    document.getElementById('pageTracks').classList.add('active');
+    document.getElementById('trackBar').style.display = 'flex';
+    if (!currentTrack) switchTrack(TRACKS[0].id);
+    resizeCharts('tr');
+  } else if (page === 'list') {
+    document.getElementById('pageList').classList.add('active');
+    document.getElementById('trackBar').style.display = 'none';
+    renderListAbstractCards();
+  }
+  updateHeaderStats();
+}
+
+// ============================================================
+// TRACK BAR & SWITCHING
+// ============================================================
+function renderTrackBar() {
+  const bar = document.getElementById('trackBar');
+  bar.innerHTML = TRACKS.map(t => {
+    const count = ALL_DATA.filter(a => a.track_id === t.id).length;
+    return `<button class="track-tab ${t.id === currentTrack ? 'active' : ''}" data-track="${t.id}" onclick="switchTrack('${t.id}')">${t.name}<span class="badge">${count}</span></button>`;
+  }).join('');
+}
+
+function switchTrack(trackId) {
+  currentTrack = trackId;
+  const trackData = ALL_DATA.filter(a => a.track_id === trackId);
+  trackFiltered = [...trackData];
+  trackQuickFilters = { phase3: false, china: false, lba: false };
+
+  document.querySelectorAll('.track-tab').forEach(t => t.classList.toggle('active', t.dataset.track === trackId));
+  populateTrackFilterSelects();
+  clearTrFilters();
+}
+
+// ============================================================
+// HEADER STATS
+// ============================================================
+function updateHeaderStats() {
+  document.getElementById('statTotal').textContent = ALL_DATA.length;
+  document.getElementById('statPhase3').textContent = ALL_DATA.filter(a => normalizePhases(a.study_phase).includes('Phase 3')).length;
+  document.getElementById('statChina').textContent = ALL_DATA.filter(a => a.china_participation === 'Yes').length;
+
+  if (currentPage === 'overview') document.getElementById('statFiltered').textContent = ovFiltered.length;
+  else if (currentPage === 'tracks') document.getElementById('statFiltered').textContent = trackFiltered.length;
+  else document.getElementById('statFiltered').textContent = listFiltered.length;
+}
+
+// ============================================================
+// CHART TOOLTIP
+// ============================================================
+const TT = { backgroundColor: '#1a2235', borderColor: '#2a3548', textStyle: { color: '#e5e7eb', fontSize: 12 } };
+
+// ============================================================
+// OVERVIEW PAGE
+// ============================================================
+function renderOverview() {
+  renderOvKPIs();
+  renderOvChartTumor();
+  renderOvChartPhase();
+  renderOvChartType();
+  renderOvChartTherapy();
+  renderOvChartChina();
+  renderOvChartAgent();
+  renderOvAbstractCards();
+  updateHeaderStats();
+}
+
+function renderOvKPIs() {
+  const total = ovFiltered.length;
+  const p1 = ovFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 1')).length;
+  const p2 = ovFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 2')).length;
+  const p3 = ovFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 3')).length;
+  const china = ovFiltered.filter(a => a.china_participation === 'Yes').length;
+  const withNCT = ovFiltered.filter(a => a.nct_number).length;
+  const kpis = [
+    { label:'摘要总数', val:total, sub:`全量数据`, filter:null },
+    { label:'Phase 1', val:p1, sub:`${(p1/total*100).toFixed(0)}%`, filter:'phase-Phase 1' },
+    { label:'Phase 2', val:p2, sub:`${(p2/total*100).toFixed(0)}%`, filter:'phase-Phase 2' },
+    { label:'Phase 3', val:p3, sub:`${(p3/total*100).toFixed(0)}%`, filter:'phase-Phase 3' },
+    { label:'中国参与', val:china, sub:`${(china/total*100).toFixed(0)}%`, filter:'china-Yes' },
+    { label:'有NCT号', val:withNCT, sub:`${(withNCT/total*100).toFixed(0)}%`, filter:null },
+  ];
+  document.getElementById('overviewKPIs').innerHTML = kpis.map(k =>
+    `<div class="kpi-card" onclick="${k.filter ? `ovKpiFilter('${k.filter}')` : 'clearOvFilters()'}"><div class="kpi-label">${k.label}</div><div class="kpi-val">${k.val}</div><div class="kpi-sub">${k.sub}</div></div>`
+  ).join('');
+}
+
+function ovKpiFilter(filter) {
+  const [dim, val] = filter.split('-');
+  if (dim === 'phase') document.getElementById('ovFilterPhase').value = val;
+  if (dim === 'china') document.getElementById('ovFilterChina').value = val;
+  onOverviewFilter();
+}
+
+function renderOvChartTumor() {
+  const tMap = {};
+  ovFiltered.forEach(a => { const t = a.tumor_category || 'Unknown'; tMap[t] = (tMap[t] || 0) + 1; });
+  const data = Object.entries(tMap).sort((a,b) => b[1]-a[1]).map(d => ({ name: TUMOR_DISPLAY[d[0]] || d[0], value: d[1], origName: d[0] }));
+
+  getChart('ovChartTumor').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, ...TT },
+    grid: { left: 160, right: 50, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d => d.name).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 12, width: 150, overflow: 'truncate', ellipsis: '...', interval: 0 } },
+    series: [{ type: 'bar', data: data.map(d => d.value).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#3b82f6'},{offset:1,color:'#60a5fa'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11 } }]
+  }, true);
+  getChart('ovChartTumor').off('click');
+  getChart('ovChartTumor').on('click', params => {
+    const orig = data.find(d => d.name === params.name);
+    if (orig) { document.getElementById('ovFilterTumor').value = orig.origName; onOverviewFilter(); }
+  });
+}
+
+function renderOvChartPhase() {
+  const pMap = {};
+  ovFiltered.forEach(a => normalizePhases(a.study_phase).forEach(p => { pMap[p] = (pMap[p] || 0) + 1; }));
+  const order = ['Phase 1','Phase 2','Phase 3','N/A'];
+  const data = order.filter(o => pMap[o]).map(o => [o, pMap[o]]);
+  const colors = { 'Phase 1':'#60a5fa','Phase 2':'#34d399','Phase 3':'#f87171','N/A':'#64748b' };
+  getChart('ovChartPhase').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, ...TT },
+    grid: { left: 80, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d => d[0]), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 13 } },
+    series: [{ type: 'bar', data: data.map(d => ({ value: d[1], itemStyle: { color: colors[d[0]] || '#3b82f6', borderRadius: [0,4,4,0] } })), label: { show: true, position: 'right', color: '#94a3b8', fontSize: 12 } }]
+  }, true);
+  getChart('ovChartPhase').off('click');
+  getChart('ovChartPhase').on('click', params => { document.getElementById('ovFilterPhase').value = params.name; onOverviewFilter(); });
+}
+
+function renderOvChartType() {
+  const tMap = { LBA:0, TPS:0, Regular:0 };
+  ovFiltered.forEach(a => { tMap[getAbstractType(a)]++; });
+  const data = Object.entries(tMap).filter(d => d[1]>0);
+  const colors = { LBA:'#f59e0b', TPS:'#8b5cf6', Regular:'#3b82f6' };
+  getChart('ovChartType').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: data.map(d => ({ name: d[0], value: d[1], itemStyle: { color: colors[d[0]] } })), label: { color: '#94a3b8', fontSize: 11, formatter: '{b}\n{c} ({d}%)' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+  getChart('ovChartType').off('click');
+  getChart('ovChartType').on('click', params => { document.getElementById('ovFilterAbsType').value = params.name; onOverviewFilter(); });
+}
+
+function renderOvChartTherapy() {
+  const tMap = {};
+  ovFiltered.forEach(a => (a.therapy_type||[]).forEach(t => { tMap[t] = (tMap[t]||0)+1; }));
+  const data = Object.entries(tMap).sort((a,b)=>b[1]-a[1]);
+  getChart('ovChartTherapy').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['30%','68%'], center: ['50%','52%'], data: data.map((d,i)=>({ name: d[0], value: d[1], itemStyle: { color: COLORS_PIE[i%COLORS_PIE.length] } })), label: { color: '#94a3b8', fontSize: 10, formatter: '{b}\n{c}' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+  getChart('ovChartTherapy').off('click');
+  getChart('ovChartTherapy').on('click', params => { document.getElementById('ovFilterTherapy').value = params.name; onOverviewFilter(); });
+}
+
+function renderOvChartChina() {
+  const cMap = { Yes:0, No:0 };
+  ovFiltered.forEach(a => { cMap[a.china_participation||'No']++; });
+  getChart('ovChartChina').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: [{ name:'中国参与', value:cMap.Yes, itemStyle:{color:'#ef4444'} },{ name:'无中国参与', value:cMap.No, itemStyle:{color:'#4b5563'} }], label: { color:'#94a3b8', fontSize:11, formatter:'{b}\n{c} ({d}%)' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+  getChart('ovChartChina').off('click');
+  getChart('ovChartChina').on('click', params => { document.getElementById('ovFilterChina').value = params.name==='中国参与'?'Yes':'No'; onOverviewFilter(); });
+}
+
+function renderOvChartAgent() {
+  const aMap = {};
+  ovFiltered.forEach(a => (a.investigational_agent||'').split(';').map(s=>s.trim()).filter(Boolean).forEach(ag => { aMap[ag] = (aMap[ag]||0)+1; }));
+  const data = Object.entries(aMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  getChart('ovChartAgent').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, ...TT },
+    grid: { left: 160, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d=>d[0]).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 11, width: 140, overflow: 'truncate', ellipsis: '...' } },
+    series: [{ type: 'bar', data: data.map(d=>d[1]).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#8b5cf6'},{offset:1,color:'#a78bfa'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11 } }]
+  }, true);
+}
+
+// Overview filter logic
+function populateOvFilterSelects() {
+  const tumors = [...new Set(ALL_DATA.map(a => a.tumor_category))].sort();
+  document.getElementById('ovFilterTumor').innerHTML = '<option value="">全部瘤种</option>' + tumors.map(t => `<option value="${t}">${TUMOR_DISPLAY[t]||t}</option>`).join('');
+  document.getElementById('ovFilterPhase').innerHTML = '<option value="">全部阶段</option>' + ['Phase 1','Phase 2','Phase 3'].map(p => `<option value="${p}">${p}</option>`).join('');
+  const therapies = new Set(); ALL_DATA.forEach(a => (a.therapy_type||[]).forEach(t => therapies.add(t)));
+  document.getElementById('ovFilterTherapy').innerHTML = '<option value="">全部类型</option>' + Array.from(therapies).sort().map(t => `<option value="${t}">${t}</option>`).join('');
+}
+
+function onOverviewFilter() {
+  const tumor = document.getElementById('ovFilterTumor').value;
+  const phase = document.getElementById('ovFilterPhase').value;
+  const therapy = document.getElementById('ovFilterTherapy').value;
+  const china = document.getElementById('ovFilterChina').value;
+  const absType = document.getElementById('ovFilterAbsType').value;
+  const search = document.getElementById('ovSearchInput').value.toLowerCase().trim();
+
+  ovFiltered = ALL_DATA.filter(a => {
+    if (tumor && a.tumor_category !== tumor) return false;
+    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
+    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
+    if (china && (a.china_participation||'No') !== china) return false;
+    if (absType && getAbstractType(a) !== absType) return false;
+    if (ovQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
+    if (ovQuickFilters.china && a.china_participation !== 'Yes') return false;
+    if (ovQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
+    if (search) {
+      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
+      if (!fields.some(f=>f.includes(search))) return false;
+    }
+    return true;
+  });
+
+  const hasFilter = tumor||phase||therapy||china||absType||search||ovQuickFilters.phase3||ovQuickFilters.china||ovQuickFilters.lba;
+  document.getElementById('ovFilterClear').classList.toggle('visible', !!hasFilter);
+  document.getElementById('ovChipPhase3').classList.toggle('active', ovQuickFilters.phase3);
+  document.getElementById('ovChipChina').classList.toggle('active', ovQuickFilters.china);
+  document.getElementById('ovChipLBA').classList.toggle('active', ovQuickFilters.lba);
+
+  renderOverview();
+}
+
+function toggleOvQuick(key) { ovQuickFilters[key] = !ovQuickFilters[key]; onOverviewFilter(); }
+function clearOvFilters() {
+  document.getElementById('ovFilterTumor').value='';
+  document.getElementById('ovFilterPhase').value='';
+  document.getElementById('ovFilterTherapy').value='';
+  document.getElementById('ovFilterChina').value='';
+  document.getElementById('ovFilterAbsType').value='';
+  document.getElementById('ovSearchInput').value='';
+  ovQuickFilters = { phase3:false, china:false, lba:false };
+  ovFiltered = [...ALL_DATA];
+  document.getElementById('ovFilterClear').classList.remove('visible');
+  renderOverview();
+}
+
+function renderOvAbstractCards() {
+  const container = document.getElementById('ovAbstractCards');
+  const countEl = document.getElementById('ovListCount');
+  countEl.textContent = `${ovFiltered.length} / ${ALL_DATA.length}`;
+  const show = ovFiltered.slice(0, 100); // Limit for performance
+  container.innerHTML = show.map(a => renderAbstractCard(a)).join('');
+  if (ovFiltered.length > 100) container.innerHTML += `<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:12px">显示前 100 条，共 ${ovFiltered.length} 条匹配。请使用上方筛选缩小范围，或切换到「全量摘要列表」页查看全部。</div>`;
+}
+
+// ============================================================
+// TRACK PAGE
+// ============================================================
+function renderTrackAll() {
+  renderTrackKPIs();
+  renderTrChartPhase();
+  renderTrChartTherapy();
+  renderTrChartType();
+  renderTrChartLine();
+  renderTrChartChina();
+  renderTrChartAgent();
+  renderTrChartSponsor();
+  renderTrAbstractCards();
+  updateHeaderStats();
+}
+
+function renderTrackKPIs() {
+  const total = trackFiltered.length;
+  const p1 = trackFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 1')).length;
+  const p2 = trackFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 2')).length;
+  const p3 = trackFiltered.filter(a => normalizePhases(a.study_phase).includes('Phase 3')).length;
+  const china = trackFiltered.filter(a => a.china_participation === 'Yes').length;
+  const trackInfo = TRACKS.find(t => t.id === currentTrack);
+  const kpis = [
+    { label:'摘要总数', val:total, sub:`${trackInfo?trackInfo.name:''}` },
+    { label:'Phase 1', val:p1, sub:`${(p1/total*100).toFixed(0)}%` },
+    { label:'Phase 2', val:p2, sub:`${(p2/total*100).toFixed(0)}%` },
+    { label:'Phase 3', val:p3, sub:`${(p3/total*100).toFixed(0)}%` },
+    { label:'中国参与', val:china, sub:`${(china/total*100).toFixed(0)}%` },
+  ];
+  document.getElementById('trackKPIs').innerHTML = kpis.map(k =>
+    `<div class="kpi-card"><div class="kpi-label">${k.label}</div><div class="kpi-val">${k.val}</div><div class="kpi-sub">${k.sub}</div></div>`
+  ).join('');
+}
+
+function getTrackData() { return ALL_DATA.filter(a => a.track_id === currentTrack); }
+
+function renderTrChartPhase() {
+  const pMap = {};
+  trackFiltered.forEach(a => normalizePhases(a.study_phase).forEach(p => { pMap[p] = (pMap[p]||0)+1; }));
+  const order = ['Phase 1','Phase 2','Phase 3','N/A'];
+  const data = order.filter(o => pMap[o]).map(o => [o, pMap[o]]);
+  const colors = { 'Phase 1':'#60a5fa','Phase 2':'#34d399','Phase 3':'#f87171','N/A':'#64748b' };
+  getChart('trChartPhase').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, ...TT },
+    grid: { left: 80, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d=>d[0]), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 13 } },
+    series: [{ type: 'bar', data: data.map(d => ({ value: d[1], itemStyle: { color: colors[d[0]]||'#3b82f6', borderRadius: [0,4,4,0] } })), label: { show: true, position: 'right', color: '#94a3b8', fontSize: 12 } }]
+  }, true);
+  getChart('trChartPhase').off('click');
+  getChart('trChartPhase').on('click', params => { document.getElementById('trFilterPhase').value = params.name; onTrackFilter(); });
+}
+
+function renderTrChartTherapy() {
+  const tMap = {};
+  trackFiltered.forEach(a => (a.therapy_type||[]).forEach(t => { tMap[t] = (tMap[t]||0)+1; }));
+  const data = Object.entries(tMap).sort((a,b)=>b[1]-a[1]);
+  getChart('trChartTherapy').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: data.map((d,i)=>({ name: d[0], value: d[1], itemStyle: { color: COLORS_PIE[i%COLORS_PIE.length] } })), label: { color: '#94a3b8', fontSize: 10, formatter: '{b}\n{c}' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+  getChart('trChartTherapy').off('click');
+  getChart('trChartTherapy').on('click', params => { document.getElementById('trFilterTherapy').value = params.name; onTrackFilter(); });
+}
+
+function renderTrChartType() {
+  const tMap = { LBA:0, TPS:0, Regular:0 };
+  trackFiltered.forEach(a => { tMap[getAbstractType(a)]++; });
+  const data = Object.entries(tMap).filter(d=>d[1]>0);
+  const colors = { LBA:'#f59e0b', TPS:'#8b5cf6', Regular:'#3b82f6' };
+  getChart('trChartType').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: data.map(d=>({ name: d[0], value: d[1], itemStyle: { color: colors[d[0]] } })), label: { color: '#94a3b8', fontSize: 11, formatter: '{b}\n{c} ({d}%)' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+}
+
+function renderTrChartLine() {
+  const lMap = {};
+  trackFiltered.forEach(a => { const l = a.treatment_line || 'N/A'; lMap[l] = (lMap[l]||0)+1; });
+  const data = Object.entries(lMap).sort((a,b)=>b[1]-a[1]);
+  getChart('trChartLine').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: data.map((d,i)=>({ name: d[0], value: d[1], itemStyle: { color: COLORS_PIE[i%COLORS_PIE.length] } })), label: { color: '#94a3b8', fontSize: 10, formatter: '{b}\n{c}' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+}
+
+function renderTrChartChina() {
+  const cMap = { Yes:0, No:0 };
+  trackFiltered.forEach(a => { cMap[a.china_participation||'No']++; });
+  getChart('trChartChina').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: [{ name:'中国参与', value:cMap.Yes, itemStyle:{color:'#ef4444'} },{ name:'无中国参与', value:cMap.No, itemStyle:{color:'#4b5563'} }], label: { color:'#94a3b8', fontSize:11, formatter:'{b}\n{c} ({d}%)' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+}
+
+function renderTrChartAgent() {
+  const aMap = {};
+  trackFiltered.forEach(a => (a.investigational_agent||'').split(';').map(s=>s.trim()).filter(Boolean).forEach(ag => { aMap[ag] = (aMap[ag]||0)+1; }));
+  const data = Object.entries(aMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  getChart('trChartAgent').setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, ...TT },
+    grid: { left: 160, right: 30, top: 10, bottom: 30 },
+    xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#1f2b3d' } } },
+    yAxis: { type: 'category', data: data.map(d=>d[0]).reverse(), axisLine: { lineStyle: { color: '#2a3548' } }, axisLabel: { color: '#e5e7eb', fontSize: 11, width: 140, overflow: 'truncate', ellipsis: '...' } },
+    series: [{ type: 'bar', data: data.map(d=>d[1]).reverse(), itemStyle: { color: new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#8b5cf6'},{offset:1,color:'#a78bfa'}]), borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', color: '#94a3b8', fontSize: 11 } }]
+  }, true);
+}
+
+function renderTrChartSponsor() {
+  const sMap = {};
+  trackFiltered.forEach(a => {
+    const s = a.sponsor || 'N/A';
+    if (s==='None'||s==='N/A'||s==='') sMap['未注明'] = (sMap['未注明']||0)+1;
+    else if (s.includes('University')||s.includes('Institute')||s.includes('Hospital')||s.includes('Medical Center')) sMap['学术机构'] = (sMap['学术机构']||0)+1;
+    else sMap['药企'] = (sMap['药企']||0)+1;
+  });
+  const data = Object.entries(sMap);
+  const colors = { '药企':'#10b981','学术机构':'#3b82f6','未注明':'#64748b' };
+  getChart('trChartSponsor').setOption({
+    tooltip: { trigger: 'item', ...TT },
+    series: [{ type: 'pie', radius: ['38%','72%'], center: ['50%','52%'], data: data.map(d=>({ name: d[0], value: d[1], itemStyle: { color: colors[d[0]]||'#3b82f6' } })), label: { color: '#94a3b8', fontSize: 11, formatter: '{b}\n{c} ({d}%)' }, labelLine: { lineStyle: { color: '#2a3548' } } }]
+  }, true);
+}
+
+function populateTrackFilterSelects() {
+  const trackData = getTrackData();
+  document.getElementById('trFilterPhase').innerHTML = '<option value="">全部阶段</option>' + ['Phase 1','Phase 2','Phase 3'].map(p=>`<option value="${p}">${p}</option>`).join('');
+  const therapies = new Set(); trackData.forEach(a => (a.therapy_type||[]).forEach(t => therapies.add(t)));
+  document.getElementById('trFilterTherapy').innerHTML = '<option value="">全部类型</option>' + Array.from(therapies).sort().map(t=>`<option value="${t}">${t}</option>`).join('');
+  const lines = new Set(); trackData.forEach(a => lines.add(a.treatment_line||'N/A'));
+  document.getElementById('trFilterLine').innerHTML = '<option value="">全部线数</option>' + Array.from(lines).sort().map(l=>`<option value="${l}">${l}</option>`).join('');
+}
+
+function onTrackFilter() {
+  const phase = document.getElementById('trFilterPhase').value;
+  const therapy = document.getElementById('trFilterTherapy').value;
+  const line = document.getElementById('trFilterLine').value;
+  const china = document.getElementById('trFilterChina').value;
+  const absType = document.getElementById('trFilterAbsType').value;
+  const search = document.getElementById('trSearchInput').value.toLowerCase().trim();
+  const trackData = getTrackData();
+
+  trackFiltered = trackData.filter(a => {
+    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
+    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
+    if (line && (a.treatment_line||'N/A') !== line) return false;
+    if (china && (a.china_participation||'No') !== china) return false;
+    if (absType && getAbstractType(a) !== absType) return false;
+    if (trackQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
+    if (trackQuickFilters.china && a.china_participation !== 'Yes') return false;
+    if (trackQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
+    if (search) {
+      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
+      if (!fields.some(f=>f.includes(search))) return false;
+    }
+    return true;
+  });
+
+  const hasFilter = phase||therapy||line||china||absType||search||trackQuickFilters.phase3||trackQuickFilters.china||trackQuickFilters.lba;
+  document.getElementById('trFilterClear').classList.toggle('visible', !!hasFilter);
+  document.getElementById('trChipPhase3').classList.toggle('active', trackQuickFilters.phase3);
+  document.getElementById('trChipChina').classList.toggle('active', trackQuickFilters.china);
+  document.getElementById('trChipLBA').classList.toggle('active', trackQuickFilters.lba);
+  renderTrackAll();
+}
+
+function toggleTrQuick(key) { trackQuickFilters[key] = !trackQuickFilters[key]; onTrackFilter(); }
+function clearTrFilters() {
+  document.getElementById('trFilterPhase').value='';
+  document.getElementById('trFilterTherapy').value='';
+  document.getElementById('trFilterLine').value='';
+  document.getElementById('trFilterChina').value='';
+  document.getElementById('trFilterAbsType').value='';
+  document.getElementById('trSearchInput').value='';
+  trackQuickFilters = { phase3:false, china:false, lba:false };
+  trackFiltered = [...getTrackData()];
+  document.getElementById('trFilterClear').classList.remove('visible');
+  renderTrackAll();
+}
+
+function renderTrAbstractCards() {
+  const container = document.getElementById('trAbstractCards');
+  const countEl = document.getElementById('trListCount');
+  countEl.textContent = `${trackFiltered.length} / ${getTrackData().length}`;
+  const show = trackFiltered.slice(0, 200);
+  container.innerHTML = show.map(a => renderAbstractCard(a)).join('');
+  if (trackFiltered.length > 200) container.innerHTML += `<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:12px">显示前 200 条，共 ${trackFiltered.length} 条匹配</div>`;
+}
+
+// ============================================================
+// FULL LIST PAGE
+// ============================================================
+function populateListFilterSelects() {
+  const tumors = [...new Set(ALL_DATA.map(a => a.tumor_category))].sort();
+  document.getElementById('listFilterTumor').innerHTML = '<option value="">全部瘤种</option>' + tumors.map(t=>`<option value="${t}">${TUMOR_DISPLAY[t]||t}</option>`).join('');
+  document.getElementById('listFilterPhase').innerHTML = '<option value="">全部阶段</option>' + ['Phase 1','Phase 2','Phase 3'].map(p=>`<option value="${p}">${p}</option>`).join('');
+  const therapies = new Set(); ALL_DATA.forEach(a => (a.therapy_type||[]).forEach(t => therapies.add(t)));
+  document.getElementById('listFilterTherapy').innerHTML = '<option value="">全部类型</option>' + Array.from(therapies).sort().map(t=>`<option value="${t}">${t}</option>`).join('');
+}
+
+function onListFilter() {
+  const tumor = document.getElementById('listFilterTumor').value;
+  const phase = document.getElementById('listFilterPhase').value;
+  const therapy = document.getElementById('listFilterTherapy').value;
+  const china = document.getElementById('listFilterChina').value;
+  const absType = document.getElementById('listFilterAbsType').value;
+  const search = document.getElementById('listSearchInput').value.toLowerCase().trim();
+
+  listFiltered = ALL_DATA.filter(a => {
+    if (tumor && a.tumor_category !== tumor) return false;
+    if (phase && !normalizePhases(a.study_phase).includes(phase)) return false;
+    if (therapy && !(a.therapy_type||[]).includes(therapy)) return false;
+    if (china && (a.china_participation||'No') !== china) return false;
+    if (absType && getAbstractType(a) !== absType) return false;
+    if (listQuickFilters.phase3 && !normalizePhases(a.study_phase).includes('Phase 3')) return false;
+    if (listQuickFilters.china && a.china_participation !== 'Yes') return false;
+    if (listQuickFilters.lba && getAbstractType(a) !== 'LBA') return false;
+    if (search) {
+      const fields = [a.title,a.first_author,a.institution,a.investigational_agent,a.nct_number,a.sponsor,(a.therapy_type||[]).join(' ')].map(s=>(s||'').toLowerCase());
+      if (!fields.some(f=>f.includes(search))) return false;
+    }
+    return true;
+  });
+
+  const hasFilter = tumor||phase||therapy||china||absType||search||listQuickFilters.phase3||listQuickFilters.china||listQuickFilters.lba;
+  document.getElementById('listFilterClear').classList.toggle('visible', !!hasFilter);
+  document.getElementById('listChipPhase3').classList.toggle('active', listQuickFilters.phase3);
+  document.getElementById('listChipChina').classList.toggle('active', listQuickFilters.china);
+  document.getElementById('listChipLBA').classList.toggle('active', listQuickFilters.lba);
+  renderListAbstractCards();
+  updateHeaderStats();
+}
+
+function toggleListQuick(key) { listQuickFilters[key] = !listQuickFilters[key]; onListFilter(); }
+function clearListFilters() {
+  document.getElementById('listFilterTumor').value='';
+  document.getElementById('listFilterPhase').value='';
+  document.getElementById('listFilterTherapy').value='';
+  document.getElementById('listFilterChina').value='';
+  document.getElementById('listFilterAbsType').value='';
+  document.getElementById('listSearchInput').value='';
+  listQuickFilters = { phase3:false, china:false, lba:false };
+  listFiltered = [...ALL_DATA];
+  document.getElementById('listFilterClear').classList.remove('visible');
+  renderListAbstractCards();
+  updateHeaderStats();
+}
+
+function renderListAbstractCards() {
+  const container = document.getElementById('listAbstractCards');
+  const countEl = document.getElementById('listListCount');
+  countEl.textContent = `${listFiltered.length} / ${ALL_DATA.length}`;
+  const show = listFiltered.slice(0, 300);
+  container.innerHTML = show.map(a => renderAbstractCard(a)).join('');
+  if (listFiltered.length > 300) container.innerHTML += `<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:12px">显示前 300 条，共 ${listFiltered.length} 条匹配</div>`;
+}
+
+// ============================================================
+// SHARED: ABSTRACT CARD HTML
+// ============================================================
+function renderAbstractCard(a) {
+  const numClass = getAbstractTypeClass(a);
+  const phases = normalizePhases(a.study_phase);
+  const primaryPhase = getPrimaryPhase(a.study_phase);
+  const phaseClass = getPhaseClass(primaryPhase);
+  const phaseDisplay = phases.length > 1 ? phases.join('/') : phases[0];
+  const tags = (a.therapy_type||[]).slice(0,3).map(t=>`<span class="ac-tag">${t}</span>`).join('');
+  const chinaTag = a.china_participation==='Yes' ? '<span class="ac-tag china">🇨🇳</span>' : '';
+  const lbaTag = a.is_lba ? '<span class="ac-tag lba-tag">LBA</span>' : '';
+  const nct = a.nct_number ? a.nct_number.split(';')[0].trim() : '';
+  let efficacyHtml = '';
+  const eff = a.key_efficacy || {};
+  const effEntries = Object.entries(eff).slice(0,3);
+  if (effEntries.length > 0) {
+    efficacyHtml = `<div class="ac-efficacy">${effEntries.map(([k,v])=>`<div class="ac-eff-item">${k}: <span class="eff-val">${v}</span></div>`).join('')}</div>`;
+  }
+  const tumorTag = a.tumor_category ? `<span class="ac-tag" style="background:rgba(6,182,212,0.08);color:#06b6d4">${TUMOR_DISPLAY[a.tumor_category]||a.tumor_category}</span>` : '';
+
+  return `<div class="abstract-card" onclick="openDetail('${a.abstract_number}')">
+    <div class="ac-left"><span class="ac-number ${numClass}">${a.abstract_number}</span><span class="ac-phase-tag ${phaseClass}">${phaseDisplay}</span></div>
+    <div class="ac-middle"><div class="ac-title">${a.title}</div><div class="ac-meta"><span>👤 ${a.first_author||'N/A'}</span><span>🏥 ${(a.institution||'N/A').split(',')[0].trim().substring(0,35)}</span>${a.sample_size?`<span>👥 N=${a.sample_size}</span>`:''}</div><div class="ac-tags">${tumorTag}${tags}${chinaTag}${lbaTag}</div></div>
+    <div class="ac-right">${efficacyHtml}${nct?`<span class="ac-nct">${nct}</span>`:''}</div>
+  </div>`;
+}
+
+// ============================================================
+// DETAIL MODAL
+// ============================================================
+async function loadFullData() {
+  if (FULL_DATA_MAP) return FULL_DATA_MAP;
+  // Full text is now embedded in ALL_DATA (background/methods/results/conclusion included)
+  FULL_DATA_MAP = {};
+  ALL_DATA.forEach(a => { FULL_DATA_MAP[a.abstract_number] = a; });
+  return FULL_DATA_MAP;
+}
+
+async function openDetail(abNum) {
+  const a = ALL_DATA.find(x => x.abstract_number === abNum);
+  if (!a) return;
+
+  // Show modal immediately with basic info, load full text async
+  const typeClass = getAbstractTypeClass(a);
+  const phases = normalizePhases(a.study_phase);
+  const phaseDisplay = phases.length > 1 ? phases.join(' + ') : phases[0];
+  const typeLabel = getAbstractType(a);
+  const efficacyHtml = Object.keys(a.key_efficacy||{}).length > 0
+    ? `<div class="modal-efficacies">${Object.entries(a.key_efficacy).map(([k,v])=>`<div class="modal-eff-chip"><div class="eff-val">${v}</div><div class="eff-label">${k}</div></div>`).join('')}</div>` : '';
+  const infoItems = [
+    ['研究阶段', phaseDisplay], ['摘要类型', typeLabel], ['NCT', a.nct_number||'N/A'],
+    ['样本量', a.sample_size?`N=${a.sample_size}`:'N/A'], ['治疗线数', a.treatment_line||'N/A'],
+    ['治疗类型', (a.therapy_type||[]).join(', ')||'N/A'], ['研究药物', a.investigational_agent||'N/A'],
+    ['中国参与', a.china_participation==='Yes'?'✅ 是':'否'], ['申办方', a.sponsor||'N/A'],
+    ['瘤种分类', TUMOR_DISPLAY[a.tumor_category]||a.tumor_category||'N/A'], ['Track', a.track_name||'N/A'],
+  ];
+
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header"><button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-id ${typeClass}">${a.abstract_number} · ${typeLabel}</div>
+      <div class="modal-title">${a.title}</div>
+      <div class="modal-meta-row">
+        <span class="modal-meta-chip">👤 ${a.first_author||'N/A'}</span>
+        <span class="modal-meta-chip">🏥 ${(a.institution||'N/A').substring(0,60)}</span>
+        <span class="modal-meta-chip">${phaseDisplay}</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      ${efficacyHtml}
+      <div class="modal-section"><div class="modal-section-title">研究信息</div><div class="modal-info-grid">${infoItems.map(([l,v])=>`<div class="modal-info-item"><span class="modal-info-label">${l}</span><span class="modal-info-value">${v}</span></div>`).join('')}</div></div>
+      <div id="modalFullText"></div>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+
+  // Load full text async
+  const fullMap = await loadFullData();
+  const fullA = fullMap[abNum];
+  const fullTextEl = document.getElementById('modalFullText');
+  if (!fullTextEl) return;
+
+  // Helper: treat empty string or placeholder as absent
+  const realText = s => s && s.trim() && !s.startsWith('[') ? s : null;
+
+  if (fullA) {
+    const bg  = realText(fullA.background);
+    const mth = realText(fullA.methods);
+    const res = realText(fullA.results);
+    const con = realText(fullA.conclusion);
+
+    if (bg || mth || res || con) {
+      fullTextEl.innerHTML =
+        (bg  ? `<div class="modal-section"><div class="modal-section-title">Background</div><div class="modal-section-content">${bg}</div></div>` : '') +
+        (mth ? `<div class="modal-section"><div class="modal-section-title">Methods</div><div class="modal-section-content">${mth}</div></div>` : '') +
+        (res ? `<div class="modal-section"><div class="modal-section-title">Results</div><div class="modal-section-content">${res}</div></div>` : '') +
+        (con ? `<div class="modal-section"><div class="modal-section-title">Conclusion</div><div class="modal-section-content">${con}</div></div>` : '');
+    } else if (fullA.is_lba) {
+      fullTextEl.innerHTML = `<div class="modal-section"><div class="modal-section-content" style="color:var(--text-muted);font-size:13px">📋 LBA 全文将在 ASCO 2026 会议期间公布，目前暂不可用。</div></div>`;
+    } else {
+      fullTextEl.innerHTML = '';
+    }
+  } else {
+    fullTextEl.innerHTML = '';
+  }
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('visible'); document.body.style.overflow = ''; }
+
+// ============================================================
+// CHART INIT HELPER
+// ============================================================
+function getChart(id) {
+  if (!charts[id]) {
+    const el = document.getElementById(id);
+    if (el) charts[id] = echarts.init(el, null, { renderer: 'canvas' });
+  }
+  return charts[id] || { setOption(){}, off(){}, on(){}, resize(){} };
+}
+
+function resizeCharts(prefix) {
+  Object.keys(charts).forEach(id => {
+    if (id.startsWith(prefix) && charts[id]) charts[id].resize();
+  });
+}
+
+// ============================================================
+// RESIZE & KEYBOARD
+// ============================================================
+window.addEventListener('resize', () => Object.values(charts).forEach(c => c && c.resize()));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === '/' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
+    e.preventDefault();
+    const inputId = currentPage === 'overview' ? 'ovSearchInput' : currentPage === 'tracks' ? 'trSearchInput' : 'listSearchInput';
+    document.getElementById(inputId).focus();
+  }
+});
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => { loadData(); });
+</script>
+<script src="embedded_data.js"></script>
+</body>
+</html>

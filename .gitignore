@@ -1,0 +1,25 @@
+# PDF source (too large for GitHub, 25MB)
+ASCO26-Abstracts-Full-Proceedings.pdf
+
+# Intermediate/legacy files
+dashboard.html
+index.html
+extract_all.py
+extract_v2.py
+extract_v5.py
+extraction_checklist.md
+extraction_quality_report.md
+data_audit_report.md
+pancreatic_cancer_asco2026.json
+pancreatic_cancer_asco2026_extracted.json
+pancreatic_cancer_asco2026_fixed.json
+pancreatic_cancer_asco2026_v2.json
+pancreatic_cancer_audit.xlsx
+pancreatic_cancer_full_export.xlsx
+pancreatic_cancer_summary.md
+
+# Working memory (internal)
+.workbuddy/
+
+# OS files
+.DS_Store
