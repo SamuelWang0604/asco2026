@@ -1,0 +1,396 @@
+{
+  "tumor_bar": [
+    {
+      "name": "支持治疗",
+      "name_en": "Supportive Care",
+      "value": 557
+    },
+    {
+      "name": "多瘤种",
+      "name_en": "Multi-tumor",
+      "value": 393
+    },
+    {
+      "name": "乳腺癌",
+      "name_en": "Breast Cancer",
+      "value": 317
+    },
+    {
+      "name": "非小细胞肺癌",
+      "name_en": "NSCLC",
+      "value": 313
+    },
+    {
+      "name": "血液肿瘤",
+      "name_en": "Hematologic",
+      "value": 298
+    },
+    {
+      "name": "泌尿生殖肿瘤",
+      "name_en": "GU Cancer",
+      "value": 288
+    },
+    {
+      "name": "消化道肿瘤",
+      "name_en": "GI Cancer",
+      "value": 257
+    },
+    {
+      "name": "结直肠癌",
+      "name_en": "Colorectal Cancer",
+      "value": 181
+    },
+    {
+      "name": "妇科肿瘤",
+      "name_en": "Gynecologic Cancer",
+      "value": 143
+    },
+    {
+      "name": "头颈癌",
+      "name_en": "Head & Neck Cancer",
+      "value": 140
+    },
+    {
+      "name": "预防",
+      "name_en": "Prevention",
+      "value": 130
+    },
+    {
+      "name": "黑色素瘤",
+      "name_en": "Melanoma",
+      "value": 116
+    },
+    {
+      "name": "中枢神经系统肿瘤",
+      "name_en": "CNS Tumors",
+      "value": 103
+    },
+    {
+      "name": "肉瘤",
+      "name_en": "Sarcoma",
+      "value": 99
+    },
+    {
+      "name": "儿童肿瘤",
+      "name_en": "Pediatric",
+      "value": 58
+    },
+    {
+      "name": "教育",
+      "name_en": "Education",
+      "value": 47
+    }
+  ],
+  "phase_pie": [
+    {
+      "name": "N/A",
+      "value": 2200
+    },
+    {
+      "name": "Phase 1",
+      "value": 695
+    },
+    {
+      "name": "Phase 2",
+      "value": 344
+    },
+    {
+      "name": "Phase 3",
+      "value": 201
+    }
+  ],
+  "therapy_bar": [
+    {
+      "name": "Chemotherapy",
+      "value": 1018
+    },
+    {
+      "name": "Targeted Therapy",
+      "value": 1013
+    },
+    {
+      "name": "Immunotherapy",
+      "value": 805
+    },
+    {
+      "name": "Cell Therapy",
+      "value": 778
+    },
+    {
+      "name": "Radiotherapy",
+      "value": 360
+    },
+    {
+      "name": "Hormonal Therapy",
+      "value": 346
+    },
+    {
+      "name": "ADC",
+      "value": 250
+    },
+    {
+      "name": "Bispecific Antibody",
+      "value": 160
+    },
+    {
+      "name": "Stem Cell Transplant",
+      "value": 142
+    },
+    {
+      "name": "Vaccine/Virus Therapy",
+      "value": 48
+    }
+  ],
+  "china_bar": [
+    {
+      "name": "支持治疗",
+      "name_en": "Supportive Care",
+      "china_n": 98,
+      "total": 557,
+      "pct": 17.6
+    },
+    {
+      "name": "多瘤种",
+      "name_en": "Multi-tumor",
+      "china_n": 139,
+      "total": 393,
+      "pct": 35.4
+    },
+    {
+      "name": "乳腺癌",
+      "name_en": "Breast Cancer",
+      "china_n": 93,
+      "total": 317,
+      "pct": 29.3
+    },
+    {
+      "name": "非小细胞肺癌",
+      "name_en": "NSCLC",
+      "china_n": 110,
+      "total": 313,
+      "pct": 35.1
+    },
+    {
+      "name": "血液肿瘤",
+      "name_en": "Hematologic",
+      "china_n": 60,
+      "total": 298,
+      "pct": 20.1
+    },
+    {
+      "name": "泌尿生殖肿瘤",
+      "name_en": "GU Cancer",
+      "china_n": 100,
+      "total": 288,
+      "pct": 34.7
+    },
+    {
+      "name": "消化道肿瘤",
+      "name_en": "GI Cancer",
+      "china_n": 109,
+      "total": 257,
+      "pct": 42.4
+    },
+    {
+      "name": "结直肠癌",
+      "name_en": "Colorectal Cancer",
+      "china_n": 60,
+      "total": 181,
+      "pct": 33.1
+    },
+    {
+      "name": "妇科肿瘤",
+      "name_en": "Gynecologic Cancer",
+      "china_n": 38,
+      "total": 143,
+      "pct": 26.6
+    },
+    {
+      "name": "头颈癌",
+      "name_en": "Head & Neck Cancer",
+      "china_n": 55,
+      "total": 140,
+      "pct": 39.3
+    },
+    {
+      "name": "预防",
+      "name_en": "Prevention",
+      "china_n": 34,
+      "total": 130,
+      "pct": 26.2
+    },
+    {
+      "name": "黑色素瘤",
+      "name_en": "Melanoma",
+      "china_n": 16,
+      "total": 116,
+      "pct": 13.8
+    },
+    {
+      "name": "中枢神经系统肿瘤",
+      "name_en": "CNS Tumors",
+      "china_n": 25,
+      "total": 103,
+      "pct": 24.3
+    },
+    {
+      "name": "肉瘤",
+      "name_en": "Sarcoma",
+      "china_n": 30,
+      "total": 99,
+      "pct": 30.3
+    },
+    {
+      "name": "儿童肿瘤",
+      "name_en": "Pediatric",
+      "china_n": 14,
+      "total": 58,
+      "pct": 24.1
+    },
+    {
+      "name": "教育",
+      "name_en": "Education",
+      "china_n": 4,
+      "total": 47,
+      "pct": 8.5
+    }
+  ],
+  "top_agents": [
+    {
+      "name": "HER22",
+      "total": 30,
+      "tumors": {
+        "Breast Cancer": 27,
+        "Multi-tumor": 2,
+        "Colorectal Cancer": 1
+      }
+    },
+    {
+      "name": "TP53",
+      "total": 25,
+      "tumors": {
+        "Hematologic": 10,
+        "Multi-tumor": 3,
+        "Gynecologic Cancer": 3,
+        "Breast Cancer": 2,
+        "GU Cancer": 2
+      }
+    },
+    {
+      "name": "CD19",
+      "total": 13,
+      "tumors": {
+        "Hematologic": 10,
+        "Multi-tumor": 2,
+        "Supportive Care": 1
+      }
+    },
+    {
+      "name": "Trastuzumab",
+      "total": 9,
+      "tumors": {
+        "Breast Cancer": 4,
+        "Multi-tumor": 3,
+        "Gynecologic Cancer": 1,
+        "Head & Neck Cancer": 1
+      }
+    },
+    {
+      "name": "Enfortumab",
+      "total": 9,
+      "tumors": {
+        "GU Cancer": 8,
+        "Multi-tumor": 1
+      }
+    },
+    {
+      "name": "Tarlatamab",
+      "total": 8,
+      "tumors": {
+        "NSCLC": 8
+      }
+    },
+    {
+      "name": "Pembrolizumab",
+      "total": 7,
+      "tumors": {
+        "Gynecologic Cancer": 3,
+        "Breast Cancer": 1,
+        "Head & Neck Cancer": 1,
+        "NSCLC": 1,
+        "Supportive Care": 1
+      }
+    },
+    {
+      "name": "CLDN18",
+      "total": 7,
+      "tumors": {
+        "GI Cancer": 6,
+        "Multi-tumor": 1
+      }
+    },
+    {
+      "name": "BRAFV600E",
+      "total": 7,
+      "tumors": {
+        "Colorectal Cancer": 3,
+        "GI Cancer": 2,
+        "NSCLC": 2
+      }
+    },
+    {
+      "name": "Nivolumab",
+      "total": 6,
+      "tumors": {
+        "GI Cancer": 2,
+        "Head & Neck Cancer": 2,
+        "Colorectal Cancer": 1,
+        "Melanoma": 1
+      }
+    },
+    {
+      "name": "BT8009",
+      "total": 5,
+      "tumors": {
+        "GU Cancer": 5
+      }
+    },
+    {
+      "name": "Zongertinib",
+      "total": 4,
+      "tumors": {
+        "Breast Cancer": 1,
+        "Multi-tumor": 1,
+        "Colorectal Cancer": 1,
+        "NSCLC": 1
+      }
+    },
+    {
+      "name": "Cadonilimab",
+      "total": 4,
+      "tumors": {
+        "Colorectal Cancer": 1,
+        "GI Cancer": 1,
+        "Head & Neck Cancer": 1,
+        "Melanoma": 1
+      }
+    },
+    {
+      "name": "Durvalumab",
+      "total": 4,
+      "tumors": {
+        "NSCLC": 3,
+        "GI Cancer": 1
+      }
+    },
+    {
+      "name": "Cabozantinib",
+      "total": 4,
+      "tumors": {
+        "GU Cancer": 2,
+        "GI Cancer": 1,
+        "Sarcoma": 1
+      }
+    }
+  ]
+}

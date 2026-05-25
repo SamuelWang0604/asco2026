@@ -1,0 +1,2845 @@
+{
+  "overview": {
+    "total": 3440,
+    "lba": 58,
+    "phase1": 695,
+    "phase2": 344,
+    "phase3": 201,
+    "na": 2200,
+    "china": 985,
+    "nct": 1381
+  },
+  "tumors": [
+    {
+      "name": "Supportive Care",
+      "total": 557,
+      "phase1": 30,
+      "phase2": 24,
+      "phase3": 4,
+      "na": 499,
+      "china_pct": 17.6,
+      "china_n": 98,
+      "top_therapies": [
+        "Cell Therapy",
+        "Chemotherapy",
+        "Immunotherapy"
+      ],
+      "top_agents": [
+        "LBA1510",
+        "TPS1676",
+        "TPS1677",
+        "TPS1678",
+        "TPS1679"
+      ]
+    },
+    {
+      "name": "Multi-tumor",
+      "total": 393,
+      "phase1": 153,
+      "phase2": 27,
+      "phase3": 12,
+      "na": 201,
+      "china_pct": 35.4,
+      "china_n": 139,
+      "top_therapies": [
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Cell Therapy"
+      ],
+      "top_agents": [
+        "TP53",
+        "Trastuzumab",
+        "IPI201",
+        "CD19",
+        "XNW27011; CLDN18"
+      ]
+    },
+    {
+      "name": "Breast Cancer",
+      "total": 317,
+      "phase1": 52,
+      "phase2": 37,
+      "phase3": 19,
+      "na": 209,
+      "china_pct": 29.3,
+      "china_n": 93,
+      "top_therapies": [
+        "Targeted Therapy",
+        "Hormonal Therapy",
+        "Chemotherapy"
+      ],
+      "top_agents": [
+        "HER22",
+        "Trastuzumab",
+        "Pertuzumab",
+        "TP53",
+        "Sacituzumab"
+      ]
+    },
+    {
+      "name": "NSCLC",
+      "total": 313,
+      "phase1": 66,
+      "phase2": 49,
+      "phase3": 23,
+      "na": 175,
+      "china_pct": 35.1,
+      "china_n": 110,
+      "top_therapies": [
+        "Targeted Therapy",
+        "Chemotherapy",
+        "Immunotherapy"
+      ],
+      "top_agents": [
+        "Tarlatamab",
+        "Durvalumab",
+        "STK11",
+        "Firmonertinib",
+        "ZG006"
+      ]
+    },
+    {
+      "name": "Hematologic",
+      "total": 298,
+      "phase1": 43,
+      "phase2": 26,
+      "phase3": 27,
+      "na": 202,
+      "china_pct": 20.1,
+      "china_n": 60,
+      "top_therapies": [
+        "Cell Therapy",
+        "Targeted Therapy",
+        "Stem Cell Transplant"
+      ],
+      "top_agents": [
+        "TP53",
+        "CD19",
+        "CD38",
+        "Revumenib",
+        "HQP1351; Olverembatinib"
+      ]
+    },
+    {
+      "name": "GU Cancer",
+      "total": 288,
+      "phase1": 60,
+      "phase2": 35,
+      "phase3": 38,
+      "na": 155,
+      "china_pct": 34.7,
+      "china_n": 100,
+      "top_therapies": [
+        "Immunotherapy",
+        "Hormonal Therapy",
+        "Chemotherapy"
+      ],
+      "top_agents": [
+        "Enfortumab",
+        "BT8009",
+        "Cabozantinib",
+        "TP53",
+        "Durvalumab; LBA4511"
+      ]
+    },
+    {
+      "name": "GI Cancer",
+      "total": 257,
+      "phase1": 76,
+      "phase2": 40,
+      "phase3": 24,
+      "na": 117,
+      "china_pct": 42.4,
+      "china_n": 109,
+      "top_therapies": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy"
+      ],
+      "top_agents": [
+        "CLDN18",
+        "Zanidatamab",
+        "Nivolumab",
+        "Pemigatinib",
+        "Tislelizumab"
+      ]
+    },
+    {
+      "name": "Colorectal Cancer",
+      "total": 181,
+      "phase1": 39,
+      "phase2": 23,
+      "phase3": 13,
+      "na": 106,
+      "china_pct": 33.1,
+      "china_n": 60,
+      "top_therapies": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Immunotherapy"
+      ],
+      "top_agents": [
+        "BRAFV600E",
+        "LBA3500",
+        "LBA3503",
+        "LBA3506",
+        "JCOG1503C; LBA3508"
+      ]
+    },
+    {
+      "name": "Gynecologic Cancer",
+      "total": 143,
+      "phase1": 38,
+      "phase2": 11,
+      "phase3": 11,
+      "na": 83,
+      "china_pct": 26.6,
+      "china_n": 38,
+      "top_therapies": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC"
+      ],
+      "top_agents": [
+        "Pembrolizumab",
+        "TP53",
+        "Mirvetuximab",
+        "CA125",
+        "Dostarlimab"
+      ]
+    },
+    {
+      "name": "Head & Neck Cancer",
+      "total": 140,
+      "phase1": 43,
+      "phase2": 25,
+      "phase3": 9,
+      "na": 63,
+      "china_pct": 39.3,
+      "china_n": 55,
+      "top_therapies": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Radiotherapy"
+      ],
+      "top_agents": [
+        "Nivolumab",
+        "GDF15",
+        "LBA6005",
+        "LBA6007",
+        "Amivantamab"
+      ]
+    },
+    {
+      "name": "Prevention",
+      "total": 130,
+      "phase1": 2,
+      "phase2": 1,
+      "phase3": 0,
+      "na": 127,
+      "china_pct": 26.2,
+      "china_n": 34,
+      "top_therapies": [
+        "Cell Therapy",
+        "Hormonal Therapy",
+        "Targeted Therapy"
+      ],
+      "top_agents": [
+        "CA19",
+        "TP53",
+        "LBA10509",
+        "CA17; CA72; CDH17",
+        "RPS20"
+      ]
+    },
+    {
+      "name": "Melanoma",
+      "total": 116,
+      "phase1": 27,
+      "phase2": 20,
+      "phase3": 6,
+      "na": 63,
+      "china_pct": 13.8,
+      "china_n": 16,
+      "top_therapies": [
+        "Immunotherapy",
+        "Cell Therapy",
+        "Targeted Therapy"
+      ],
+      "top_agents": [
+        "LBA9503",
+        "LBA9504",
+        "EA6174; LBA9505",
+        "IL15",
+        "GC101; LBA9509"
+      ]
+    },
+    {
+      "name": "CNS Tumors",
+      "total": 103,
+      "phase1": 24,
+      "phase2": 12,
+      "phase3": 9,
+      "na": 58,
+      "china_pct": 24.3,
+      "china_n": 25,
+      "top_therapies": [
+        "Radiotherapy",
+        "Chemotherapy",
+        "Targeted Therapy"
+      ],
+      "top_agents": [
+        "LBA2000",
+        "JCOG1703",
+        "LBA2007",
+        "LY2207",
+        "EAF151; Bevacizumab"
+      ]
+    },
+    {
+      "name": "Sarcoma",
+      "total": 99,
+      "phase1": 33,
+      "phase2": 8,
+      "phase3": 6,
+      "na": 52,
+      "china_pct": 30.3,
+      "china_n": 30,
+      "top_therapies": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Cell Therapy"
+      ],
+      "top_agents": [
+        "Pimicotinib",
+        "Velzatinib",
+        "AL3818; Catequentinib",
+        "Varegacestat",
+        "JCOG1802"
+      ]
+    },
+    {
+      "name": "Pediatric",
+      "total": 58,
+      "phase1": 9,
+      "phase2": 5,
+      "phase3": 0,
+      "na": 44,
+      "china_pct": 24.1,
+      "china_n": 14,
+      "top_therapies": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Radiotherapy"
+      ],
+      "top_agents": [
+        "Dinutuximab",
+        "AALL0232",
+        "PDR001",
+        "RMS13",
+        "Larotrectinib"
+      ]
+    },
+    {
+      "name": "Education",
+      "total": 47,
+      "phase1": 0,
+      "phase2": 1,
+      "phase3": 0,
+      "na": 46,
+      "china_pct": 8.5,
+      "china_n": 4,
+      "top_therapies": [
+        "Cell Therapy",
+        "Stem Cell Transplant",
+        "Radiotherapy"
+      ],
+      "top_agents": [
+        "TPS9047"
+      ]
+    }
+  ],
+  "phase3": [
+    {
+      "number": "LBA1",
+      "title": "Perioperative (neoadjuvant and adjuvant) apalutamide (APA) + androgen deprivation therapy (ADT) vs placebo (PBO) + ADT with radical prostatectomy (RP) in high-risk localized or locally advanced prostate cancer (HR LPC/LAPC): Final analysis of the PROTEUS phase 3 study.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "LBA2",
+      "title": "SARC041: A phase 3 randomized double-blind study of abemaciclib versus placebo in patients with advanced dedifferentiated liposarcoma.",
+      "tumor": "Multi-tumor",
+      "agent": "SARC041",
+      "china": false,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "LBA3",
+      "title": "Event-free survival with adjuvant selpercatinib in stage IB-IIIA RET fusionpositive NSCLC: Primary results of the phase 3 LIBRETTO-432 trial.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": false,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "LBA4",
+      "title": "Ivonescimab plus chemotherapy versus tislelizumab plus chemotherapy in previously untreated advanced squamous non–small cell lung cancer: Overall survival results of the phase 3 HARMONi-6 trial.",
+      "tumor": "Multi-tumor",
+      "agent": "Ivonescimab",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "LBA5",
+      "title": "Daraxonrasib, a RAS(ON) multi-selective inhibitor vs chemotherapy in previously treated metastatic pancreatic adenocarcinoma (mPDAC): Primary and final analysis from the phase 3 RASolute 302 study.",
+      "tumor": "Multi-tumor",
+      "agent": "Daraxonrasib",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "104",
+      "title": "Phase 3, multicenter, randomized, controlled open-label study: Efficacy and safety of M701 (EpCAM3CD3 bispecific antibody) intraperitoneal infusion in advanced epithelial solid tumor with malignant ascites vs paracentesis.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": true,
+      "sponsor": "Wuhan YZY Biopharma Co. Ltd.",
+      "therapy": [
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "507",
+      "title": "Neoadjuvant pembrolizumab or placebo plus chemotherapy followed by adjuvant pembrolizumab or placebo for high-risk early-stage TNBC: Final analysis results from the phase 3 KEYNOTE-522 study.",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck &",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS642",
+      "title": "HIGHLIGHT 1: A randomized, placebo-controlled, double-blind, phase 3 clinical study to investigate the efficacy and safety of fezolinetant for treatment of moderate to severe vasomotor symptoms (hot flashes) in women with stage 0 to 3 hormone receptor–positive breast cancer who are receiving adjuvant endocrine therapy.",
+      "tumor": "Breast Cancer",
+      "agent": "TPS642",
+      "china": false,
+      "sponsor": "Astellas Pharma Inc.",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS659",
+      "title": "Pre-operative chemotherapy versus surgery first with peri-operative interventions in early triple-negative and HER2-positive breast cancer: An openlabel, phase 3, randomized controlled trial (PRaCTiSE).",
+      "tumor": "Breast Cancer",
+      "agent": "TPS659",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "LBA660",
+      "title": "Anbenitamab plus albumin-bound docetaxel (nab-docetaxel) 6 carboplatin (Cb) versus trastuzumab and pertuzumab plus docetaxel (THP) 6 Cb as neoadjuvant therapy for HER2-positive early or locally advanced breast cancer: A randomized, open-label, multicenter, phase 3 trial.",
+      "tumor": "Breast Cancer",
+      "agent": "Anbenitamab; LBA660",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "1002",
+      "title": "First-line datopotamab deruxtecan (Dato-DXd) vs chemotherapy in patients with locally recurrent inoperable or metastatic triple-negative breast cancer (TNBC) for whom immunotherapy was not an option: Additional efficacy endpoints from the TROPION-Breast02 study.",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "This trial is sponsored by AstraZeneca. In July 2020, Daiichi Sankyo entered into a",
+      "therapy": [
+        "Chemotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "1005",
+      "title": "Efficacy and safety of tucatinib (TUC) vs placebo (PBO) combined with trastuzumab and pertuzumab (HP) as maintenance therapy for HER2+ metastatic breast cancer by stratified subgroups.",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Pfizer Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1013",
+      "title": "ASCENT-04: Analysis of efficacy by biomarker subgroups with sacituzumab govitecan (SG) + pembrolizumab (pembro) vs chemotherapy (chemo) + pembro in participants (pts) with previously untreated PD-L1+ metastatic triple-negative breast cancer (mTNBC).",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Gilead Sciences, Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "ADC",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "LBA1018",
+      "title": "Palbociclib plus tamoxifen 6 goserelin in women with hormone receptor (HR)-positive, HER2-negative advanced breast cancer (BC): PATHWAY, an Asian international double-blind randomized phase 3 trial—Final overall survival (OS) analysis.",
+      "tumor": "Breast Cancer",
+      "agent": "Palbociclib; LBA1018",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1042",
+      "title": "Tucatinib (TUC) combined with trastuzumab and pertuzumab (HP) as firstline (1L) maintenance therapy for HER2+ metastatic breast cancer (MBC): An in-depth safety analysis of HER2CLIMB-05.",
+      "tumor": "Breast Cancer",
+      "agent": "Tucatinib",
+      "china": false,
+      "sponsor": "Pfizer Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "1065",
+      "title": "Subgroup analysis of participants (pts) with HER2 IHC0 in the ASCENT-07 study of sacituzumab govitecan (SG) vs chemotherapy in HR+/ HER22 metastatic breast cancer (mBC).",
+      "tumor": "Breast Cancer",
+      "agent": "HER22",
+      "china": false,
+      "sponsor": "Gilead Sciences, Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1079",
+      "title": "Outcomes by lobular (lob) histology status at initial diagnosis in patients (pts) in the INAVO120 phase 3 trial with PIK3CA-mutated (mut), hormone receptor-positive (HR+), HER2-negative (HER2–), endocrine-resistant advanced breast cancer (aBC) treated with inavolisib (INAVO)/placebo (PBO) + palbociclib (PALBO) + fulvestrant (FULV).",
+      "tumor": "Breast Cancer",
+      "agent": "INAVO120",
+      "china": false,
+      "sponsor": "F. Hoffmann-La Roche Ltd",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1090",
+      "title": "First-line fovinaciclib versus placebo combined with aromatase inhibitor for advanced breast cancer: A randomized, double-blind phase 3 study.",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Avanc Pharmaceutical Co., Ltd.",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1101",
+      "title": "Fovinaciclib versus placebo combined with fulvestrant for advanced breast cancer after endocrine therapy: A randomized, double-blind phase 3 trial.",
+      "tumor": "Breast Cancer",
+      "agent": "Fovinaciclib",
+      "china": true,
+      "sponsor": "Avanc Pharmaceutical Co., Ltd",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1107",
+      "title": "Quality of life and treatment tolerability of Bria-IMT + CPI in metastatic breast cancer.",
+      "tumor": "Breast Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": []
+    },
+    {
+      "number": "TPS1148",
+      "title": "ReDiscover-2, a phase 3 study of zovegalisib (zovega, RLY-2608) + fulvestrant (fulv) versus capivasertib (capi) + fulv as treatment for locally advanced or metastatic PIK3CA-mutant HR+/ HER2- breast cancer following recurrence or progression on or after treatment with a CDK4/6 inhibitor.",
+      "tumor": "Breast Cancer",
+      "agent": "TPS1148",
+      "china": false,
+      "sponsor": "Relay",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS1149",
+      "title": "HERTHENA-Breast04: A phase 3, randomized, open-label study evaluating the efficacy and safety of patritumab deruxtecan (HER3-DXd) versus treatment of physician’s choice in hormone receptor–positive (HR+)/human epidermal growth factor receptor 2–negative (HER22) unresectable locally advanced or metastatic breast cancer.",
+      "tumor": "Breast Cancer",
+      "agent": "HER22; TPS1149",
+      "china": false,
+      "sponsor": "Daiichi Sankyo Company,",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC",
+        "Cell Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS1152",
+      "title": "OPERA-02: A phase 3 study of palazestrant plus ribociclib as first-line treatment of ER+, HER2- advanced breast cancer.",
+      "tumor": "Breast Cancer",
+      "agent": "TPS1152",
+      "china": true,
+      "sponsor": "None",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS1153",
+      "title": "ELEGANT: Elacestrant versus standard endocrine therapy (ET) in women and men with node-positive, estrogen receptor–positive (ER+), HER2-negative (HER22), early breast cancer (eBC) with high risk of recurrence in a global, multicenter, randomized, open-label phase 3 study.",
+      "tumor": "Breast Cancer",
+      "agent": "HER22; TPS1153",
+      "china": false,
+      "sponsor": "Menarini Group.",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS1154",
+      "title": "ADELA: A double-blind, placebo-controlled, randomized phase 3 trial of elacestrant (Ela) + everolimus (EVE) versus elacestrant + placebo in ER+/ HER22 advanced breast cancer (aBC) patients with ESR1-mutated tumors progressing on endocrine therapy (ET) + CDK4/6i.",
+      "tumor": "Breast Cancer",
+      "agent": "HER22; TPS1154",
+      "china": false,
+      "sponsor": "Menarini Group; MEDSIR.",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "1502",
+      "title": "Development and external validation of a computational approach for accelerated read out of randomized clinical trials in metastatic prostate cancer.",
+      "tumor": "Supportive Care",
+      "agent": "",
+      "china": false,
+      "sponsor": "Prostate Cancer Foundation; 22CHAS02",
+      "therapy": []
+    },
+    {
+      "number": "LBA1510",
+      "title": "Low-dose pembrolizumab with chemotherapy in advanced NSCLC: A phase 3 randomized trial.",
+      "tumor": "Supportive Care",
+      "agent": "LBA1510",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "LBA2000",
+      "title": "Final results of a randomized, controlled, phase 3 trial comparing resection and post-operative stereotactic radiation versus resection and cesium-131 tile-based radiation for treatment of newly diagnosed brain metastases.",
+      "tumor": "CNS Tumors",
+      "agent": "LBA2000",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Cell Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "2004",
+      "title": "MAGMA: Multi-arm glioblastoma Australasia phase 3 trial.",
+      "tumor": "CNS Tumors",
+      "agent": "",
+      "china": false,
+      "sponsor": "Medical Research Future",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "2010",
+      "title": "A global, randomized, double-blinded, phase 3 trial of vorasidenib vs placebo in patients with grade 2 glioma with an IDH1/2 mutation (INDIGO): Updated efficacy and safety.",
+      "tumor": "CNS Tumors",
+      "agent": "",
+      "china": false,
+      "sponsor": "Servier Pharmaceuticals.",
+      "therapy": []
+    },
+    {
+      "number": "2043",
+      "title": "Impact of vorasidenib vs placebo on seizure rates and quality of life: Exploratory analysis from the phase 3 INDIGO study.",
+      "tumor": "CNS Tumors",
+      "agent": "",
+      "china": false,
+      "sponsor": "Servier",
+      "therapy": []
+    },
+    {
+      "number": "TPS2096",
+      "title": "TTFields with maintenance temozolomide (TMZ) and pembrolizumab versus TTFields with maintenance TMZ and placebo for newly diagnosed glioblastoma: The phase 3 EF-41/KEYNOTE D58 trial.",
+      "tumor": "CNS Tumors",
+      "agent": "TPS2096",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS2097",
+      "title": "Resection and intracranial implant of (Z)-n-butylidenephthalide wafer followed by temozolomide as treatment for recurrent glioblastoma: A randomized phase IIb/III trial.",
+      "tumor": "CNS Tumors",
+      "agent": "TPS2097",
+      "china": false,
+      "sponsor": "Everfront Biotech.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS2102",
+      "title": "Gliofocus: A global, open-label, randomized phase 3 study comparing niraparib with temozolomide in newly diagnosed MGMT-unmethylated glioblastoma.",
+      "tumor": "CNS Tumors",
+      "agent": "TPS2102",
+      "china": false,
+      "sponsor": "GSK.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS2104",
+      "title": "A phase 3 randomized trial comparing temozolomide with PCV as adjuvant chemotherapy in grade 2 and 3 diffuse gliomas in adults.",
+      "tumor": "CNS Tumors",
+      "agent": "TPS2104",
+      "china": false,
+      "sponsor": "Indian Cooperative Oncology Network (ICON).",
+      "therapy": [
+        "Chemotherapy",
+        "Vaccine/Virus Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS2105",
+      "title": "BRIDGES: A phase 3 randomized trial of immediate postoperative cesium131 tile-based radiation therapy followed by abbreviated chemoradiation for newly diagnosed glioblastoma (NCT07195591).",
+      "tumor": "CNS Tumors",
+      "agent": "TPS2105",
+      "china": false,
+      "sponsor": "GT Medical",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "2522",
+      "title": "Pemivibart for prevention of COVID-19: Subset analysis of CANOPY participants with solid tumor or hematologic malignancies.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": false,
+      "sponsor": "Invivyd, Inc",
+      "therapy": [
+        "Vaccine/Virus Therapy"
+      ]
+    },
+    {
+      "number": "2551",
+      "title": "A phase 3 trial of adagloxad simolenin/OBI-821 in patients with high-risk early-stage triple-negative breast cancer.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Vaccine/Virus Therapy"
+      ]
+    },
+    {
+      "number": "2652",
+      "title": "Monitoring blood-based biomarkers as early predictors of progression-free survival in a randomized Bria-ABC phase 3 trial for advanced metastatic breast cancer: An ongoing analysis.",
+      "tumor": "Multi-tumor",
+      "agent": "",
+      "china": false,
+      "sponsor": "Creatv Microtech; BriaCell Therapeutics Corp",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy",
+        "Vaccine/Virus Therapy"
+      ]
+    },
+    {
+      "number": "3017",
+      "title": "Luvometinib in adults with neurofibromatosis type 1 and symptomatic, inoperable plexiform neurofibromas: A randomized, double-blind, placebo-controlled, phase 3 trial.",
+      "tumor": "Multi-tumor",
+      "agent": "Luvometinib",
+      "china": true,
+      "sponsor": "Shanghai Fosun Pharmaceutical Industrial Development Co., Ltd.",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "3110",
+      "title": "Final analysis of KOMET (NCT04924608), a phase 3 study of selumetinib in adults with NF1-PN.",
+      "tumor": "Multi-tumor",
+      "agent": "ARRY142886; AZD6244",
+      "china": true,
+      "sponsor": "AstraZeneca as part of an alliance between AstraZeneca and Merck Sharp & Dohme",
+      "therapy": []
+    },
+    {
+      "number": "3148",
+      "title": "Multi-modal molecular profiling of CDH1 and CLDN18.2 to identify predictive biomarkers for zolbetuximab efficacy in patients with advanced gastric adenocarcinoma: The ZOL-C3 study.",
+      "tumor": "Multi-tumor",
+      "agent": "CLDN18; Zolbetuximab",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Immunotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "3505",
+      "title": "Phase 3 trial of trastuzumab rezetecan vs standard of care (SOC) for chemotherapy-refractory, HER2-positive, advanced colorectal cancer (CRC).",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui Pharmaceuticals Co., Ltd",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "3511",
+      "title": "Circulating tumor DNA (ctDNA) clearance as an early indicator of sotorasib + panitumumab efficacy and prognosis in KRAS G12C–mutated colorectal cancer (mCRC): Results from phase 3 CodeBreaK 300.",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Amgen Inc",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "3531",
+      "title": "Association of progression-free survival (PFS) with microsatellite instability–high (MSI-H) or mismatch repair–deficient (dMMR) status determined by single vs dual validated companion diagnostic (CDx) assays: CheckMate-8HW post hoc analyses.",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Bristol Myers Squibb",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "3532",
+      "title": "Nivolumab + ipilimumab (NIVO + IPI) vs NIVO in microsatellite instability high/mismatch repair-deficient metastatic colorectal cancer (MSI-H/dMMR mCRC): CheckMate 8HW subgroup analyses including treatment-free status and outcomes in long-term survivors.",
+      "tumor": "Colorectal Cancer",
+      "agent": "Nivolumab",
+      "china": false,
+      "sponsor": "Bristol Myers Squibb",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "3555",
+      "title": "Tumor shrinkage and depth of response with fruquintinib in patients with metastatic colorectal cancer: Results from FRESCO and FRESCO-2.",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Takeda Pharmaceuticals U.S.A., Inc., Cambridge, MA",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "3573",
+      "title": "ctDNA dynamics and prognostic value during first-line treatment of metastatic colorectal cancer: Analysis from the phase 3 PARADIGM study.",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Takeda Pharmaceutical",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "3574",
+      "title": "Contribution of atezolizumab (atezo) to the efficacy of the zanzalintinib (zanza) + atezo combination in patients (pts) with previously treated metastatic colorectal cancer (mCRC): Evidence from the phase 3 STELLAR-303 trial.",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Exelixis, Inc.",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "3626",
+      "title": "Health-related quality of life (HRQOL) in the phase 3 trial of standard chemotherapy alone or combined with atezolizumab as adjuvant therapy for patients with stage III deficient DNA mismatch repair (dMMR) colon cancer (Alliance A021502, ATOMIC).",
+      "tumor": "Colorectal Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "National Cancer Institute; UG1CA189823; National Cancer Institute;",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS3674",
+      "title": "A phase Ib/III randomized double-blinded placebo-controlled study of suvemcitug combined with trifluridine/tipiracil for refractory metastatic colorectal cancer.",
+      "tumor": "Colorectal Cancer",
+      "agent": "TPS3674",
+      "china": true,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS3675",
+      "title": "Symbiotic-GI-03: A randomized, double-blind, phase 3 study of first-line PF08634404, a PD-1/VEGF bispecific antibody, in combination with mFOLFOX6 in patients with metastatic colorectal cancer (mCRC).",
+      "tumor": "Colorectal Cancer",
+      "agent": "TPS3675",
+      "china": false,
+      "sponsor": "This study was sponsored by",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS3676",
+      "title": "The CO.33/BATTMAN trial: A phase 3 randomized study of botensilimab + balstilimab versus best supportive care in chemorefractory unresectable colorectal adenocarcinoma that is not dMMR/MSI-H.",
+      "tumor": "Colorectal Cancer",
+      "agent": "TPS3676",
+      "china": false,
+      "sponsor": "Canadian Cancer",
+      "therapy": [
+        "Immunotherapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS3682",
+      "title": "A randomized, active-controlled phase 3 study of ivonescimab + FOLFOX versus bevacizumab + FOLFOX as first-line treatment of metastatic colorectal cancer (mCRC): HARMONi-GI3.",
+      "tumor": "Colorectal Cancer",
+      "agent": "TPS3682",
+      "china": true,
+      "sponsor": "Summit Therapeutics, Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS3683",
+      "title": "INCA033890-303: A randomized, double-blind, phase 3 study of FOLFOX and bevacizumab with or without INCA33890 in the first-line treatment of metastatic microsatellite-stable colorectal cancer.",
+      "tumor": "Colorectal Cancer",
+      "agent": "INCA033890; INCA33890; TPS3683",
+      "china": false,
+      "sponsor": "Incyte Corporation.",
+      "therapy": [
+        "Immunotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "LBA4000",
+      "title": "Efficacy and safety results from EMERALD-3: A phase 3, randomized study of tremelimumab plus durvalumab with or without lenvatinib combined with transarterial chemoembolization (TACE) in participants (pts) with unresectable embolization-eligible hepatocellular carcinoma (eeHCC).",
+      "tumor": "GI Cancer",
+      "agent": "LBA4000",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4001",
+      "title": "Camrelizumab (C) plus rivoceranib (R) with transarterial chemoembolization (TACE) vs TACE alone in unresectable hepatocellular carcinoma (uHCC): A randomized, phase 3 trial.",
+      "tumor": "GI Cancer",
+      "agent": "Camrelizumab",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "4002",
+      "title": "IMbrave251: Final analysis of atezolizumab (atezo) + lenvatinib (lenva) or sorafenib (sora) vs lenva or sora alone in locally advanced or metastatic hepatocellular carcinoma (LA/mHCC) previously treated with atezo and bevacizumab (bev).",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "F. Hoffmann-La Roche Ltd",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4006",
+      "title": "Nivolumab plus ipilimumab combined with chemotherapy as first-line treatment for HER2-negative unresectable advanced or recurrent gastric/ gastroesophageal junction cancer: A randomized phase 3 trial (ATTRACTION-6).",
+      "tumor": "GI Cancer",
+      "agent": "Nivolumab",
+      "china": false,
+      "sponsor": "Ono Pharmaceutical Co., Ltd.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4009",
+      "title": "Neoadjuvant/adjuvant serplulimab vs. placebo combined with chemotherapy for PD-L1–positive gastric cancer: A randomized, double-blind, multicenter phase 3 study.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Shanghai Henlius Biotech, Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4017",
+      "title": "Pemigatinib for untreated unresectable/metastatic cholangiocarcinoma (mCCA) with fibroblast growth factor receptor-2 (FGFR2) rearrangement: Phase 3 FIGHT-302 results.",
+      "tumor": "GI Cancer",
+      "agent": "Pemigatinib",
+      "china": false,
+      "sponsor": "Incyte Corporation; N/A",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4034",
+      "title": "Quality-adjusted survival comparison for tislelizumab (TIS) + chemotherapy (CT) versus placebo (PBO) + CT as first-line (1L) treatment in gastric/ gastroesophageal junction adenocarcinoma (GC/GEJC) patients with peritoneal metastasis (PM): Long-term follow-up from RATIONALE-305.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "BeOne Medicines, Ltd",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "4040",
+      "title": "KEYNOTE-811: 6-year median follow-up of pembrolizumab plus trastuzumab and chemotherapy for previously untreated advanced HER2-positive gastric or gastroesophageal junction adenocarcinoma.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck &",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4050",
+      "title": "Molecular circulating tumor DNA (ctDNA) profiling from patients (pts) treated with zanidatamab + chemotherapy (CT) in first-line (1L) HER2positive (HER2+) advanced or metastatic gastroesophageal adenocarcinoma (mGEA).",
+      "tumor": "GI Cancer",
+      "agent": "Zanidatamab",
+      "china": false,
+      "sponsor": "Jazz Pharmaceuticals; Zymeworks Biopharmaceuticals",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "4060",
+      "title": "Impact of molecular profile on switch maintenance to paclitaxel plus ramucirumab (PTX-RAM) versus continuation of first-line fluoropyrimidine and oxaliplatin (FOX) chemotherapy (ChT) in patients (pts) with advanced HER2-negative gastric or gastroesophageal junction (G/GEJ) cancer: An exploratory endpoint of the ARMANI phase 3 randomized trial.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4070",
+      "title": "Efficacy of durvalumab and safety by treatment period in MATTERHORN: A randomized, phase 3 study of durvalumab plus 5-fluorouracil, leucovorin, oxaliplatin, and docetaxel (FLOT) chemotherapy in resectable gastric/ gastroesophageal junction (G/GEJ) cancer.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "AstraZeneca",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4074",
+      "title": "Neoadjuvant and adjuvant pembrolizumab plus chemotherapy for locally advanced gastric or gastroesophageal junction adenocarcinoma: Outcomes from the microsatellite instability-high population of the phase 3 KEYNOTE585 study.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck & Co.,",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "LBA4075",
+      "title": "Neoadjuvant chemoradiotherapy versus neoadjuvant chemotherapy followed by D2 gastrectomy and adjuvant chemotherapy for locally advanced gastric cancer (Neo-CRAG): A randomized, multicenter, phase 3 trial.",
+      "tumor": "GI Cancer",
+      "agent": "LBA4075",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "4104",
+      "title": "CheckMate-9DW 4-year follow-up: Overall survival by depth of response and outcomes in long-term survivors.",
+      "tumor": "GI Cancer",
+      "agent": "Nivolumab",
+      "china": false,
+      "sponsor": "Bristol Myers Squibb",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4111",
+      "title": "Additional health-related quality of life (HRQoL) analysis from DESTINYGastric04 (DG-04), a randomized phase 3 study of trastuzumab deruxtecan (T-DXd) vs ramucirumab (RAM) + paclitaxel (PTX) in patients (pts) with human epidermal growth factor receptor 2–positive (HER2+) unresectable/ metastatic gastric cancer (GC)/gastroesophageal junction adenocarcinoma (GEJA).",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Daiichi Sankyo, Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "4160",
+      "title": "Durvalumab or pembrolizumab plus gemcitabine and cisplatin versus gemcitabine and cisplatin alone as first-line therapy for advanced cholangiocarcinoma: A meta-analysis.",
+      "tumor": "GI Cancer",
+      "agent": "Durvalumab",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4171",
+      "title": "Quality of life in patients with gastroenteropancreatic neuroendocrine tumors receiving 177Lu-edotreotide or everolimus: Results from the COMPETE study.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "None",
+      "therapy": [
+        "Cell Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "4178",
+      "title": "Efficacy and safety of cabozantinib (CABO) in advanced neuroendocrine tumors (NET) according to hormone functional status: Subgroup analysis of phase 3 CABINET trial (Alliance A021602).",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "National Cancer Institute; U10CA180821,",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "4195",
+      "title": "First-line NALIRIFOX in patients with metastatic pancreatic ductal adenocarcinoma and pre-existing diabetes: NAPOLI 3 post hoc analysis.",
+      "tumor": "GI Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Ipsen",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "TPS4244",
+      "title": "Combining zanidatamab, FOLFOX, and pembrolizumab as first-line therapy for HER2/PD-L1–positive gastroesophageal adenocarcinoma: The phase ll IKF-090/AIO ZANGEA trial with translational analysis.",
+      "tumor": "GI Cancer",
+      "agent": "TPS4244",
+      "china": false,
+      "sponsor": "The Frankfurt Institute of",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS4245",
+      "title": "Efficacy and safety of disitamab vedotin (DV) combined with trastuzumab, and tislelizumab versus chemotherapy (CAPOX) combined with trastuzumab 6 pembrolizumab for patients with first-line HER2-high advanced gastric/gastroesophageal junction adenocarcinoma (G/GEJA): A randomized controlled phase 3 trial.",
+      "tumor": "GI Cancer",
+      "agent": "TPS4245",
+      "china": true,
+      "sponsor": "RemeGen Co., Ltd.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS4249",
+      "title": "Adjuvant oxaliplatin plus S-1 versus docetaxel plus S-1 for stage III gastric cancer after D2 gastrectomy (DRAGON-Adjuvant): A multicenter, open-label, phase 3, randomized, non-inferiority study.",
+      "tumor": "GI Cancer",
+      "agent": "TPS4249",
+      "china": true,
+      "sponsor": "Science and Technology Commission of Shanghai Municipality; 25PJD078.",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS4253",
+      "title": "ARTEMIDE-Biliary02: A phase 3, randomized, global study of rilvegostomig or durvalumab with chemotherapy as first-line (1L) treatment for advanced biliary tract cancer (BTC).",
+      "tumor": "GI Cancer",
+      "agent": "TPS4253",
+      "china": false,
+      "sponsor": "AstraZeneca.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS4257",
+      "title": "CAREFOL: A phase 3, randomized, open-label, multicenter trial of camrelizumab and rivoceranib with or without intravenous FOLFOX chemotherapy as first-line treatment for unresectable hepatocellular carcinoma.",
+      "tumor": "GI Cancer",
+      "agent": "TPS4257",
+      "china": true,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4502",
+      "title": "ctDNA analysis in participants with renal cell carcinoma treated with adjuvant pembrolizumab or placebo in the KEYNOTE-564 trial.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Funding for this study was provided by Merck Sharp &",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4507",
+      "title": "Enfortumab vedotin plus pembrolizumab (EV+P) vs chemotherapy for previously untreated locally advanced or metastatic urothelial carcinoma (la/ mUC): 3.5-year follow-up and response analyses from the phase 3 EV-302 study.",
+      "tumor": "GU Cancer",
+      "agent": "Enfortumab",
+      "china": false,
+      "sponsor": "Astellas Pharma Inc., Northbrook, IL, USA; Merck Sharp & Dohme LLC, a subsidiary of Merck & Co.,",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "ADC",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "4510",
+      "title": "Health-related quality of life (HRQoL) with neoadjuvant and adjuvant (neoadj-adj) enfortumab vedotin (EV) plus pembrolizumab (pembro) in participants (pts) with muscle-invasive bladder cancer (MIBC) who are cisplatin ineligible: Phase 3 KEYNOTE-905 study.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "The study was conducted by Merck Sharp &",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "LBA4511",
+      "title": "Durvalumab monotherapy versus active monitoring for resected primary renal cell carcinoma in RAMPART: An international, phase 3, randomized controlled trial.",
+      "tumor": "GU Cancer",
+      "agent": "Durvalumab; LBA4511",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4525",
+      "title": "CheckMate-901: Association of tumor and peripheral biomarker profiles with durable disease control in metastatic urothelial carcinoma treated with nivolumab plus ipilimumab.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Bristol Myers Squibb",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "4527",
+      "title": "Efficacy outcomes by patterns of progression in patients with advanced renal cell carcinoma from the phase 3 CLEAR trial.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Eisai Inc., Nutley, NJ,",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4528",
+      "title": "Cabozantinib plus nivolumab (C+N) versus sunitinib (S) in patients with advanced renal cell carcinoma (aRCC) and bone metastasis: Updated subgroup analysis of the phase 3 CheckMate-9ER trial.",
+      "tumor": "GU Cancer",
+      "agent": "Cabozantinib",
+      "china": true,
+      "sponsor": "Exelixis, Inc",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4530",
+      "title": "Cabozantinib plus nivolumab (C+N) versus sunitinib (S) in patients with advanced renal cell carcinoma (aRCC) and liver metastasis: Subgroup analysis of the phase 3 CheckMate-9ER trial.",
+      "tumor": "GU Cancer",
+      "agent": "Cabozantinib",
+      "china": false,
+      "sponsor": "Exelixis. Inc",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "4540",
+      "title": "Relationships between clinical stage, pathological stage, and disease-free (DFS) survival in renal cell carcinoma as used to inform future neoadjuvant study design: ECOG-ACRIN EA8143 PROSPER analysis.",
+      "tumor": "GU Cancer",
+      "agent": "EA8143",
+      "china": false,
+      "sponsor": "ECOG-ACRIN.",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4555",
+      "title": "Final analysis of the TiNivo-2 phase 3 trial: Long-term outcome of tivozanib (Tivo) in patients with metastatic renal cell carcinoma (mRCC).",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "AVEO Pharmaceuticals, Inc",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4575",
+      "title": "Outcomes with first-line (1L) platinum-based chemotherapy (PBC) and avelumab 1L maintenance in locally advanced or metastatic urothelial carcinoma (la/mUC) by NECTIN4 and HER2 RNA expression: Exploratory analyses from JAVELIN Bladder 100.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "the healthcare business of Merck KGaA, Darmstadt,",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "4601",
+      "title": "Assessing responses to UGN-102 across EORTC recurrence score groups in patients with recurrent low-grade intermediate-risk NMIBC (ENVISION trial).",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "UroGen",
+      "therapy": []
+    },
+    {
+      "number": "4604",
+      "title": "UTOPIA: A phase 3 trial of UGN-103, an intravesical mitomycin reverse thermal hydrogel, in recurrent low-grade intermediate-risk non-muscle invasive bladder cancer.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "UroGen Pharma, Inc.",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "4613",
+      "title": "Neoadjuvant and adjuvant (neoadj-adj) enfortumab vedotin (EV) plus pembrolizumab (pembro) in participants with cisplatin-ineligible muscleinvasive bladder cancer (MIBC): An analysis of clinically relevant subgroups in KEYNOTE-905.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "The study was",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "4614",
+      "title": "Neoadjuvant and adjuvant enfortumab vedotin plus pembrolizumab for participants with muscle-invasive bladder cancer who are eligible for cisplatin: Randomized, open-label, phase 3 KEYNOTE-B15 study.",
+      "tumor": "GU Cancer",
+      "agent": "Enfortumab",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., Inc., Rahway, NJ, USA, Astellas",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "4624",
+      "title": "Durvalumab (D) in combination with BCG induction and maintenance (I + M) therapy for BCG-naive, high-risk non–muscle-invasive bladder cancer (NMIBC): 5-year overall survival (OS) analysis and patient-reported outcomes (PROs) from POTOMAC.",
+      "tumor": "GU Cancer",
+      "agent": "Durvalumab; NCT03",
+      "china": false,
+      "sponsor": "AstraZeneca",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "4627",
+      "title": "Patient-reported outcomes from IMvigor011: A phase 3 study of circulating tumor (ct)DNA–guided adjuvant atezolizumab vs placebo in muscleinvasive bladder cancer (MIBC).",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "F. Hoffmann-La Roche Ltd",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS4631",
+      "title": "Phase 3 study to assess the safety and efficacy of 177Lu-girentuximab in advanced, relapsed, or recurrent ccRCC (LUTEON).",
+      "tumor": "GU Cancer",
+      "agent": "TPS4631; Girentuximab",
+      "china": false,
+      "sponsor": "Telix Pharmaceuticals",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS4633",
+      "title": "LITESPARK-033: Phase 3 study of belzutifan plus zanzalintinib versus cabozantinib for recurrent clear cell renal cell carcinoma during or after adjuvant anti–PD-(L)1 therapy.",
+      "tumor": "GU Cancer",
+      "agent": "TPS4633",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck &",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS4636",
+      "title": "PEAK-1: A randomized, double-blind, active-control, multicenter phase 3 trial of casdatifan and cabozantinib versus placebo and cabozantinib in patients with advanced clear cell renal cell carcinoma.",
+      "tumor": "GU Cancer",
+      "agent": "TPS4636",
+      "china": true,
+      "sponsor": "Arcus Biosciences, Inc",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS4643",
+      "title": "Advancing treatment of low-grade upper tract urothelial carcinoma (LG UTUC) with padeliporfin vascular-targeted photodynamic therapy (VTP): The ENLIGHTED phase 3 trial.",
+      "tumor": "GU Cancer",
+      "agent": "TPS4643",
+      "china": false,
+      "sponsor": "Steba/Impact biotech.",
+      "therapy": [
+        "Targeted Therapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "5008",
+      "title": "Fuzuloparib combined with abiraterone acetate and prednisone (AA-P) as first-line (1L) treatment for metastatic castration-resistant prostate cancer (mCRPC): Interim results from the FUZUPRO trial.",
+      "tumor": "GU Cancer",
+      "agent": "Fuzuloparib",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui",
+      "therapy": [
+        "Targeted Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "LBA5009",
+      "title": "Safety and dosimetry of 177Lu-rosopatamab tetraxetan plus SoC in patients with metastatic castration-resistant prostate cancer: Preliminary results from part 1 of phase 3 ProstACT Global study.",
+      "tumor": "GU Cancer",
+      "agent": "LBA5009",
+      "china": false,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "5020",
+      "title": "Subgroup analyses by disease volume and de novo/recurrent mHSPC in the PSMAddition study of [177Lu]Lu-PSMA-617.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Novartis",
+      "therapy": []
+    },
+    {
+      "number": "5021",
+      "title": "Validation of prostate-specific antigen (PSA) decline among the Latin American subgroup of LIBERTAS: A phase 3 study of apalutamide (APA) plus continuous versus intermittent androgen deprivation therapy (ADT) in metastatic castration-sensitive prostate cancer (mCSPC).",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5043",
+      "title": "Impact of baseline demographics on therapy management in patients (pts) with metastatic castration-resistant prostate cancer (mCRPC) treated with talazoparib (TALA) + enzalutamide (ENZA) in the TALAPRO-2 study: Extended follow-up.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "This study was funded by Pfizer Inc",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5054",
+      "title": "Impact of prior treatment setting on the efficacy of rucaparib vs physician’s choice in BRCA-mutated castration-resistant prostate cancer (mCRPC) in TRITON3.",
+      "tumor": "GU Cancer",
+      "agent": "Rucaparib",
+      "china": false,
+      "sponsor": "Clovis Oncology and pharmaand GmbH.",
+      "therapy": [
+        "Chemotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5087",
+      "title": "Evaluation of concomitant medications in advanced prostate cancer patients receiving apalutamide: TITAN and SPARTAN post-hoc analysis.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Johnson & Johnson",
+      "therapy": [
+        "Radiotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5088",
+      "title": "EMBARK: Testosterone recovery to >250 ng/dL following treatment suspension.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "The study was",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5090",
+      "title": "Rezvilutamide (Rez) versus bicalutamide (Bic) plus androgen-deprivation therapy (ADT) in high-volume, metastatic, hormone-sensitive prostate cancer (mHSPC): 5-year outcomes of the phase 3 CHART trial.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui Pharmaceuticals",
+      "therapy": [
+        "Chemotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5096",
+      "title": "Correlation of baseline testosterone (T) level with survival outcomes in patients (Pts) with metastatic hormone-sensitive prostate cancer (mHSPC): Analysis of patient (pt)–level data from SWOG 1216 study.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "Supported",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "5103",
+      "title": "Prostate-specific antigen outcomes of darolutamide and androgen deprivation therapy in patient subgroups by age, comorbidities, and concomitant medications: ARANOTE post hoc analyses.",
+      "tumor": "GU Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Bayer.",
+      "therapy": [
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS5134",
+      "title": "AcTFirst: A phase 3 trial of 225Ac-PSMA-617 plus ARPI versus standard of care in adults with PSMA-positive metastatic castration-resistant prostate cancer.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5134",
+      "china": false,
+      "sponsor": "Novartis.",
+      "therapy": [
+        "Cell Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS5136",
+      "title": "A phase 3 randomized, double-blind, placebo-controlled study of a pasritamig plus best supportive care in metastatic castration-resistant prostate cancer.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5136",
+      "china": false,
+      "sponsor": "J&J.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS5139",
+      "title": "A phase 3 randomized, open-label study of pasritamig (JNJ-78278343), a Tcell engager targeting human kallikrein-2, with docetaxel versus docetaxel for metastatic castration-resistant prostate cancer.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5139",
+      "china": false,
+      "sponsor": "None",
+      "therapy": [
+        "Chemotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS5144",
+      "title": "XALience: A phase 3, open-label, multicenter, randomized study of xaluritamig plus abiraterone vs investigator’s choice in patients with chemotherapy-na¨ıve metastatic castration-resistant prostate cancer.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5144",
+      "china": false,
+      "sponsor": "Amgen Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS5150",
+      "title": "EORTC GUCG 2238: “Deescalate,” a pragmatic trial to revisit intermittent androgen deprivation therapy in metastatic hormone-sensitive prostate cancer in the era of new androgen receptor pathway inhibitors.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5150",
+      "china": false,
+      "sponsor": "European Union’s",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS5151",
+      "title": "AMPLIFY: A phase 3 study of 64Cu-SAR-bisPSMA positron emission tomography in participants with biochemical recurrence of prostate cancer.",
+      "tumor": "GU Cancer",
+      "agent": "TPS5151",
+      "china": false,
+      "sponsor": "Clarity Pharmaceuticals",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "5501",
+      "title": "Long-term survival rates and cure modeling with dostarlimab plus chemotherapy in mismatch repair deficient/microsatellite instability-high (dMMR/ MSI-H) primary advanced or recurrent endometrial cancer in the ENGOTEN6-NSGO/GOG-3031/RUBY trial.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "Dostarlimab",
+      "china": false,
+      "sponsor": "GSK; N/A.",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "5502",
+      "title": "Updated overall survival analysis and examination of subsequent therapy in endometrial cancer (EC) patients (pts) treated with pembrolizumab plus carboplatin/paclitaxel (CP) as compared to CP plus placebo (PBO) in the NRG-GY018 trial.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "GY018",
+      "china": true,
+      "sponsor": "National Cancer Institute; U10CA180822; U.S. National Institutes of Health.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "5503",
+      "title": "Overall survival subgroup analyses for prior taxane use in the phase 3 ROSELLA trial of relacorilant plus nab-paclitaxel versus nab-paclitaxel monotherapy in patients with platinum-resistant ovarian cancer (GOG3073, ENGOT-ov72, APGOT-Ov10, LACOG-0223, and ANZGOG-2221/ 2023).",
+      "tumor": "Gynecologic Cancer",
+      "agent": "GOG3073",
+      "china": false,
+      "sponsor": "Corcept",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "5565",
+      "title": "Efficacy prediction for progression-free survival (PFS) and overall survival (OS) by genomic instability score (GIS) cutoffs in patients (pts) with advanced ovarian cancer (aOC): Post hoc results from the phase 3 PRIMA/ENGOT-OV26/GOG-3012 trial.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "OV26",
+      "china": false,
+      "sponsor": "GSK; N/A",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS5628",
+      "title": "TroFuse-036/GOG-3123/ENGOT-cx22: A 2-part, phase 3, randomized study of sacituzumab tirumotecan (sac-TMT) + pembrolizumab (pembro) 6 bevacizumab (bev) vs standard of care (SoC) as first-line maintenance therapy for PD-L1–positive cervical cancer.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "TPS5628",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., Inc., Rahway, NJ,",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "ADC",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS5636",
+      "title": "TroFuse-022/ENGOT-ov84/GOG-3103 part 2: A phase 3 study of maintenance therapy with sacituzumab tirumotecan 6 bevacizumab vs standard of care following second-line platinum-based doublet chemotherapy for platinum-sensitive recurrent ovarian cancer.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "TPS5636",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., Inc.,",
+      "therapy": [
+        "Chemotherapy",
+        "ADC",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS5641",
+      "title": "RAINFOL-04 (ENGOT-OV96/GOG-3134): A phase 3, open-label, randomized study of rinatabart sesutecan (Rina-S) plus standard of care (SOC) vs SOC as maintenance treatment after second-line platinum-based chemotherapy in patients with recurrent platinum-sensitive ovarian cancer.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "OV96; TPS5641",
+      "china": true,
+      "sponsor": "Genmab.",
+      "therapy": [
+        "Chemotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS5642",
+      "title": "A phase 3, randomized, open-label study of INCB123667 versus investigator’s choice of chemotherapy in patients with platinum-resistant ovarian cancer with cyclin E1 overexpression (MAESTRA 2, ENGOT-OV95, GOG3137).",
+      "tumor": "Gynecologic Cancer",
+      "agent": "INCB123667; OV95; GOG3137; TPS5642",
+      "china": false,
+      "sponsor": "Incyte Corporation.",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "TPS5644",
+      "title": "FRAmework-01: A two-part phase 3 study of sofetabart mipitecan versus chemotherapy or mirvetuximab soravtansine in platinum-resistant ovarian cancer (PROC), and sofetabart mipitecan plus bevacizumab versus platinum-based chemotherapy plus bevacizumab in platinum-sensitive ovarian cancer (PSOC).",
+      "tumor": "Gynecologic Cancer",
+      "agent": "TPS5644",
+      "china": false,
+      "sponsor": "Eli Lilly and Company",
+      "therapy": [
+        "Chemotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS5645",
+      "title": "Fern-EC-01 (BNT323-01): A phase 3 trial of trastuzumab pamirtecan (HER2 ADC) versus investigator’s choice of chemotherapy in patients with previously treated, HER2-expressing, recurrent endometrial cancer (EC).",
+      "tumor": "Gynecologic Cancer",
+      "agent": "BNT323; TPS5645",
+      "china": false,
+      "sponsor": "BioNTech SE in",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS5646",
+      "title": "RAINFOL-03 (ENGOT-EN-31/GOG-3128): A global, phase 3, open-label, randomized study of rinatabart sesutecan (Rina-S) vs investigator’s choice of chemotherapy in patients with endometrial cancer after platinum-based chemotherapy and programmed death-ligand 1 inhibition.",
+      "tumor": "Gynecologic Cancer",
+      "agent": "TPS5646",
+      "china": false,
+      "sponsor": "Genmab A/S.",
+      "therapy": [
+        "Chemotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "6004",
+      "title": "Carboplatin-based versus cisplatin-based induction-concurrent chemoradiotherapy with locoregionally advanced nasopharyngeal carcinoma: A multicenter, parallel-group, non-inferiority, randomized, phase 3 trial.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "National Natural Science Foundation of China;",
+      "therapy": [
+        "Chemotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "6013",
+      "title": "Induction chemotherapy with nab-paclitaxel and cisplatin versus docetaxel, cisplatin, and fluorouracil followed by chemoradiotherapy in patients with stage III–IVA nasopharyngeal carcinoma: An open-label, noninferiority, randomized, controlled, phase 3 trial.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "National Natural Science Foundation of China; No",
+      "therapy": [
+        "Chemotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "6039",
+      "title": "Defining the role of locoregional radiotherapy for de novo metastatic nasopharyngeal carcinoma in the immunotherapy era: A systematic review and meta-analysis.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "",
+      "china": true,
+      "sponsor": "None",
+      "therapy": [
+        "Chemotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "6057",
+      "title": "Neoadjuvant and adjuvant pembrolizumab (pembro) plus standard of care (SOC) for resectable locally advanced head and neck squamous cell carcinoma (LA HNSCC): Efficacy by surgical outcomes in the phase 3 KEYNOTE689 trial.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme LLC, a subsidiary of Merck & Co., Inc., Rahway, NJ, USA",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "6063",
+      "title": "PD-L1 CPS ‡10 population subgroup analysis of KEYNOTE-412: Pembrolizumab plus chemoradiotherapy versus placebo plus chemoradiotherapy for unresected locally advanced head and neck squamous cell carcinoma.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "Pembrolizumab",
+      "china": false,
+      "sponsor": "Merck Sharp & Dohme",
+      "therapy": [
+        "Immunotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "6080",
+      "title": "A phase 3, randomized, double-arm, open-label, controlled study of ASP1929 photoimmunotherapy (PIT) versus physician’s choice standard of care (SOC) for patients with locoregional, recurrent head and neck squamous cell carcinoma (HNSCC).",
+      "tumor": "Head & Neck Cancer",
+      "agent": "ASP1929",
+      "china": false,
+      "sponsor": "Rakuten Medical Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "6083",
+      "title": "C-POST study of adjuvant cemiplimab for high-risk cutaneous squamous cell carcinoma (CSCC): Disease-free survival (DFS) analyses per high-risk criteria and per start time after radiotherapy.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "",
+      "china": false,
+      "sponsor": "Regeneron Pharmaceuticals Inc. and Sanofi",
+      "therapy": [
+        "Immunotherapy",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS6127",
+      "title": "OrigAMI-5: A randomized, phase 3 study of amivantamab plus pembrolizumab and carboplatin vs standard of care pembrolizumab plus platinum and 5-fluorouracil as first-line treatment in recurrent/metastatic head and neck cancer.",
+      "tumor": "Head & Neck Cancer",
+      "agent": "TPS6127",
+      "china": true,
+      "sponsor": "Janssen Research & Development,",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS6132",
+      "title": "FIERCE-HN: A multicenter, randomized, double-blind, placebo-controlled, phase 3 study of ficlatuzumab (HGF/cMET mAb) in combination with cetuximab in participants with recurrent or metastatic (R/M) HPVnegative head and neck squamous cell carcinoma (HNSCC).",
+      "tumor": "Head & Neck Cancer",
+      "agent": "TPS6132",
+      "china": false,
+      "sponsor": "AVEO Pharmaceuticals, Inc.",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "LBA6500",
+      "title": "Selinexor plus ruxolitinib in JAK inhibitor–na¨ıve myelofibrosis: Phase 3 SENTRY trial.",
+      "tumor": "Hematologic",
+      "agent": "LBA6500",
+      "china": true,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "6566",
+      "title": "Updated overall survival (OS) and long-term transfusion-independence (TI) from the phase 3 COMMANDS trial in erythropoiesis-stimulating agent (ESA)–naive patients (pts) with lower-risk myelodysplastic syndromes (LR-MDS).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Bristol Myers",
+      "therapy": []
+    },
+    {
+      "number": "6576",
+      "title": "Integrated analysis of the ropeginterferon alfa-2b clinical program in essential thrombocythemia to demonstrate molecular and hematologic responses with safety profile information across treatment lines, ethnicities, and driver mutation types.",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "PharmaEssentia Corporation",
+      "therapy": []
+    },
+    {
+      "number": "6583",
+      "title": "ASC4FIRST wk 144 analysis: Efficacy and safety and tolerability with asciminib (ASC) vs investigator-selected tyrosine kinase inhibitors (IS TKIs) in newly diagnosed (ND) chronic myeloid leukemia in chronic phase (CMLCP).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Novartis Pharma AG.",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS6600",
+      "title": "A phase 3 study of revumenib plus venetoclax/azacitidine in adults with newly diagnosed NPM1-mutated or KMT2A-rearranged acute myeloid leukemia ineligible for intensive chemotherapy (EVOLVE-2/HO177/AMLSG3524/ACT-HOV-AML-002).",
+      "tumor": "Hematologic",
+      "agent": "HO177; AMLSG3524; TPS6600",
+      "china": false,
+      "sponsor": "Syndax Pharmaceuticals, Inc",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "TPS6602",
+      "title": "A phase 3 study of revumenib in combination with intensive chemotherapy in patients with newly diagnosed NPM1-mutated acute myeloid leukemia (REVEAL-ND NPM1).",
+      "tumor": "Hematologic",
+      "agent": "TPS6602",
+      "china": false,
+      "sponsor": "Syndax",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy",
+        "Stem Cell Transplant"
+      ]
+    },
+    {
+      "number": "TPS6608",
+      "title": "A phase 3 study of olverembatinib (HQP1351) in patients with chronicphase chronic myeloid leukemia: POLARIS-2 trial in progress.",
+      "tumor": "Hematologic",
+      "agent": "HQP1351; TPS6608",
+      "china": false,
+      "sponsor": "Ascentage Pharma Group Corp Ltd. (Hong Kong)",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "LBA7000",
+      "title": "frontMIND: Phase 3 study of tafasitamab (Tafa) plus lenalidomide (Len) and R-CHOP for patients (pts) with newly diagnosed diffuse large B-cell lymphoma (DLBCL).",
+      "tumor": "Hematologic",
+      "agent": "LBA7000",
+      "china": false,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "7007",
+      "title": "Mosunetuzumab plus polatuzumab vedotin (Mosun-Pola) versus rituximab, gemcitabine and oxaliplatin (R-GemOx) in patients with relapsed/refractory large B-cell lymphoma (R/R LBCL): Updated efficacy and safety from the phase 3 SUNMO study including in second-line (2L) versus third-line plus (3L+) patient subgroups.",
+      "tumor": "Hematologic",
+      "agent": "Mosunetuzumab",
+      "china": false,
+      "sponsor": "F",
+      "therapy": [
+        "Chemotherapy",
+        "ADC",
+        "Stem Cell Transplant"
+      ]
+    },
+    {
+      "number": "7009",
+      "title": "First-line odronextamab (Odro) plus chemotherapy (CHOP) in diffuse large B-cell lymphoma (DLBCL): OLYMPIA-3 Part 1B results.",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": true,
+      "sponsor": "Regeneron Pharmaceuticals, Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "7044",
+      "title": "Pirtobrutinib in treatment-na¨ıve patients with CLL/SLL: Pooled results from BRUIN CLL-313 and BRUIN CLL-314.",
+      "tumor": "Hematologic",
+      "agent": "Pirtobrutinib",
+      "china": false,
+      "sponsor": "Eli Lilly and Company",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "7046",
+      "title": "Subsequent therapies and time to second progression-free survival events (PFS2) in treatment-naive chronic lymphocytic leukemia/small lymphocytic lymphoma (TN CLL/SLL) previously treated with zanubrutinib (zanu) or bendamustine-rituximab (BR) in SEQUOIA.",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "BeOne Medicines, Ltd.",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "7093",
+      "title": "Multivariable analyses (MVAs) of overall survival (OS) in the phase 3 SUNMO, STARGLO, and POLARGO trials in relapsed/refractory large Bcell lymphoma (LBCL).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": true,
+      "sponsor": "F",
+      "therapy": [
+        "Chemotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS7099",
+      "title": "Sonrotoclax (BGB-11417) + zanubrutinib (SZ) vs venetoclax + acalabrutinib (AV) in treatment-naive chronic lymphocytic leukemia (TN CLL): A phase 3 randomized trial design (CELESTIAL-TNCLL-2).",
+      "tumor": "Hematologic",
+      "agent": "TPS7099",
+      "china": false,
+      "sponsor": "BeOne Medicines, Ltd",
+      "therapy": []
+    },
+    {
+      "number": "TPS7100",
+      "title": "ROCKET-CLL: A randomized, open-label, multicenter, phase 3 study of rocbrutinib (LP-168) versus pirtobrutinib in covalent BTK inhibitor (cBTKi) in pretreated relapsed or refractory (R/R) chronic lymphocytic leukemia (CLL)/small lymphocytic lymphoma (SLL).",
+      "tumor": "Hematologic",
+      "agent": "TPS7100",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Targeted Therapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "TPS7101",
+      "title": "A global multicenter, open-label, randomized, phase 3 registrational study of lisaftoclax (APG-2575) in previously treated chronic lymphocytic leukemia/ small lymphocytic lymphoma (CLL/SLL): GLORA trial in progress.",
+      "tumor": "Hematologic",
+      "agent": "TPS7101",
+      "china": true,
+      "sponsor": "Ascentage Pharma Group Corp Ltd. (Hong Kong).",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "7501",
+      "title": "Phase 3 randomized trial to evaluate the impact of anselamimab on allcause mortality in k light-chain amyloidosis.",
+      "tumor": "Hematologic",
+      "agent": "Anselamimab",
+      "china": false,
+      "sponsor": "Alexion, AstraZeneca Rare Disease",
+      "therapy": []
+    },
+    {
+      "number": "LBA7506",
+      "title": "Mezigdomide, carfilzomib, and dexamethasone (MeziKd) vs carfilzomib and dexamethasone (Kd) in relapsed/refractory multiple myeloma (RRMM): Results from the phase 3 SUCCESSOR-2 trial.",
+      "tumor": "Hematologic",
+      "agent": "LBA7506",
+      "china": true,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "7507",
+      "title": "MajesTEC-9: A phase 3 randomized study of teclistamab monotherapy vs investigator’s choice of pomalidomide, bortezomib, and dexamethasone or carfilzomib and dexamethasone (PVd/Kd) in patients (pts) with relapsed refractory multiple myeloma (RRMM).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Johnson & Johnson",
+      "therapy": []
+    },
+    {
+      "number": "7513",
+      "title": "Daratumumab plus bortezomib, lenalidomide, and dexamethasone (DVRd) in patients (pts) with newly diagnosed multiple myeloma (NDMM): Final analysis of transplant-ineligible (TIE) pts in the phase 3 CEPHEUS study.",
+      "tumor": "Hematologic",
+      "agent": "Daratumumab",
+      "china": false,
+      "sponsor": "Johnson & Johnson",
+      "therapy": [
+        "Stem Cell Transplant"
+      ]
+    },
+    {
+      "number": "7515",
+      "title": "Long-term outcomes with sustained minimal residual disease (MRD) negativity in belantamab mafodotin–treated patients (pts) with relapsed/ refractory multiple myeloma (RRMM): An update from DREAMM-8.",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Sponsored by GSK. Editorial support provided by Nucleus Global, an Inizio company and",
+      "therapy": [
+        "ADC"
+      ]
+    },
+    {
+      "number": "7516",
+      "title": "Isatuximab plus pomalidomide-dexamethasone in relapsed/refractory multiple myeloma: Subgroup analysis by prior anti-CD38 exposure from the phase 3 IRAKLIA trial.",
+      "tumor": "Hematologic",
+      "agent": "CD38; Isatuximab",
+      "china": false,
+      "sponsor": "Sanofi.",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "7563",
+      "title": "Safety and reliability of isatuximab subcutaneous on-body injector: Results across the phase 3 IRAKLIA, phase 2 IZALCO and phase 1b TCD15484 trials.",
+      "tumor": "Hematologic",
+      "agent": "TCD15484; CD38",
+      "china": false,
+      "sponsor": "Sanofi",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "7565",
+      "title": "Durable clinical benefit with B-cell maturation antigen (BCMA)–directed therapy, belantamab mafodotin plus pomalidomide and dexamethasone (BPd) in relapsed/refractory multiple myeloma (RRMM): DREAMM-8 longterm responder (LTR) analysis.",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Sponsored by GSK. Editorial support provided by Nucleus",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "7566",
+      "title": "PFS2 outcomes by prior therapy from DREAMM-8: A phase 3 study assessing belantamab mafodotin (belamaf), pomalidomide, and dexamethasone (BPd) vs pomalidomide, bortezomib, and dexamethasone (PVd) in patients (pts) with relapsed/refractory multiple myeloma (RRMM).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": false,
+      "sponsor": "Sponsored by GSK. Editorial support provided by",
+      "therapy": [
+        "Targeted Therapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "7569",
+      "title": "Age and frailty analyses of transplant-ineligible (TIE) patients (pts) with newly diagnosed multiple myeloma (NDMM) in the phase 3 MAIA and CEPHEUS trials of daratumumab + lenalidomide-dexamethasone (Rd) and bortezomib-Rd (VRd).",
+      "tumor": "Hematologic",
+      "agent": "",
+      "china": true,
+      "sponsor": "Johnson & Johnson",
+      "therapy": [
+        "Stem Cell Transplant"
+      ]
+    },
+    {
+      "number": "TPS7577",
+      "title": "QUINTESSENTIAL-2: A phase 3 study of arlocabtagene autoleucel versus standard of care in adult patients with relapsed and refractory multiple myeloma (RRMM) exposed to lenalidomide.",
+      "tumor": "Hematologic",
+      "agent": "TPS7577",
+      "china": false,
+      "sponsor": "Bristol Myers Squibb.",
+      "therapy": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "8006",
+      "title": "Intracranial efficacy of tarlatamab versus chemotherapy (CTx) as secondline (2L) treatment for small cell lung cancer (SCLC): DeLLphi-304 phase 3 post hoc analysis.",
+      "tumor": "NSCLC",
+      "agent": "Tarlatamab",
+      "china": false,
+      "sponsor": "Amgen Inc",
+      "therapy": [
+        "Chemotherapy",
+        "Bispecific Antibody",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "8009",
+      "title": "Complex segmentectomy versus lobectomy in small-sized peripheral non– small cell lung cancer: A post-hoc supplemental analysis of a multicenter, open-label, phase 3 trial (JCOG0802/WJOG4607L).",
+      "tumor": "NSCLC",
+      "agent": "JCOG0802; WJOG4607L",
+      "china": false,
+      "sponsor": "National Cancer Center Research and the Ministry of",
+      "therapy": []
+    },
+    {
+      "number": "8014",
+      "title": "Transcriptomic analyses of molecular subsets and correlations with clinical outcomes from the phase 3 IMforte study of lurbinectedin (lurbi) + atezolizumab (atezo) maintenance treatment (Tx) in extensive-stage small-cell lung cancer (ES-SCLC).",
+      "tumor": "NSCLC",
+      "agent": "",
+      "china": false,
+      "sponsor": "IMforte is sponsored by F. Hoffmann-La Roche Ltd. and co-funded by Jazz",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy",
+        "Targeted Therapy",
+        "Cell Therapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "8015",
+      "title": "Impact of neoadjuvant durvalumab (D) on tumor microenvironment (TME) features and their association with event-free survival (EFS) in patients with resectable NSCLC (R-NSCLC) from the phase 3 AEGEAN trial.",
+      "tumor": "NSCLC",
+      "agent": "",
+      "china": false,
+      "sponsor": "AstraZeneca",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "8086",
+      "title": "IMforte: Quality-adjusted time without symptoms or toxicity (Q-TWiST) analysis of first-line maintenance (1Lm) treatment (Tx) with lurbinectedin (lurbi) + atezolizumab (atezo) vs atezo in extensive-stage small cell lung cancer (ES-SCLC).",
+      "tumor": "NSCLC",
+      "agent": "",
+      "china": false,
+      "sponsor": "F. Hoffmann-La Roche Ltd",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "8093",
+      "title": "Comparison of real-world overall survival between atezolizumab- and durvalumab-containing first-line induction and maintenance regimens in extensive-stage small cell lung cancer.",
+      "tumor": "NSCLC",
+      "agent": "",
+      "china": false,
+      "sponsor": "Jazz",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "8100",
+      "title": "Comparative real-world outcomes of tarlatamab and lurbinectedin in relapsed extensive-stage small cell lung cancer.",
+      "tumor": "NSCLC",
+      "agent": "Tarlatamab",
+      "china": false,
+      "sponsor": "None",
+      "therapy": [
+        "Chemotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS8130",
+      "title": "Randomized, double-blind, phase 3 TRUST-IV study of adjuvant taletrectinib vs placebo in patients with stage IB–IIIA ROS1+ non-small cell lung cancer (NSCLC).",
+      "tumor": "NSCLC",
+      "agent": "TPS8130; Taletrectinib",
+      "china": false,
+      "sponsor": "This study was sponsored by Nuvation Bio Inc. Medical writing support",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS8133",
+      "title": "A double-blind, double-dummy, randomized, controlled phase 3 trial of iparomlimab and tuvonralimab (QL1706) vs QL1604 as consolidation therapy following concurrent or sequential chemoradiotherapy (cCRT/sCRT) in patients (pts) with limited-stage small-cell lung cancer (LS-SCLC).",
+      "tumor": "NSCLC",
+      "agent": "QL1706; QL1604; TPS8133",
+      "china": true,
+      "sponsor": "Qilu Pharmaceutical Co., Ltd",
+      "therapy": [
+        "Immunotherapy",
+        "Bispecific Antibody",
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS8136",
+      "title": "A randomized, open-label, phase 3 study of ZL-1310, a DLL3 antibody-drug conjugate (ADC), compared to investigator’s choice therapy in participants with relapsed small cell lung cancer (DLLEVATE).",
+      "tumor": "NSCLC",
+      "agent": "TPS8136",
+      "china": true,
+      "sponsor": "Zai Lab (Shanghai) Co., Ltd.",
+      "therapy": [
+        "Immunotherapy",
+        "ADC",
+        "Radiotherapy",
+        "Hormonal Therapy"
+      ]
+    },
+    {
+      "number": "TPS8137",
+      "title": "A phase 3 study of sacituzumab govitecan in patients with previously treated extensive-stage small cell lung cancer.",
+      "tumor": "NSCLC",
+      "agent": "TPS8137",
+      "china": false,
+      "sponsor": "Gilead Sciences, Inc",
+      "therapy": [
+        "ADC"
+      ]
+    },
+    {
+      "number": "LBA8500",
+      "title": "Sunvozertinib monotherapy versus platinum-based chemotherapy as firstline treatment for advanced NSCLC with EGFR exon20ins: Primary analysis of a multinational phase 3 randomized study (WU-KONG28).",
+      "tumor": "NSCLC",
+      "agent": "KONG28; Sunvozertinib; LBA8500",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "8502",
+      "title": "Lorlatinib vs crizotinib as first-line treatment for advanced ALK+ non-small cell lung cancer: 7-year update from the phase 3 CROWN study.",
+      "tumor": "NSCLC",
+      "agent": "Lorlatinib",
+      "china": true,
+      "sponsor": "Pfizer.",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "8504",
+      "title": "Efficacy and safety of pralsetinib as first-line treatment of RET fusion– positive advanced or metastatic non–small cell lung cancer (NSCLC): The phase 3 AcceleRET-Lung study.",
+      "tumor": "NSCLC",
+      "agent": "Pralsetinib",
+      "china": false,
+      "sponsor": "Rigel Pharmaceuticals, Inc",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "8506",
+      "title": "Sacituzumab tirumotecan (sac-TMT) plus pembrolizumab (P) versus pembrolizumab (P) as first-line treatment for PD-L1–positive advanced nonsmall cell lung cancer (NSCLC): Results from the randomized phase 3 OptiTROP-Lung05 study.",
+      "tumor": "NSCLC",
+      "agent": "Sacituzumab; Pembrolizumab",
+      "china": true,
+      "sponsor": "Sichuan Kelun-Biotech Biopharmaceutical Co., Ltd.",
+      "therapy": [
+        "Immunotherapy",
+        "Targeted Therapy",
+        "ADC",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "LBA8507",
+      "title": "A randomized, open-label, parallel-controlled phase 3 trial of benmelstobart plus chemotherapy and anlotinib for first-line treatment of advanced nonsquamous non–small cell lung cancer.",
+      "tumor": "NSCLC",
+      "agent": "LBA8507",
+      "china": true,
+      "sponsor": "",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "LBA8518",
+      "title": "Phase 3 clinical trial of the combination of erlotinib plus ramucirumab compared with osimertinib in untreated advanced or recurrent non-small cell lung cancer with EGFR L858R mutation: The REVOL858R trial (WJOG14420L).",
+      "tumor": "NSCLC",
+      "agent": "REVOL858R; WJOG14420L; LBA8518",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "8588",
+      "title": "Efficacy outcomes in first-line (1L) non–small cell lung cancer (NSCLC) with maintenance of immune competence: QUILT-2.023 randomized phase 3 study of IL-15R agonist nogapendekin alfa inbakicept (NAI) with checkpoint inhibitor (CPI) 6 chemotherapy.",
+      "tumor": "NSCLC",
+      "agent": "",
+      "china": false,
+      "sponsor": "ImmunityBio.",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    },
+    {
+      "number": "TPS8660",
+      "title": "SigVie-003: Phase 3 trial of frontline sigvotatug vedotin plus pembrolizumab vs pembrolizumab alone in non-small cell lung cancer (NSCLC) with PD-L1 TPS ‡50%.",
+      "tumor": "NSCLC",
+      "agent": "TPS8660",
+      "china": false,
+      "sponsor": "Pfizer.",
+      "therapy": [
+        "Immunotherapy",
+        "ADC"
+      ]
+    },
+    {
+      "number": "TPS8671",
+      "title": "Phase 3 trial ResQ201A of nogapendekin alfa inbakicept (NAI) plus tislelizumab and docetaxel vs. docetaxel monotherapy for advanced or metastatic NSCLC resistant to ICI therapy.",
+      "tumor": "NSCLC",
+      "agent": "TPS8671",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS8672",
+      "title": "A phase 3 study of ateganosine (THIO; 6-thio-2’-deoxyguanosine) sequenced with immune checkpoint inhibitor (ICI) versus standard-of-care chemotherapy in ICI-resistant advanced NSCLC: THIO-104 trial in progress.",
+      "tumor": "NSCLC",
+      "agent": "TPS8672",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS8673",
+      "title": "Randomized phase 3 study (MarsLight-11) evaluating IBI363 (TAK-928) versus docetaxel in patients (pts) with squamous non-small cell lung cancer (sqNSCLC) after prior chemotherapy (chemo) and immunotherapy (IO).",
+      "tumor": "NSCLC",
+      "agent": "IBI363; TPS8673",
+      "china": true,
+      "sponsor": "None.",
+      "therapy": [
+        "Chemotherapy",
+        "Bispecific Antibody"
+      ]
+    },
+    {
+      "number": "TPS8675",
+      "title": "ALPACCA: Phase 3 trial of firmonertinib vs investigator’s choice of EGFR inhibitor as first-line treatment for locally advanced or metastatic NSCLC with EGFR P-loop and alpha c-helix compressing (PACC) uncommon mutations (FURMO-006).",
+      "tumor": "NSCLC",
+      "agent": "TPS8675",
+      "china": false,
+      "sponsor": "ArriVent BioPharma Inc.",
+      "therapy": [
+        "Chemotherapy",
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "LBA9504",
+      "title": "ADAM trial: A multicenter, randomized, double-blinded, placebo-controlled, phase 3 trial of adjuvant avelumab (anti-PD-L1 antibody) in patients with Merkel cell carcinoma and lymph node metastases.",
+      "tumor": "Melanoma",
+      "agent": "LBA9504",
+      "china": false,
+      "sponsor": "",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "LBA9517",
+      "title": "Neoadjuvant intralesional daromun (L19IL2/L19TNF) in resectable locally advanced melanoma: An update on the primary outcome and sensitivity analyses (EFS) from the PIVOTAL phase 3 trial.",
+      "tumor": "Melanoma",
+      "agent": "LBA9517",
+      "china": false,
+      "sponsor": "",
+      "therapy": []
+    },
+    {
+      "number": "9532",
+      "title": "Nivolumab + relatlimab (NIVO + RELA) in advanced melanoma: 5-year update of RELATIVITY-047.",
+      "tumor": "Melanoma",
+      "agent": "Nivolumab",
+      "china": false,
+      "sponsor": "Bristol Myers Squibb",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS9597",
+      "title": "A randomized, controlled, multicenter, phase 3 study of RP1 (vusolimogene oderparepvec) combined with nivolumab vs physician’s choice of therapy in patients with advanced melanoma that has progressed on anti–PD-1 and anti–CTLA-4 therapy (IGNYTE-3).",
+      "tumor": "Melanoma",
+      "agent": "TPS9597",
+      "china": false,
+      "sponsor": "Replimune, Inc.",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "TPS9608",
+      "title": "Neoadjuvant darovasertib in uveal melanoma patients undergoing primary local therapy (OptimUM-10): Phase 3 trial.",
+      "tumor": "Melanoma",
+      "agent": "TPS9608",
+      "china": false,
+      "sponsor": "IDEAYA Biosciences, South San Francisco, CA USA",
+      "therapy": [
+        "Radiotherapy"
+      ]
+    },
+    {
+      "number": "TPS9609",
+      "title": "A phase 3, international, multicenter, randomized, controlled trial of selective index lymph node resection versus therapeutic lymph node dissection after neoadjuvant immunotherapy for stage IIIB-D melanoma (MSLT-3/ S2601/EORTC2519).",
+      "tumor": "Melanoma",
+      "agent": "EORTC2519; TPS9609",
+      "china": false,
+      "sponsor": "Australian Commonwealth Government.",
+      "therapy": [
+        "Immunotherapy"
+      ]
+    },
+    {
+      "number": "11006",
+      "title": "Randomized, double-blind phase 3 trial of the fixed-dose combination fosrolapitant/palonosetron (HR20013) plus dexamethasone for prevention of nausea and vomiting in patients receiving moderately emetogenic chemotherapy.",
+      "tumor": "Supportive Care",
+      "agent": "HR20013",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui Pharmaceuticals Co., Ltd.",
+      "therapy": [
+        "Chemotherapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "11500",
+      "title": "Primary results of the phase 3 peak study of bezuclastinib + sunitinib vs sunitinib monotherapy in advanced gastrointestinal stromal tumors (GIST).",
+      "tumor": "Sarcoma",
+      "agent": "",
+      "china": true,
+      "sponsor": "Cogent Biosciences, Inc.",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "11502",
+      "title": "Phase 3 study (APROMISS) of catequentinib hydrochloride (AL3818) monotherapy in patients with advanced alveolar soft part sarcoma (ASPS).",
+      "tumor": "Sarcoma",
+      "agent": "AL3818; Catequentinib",
+      "china": false,
+      "sponsor": "None.",
+      "therapy": [
+        "Targeted Therapy",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "number": "11506",
+      "title": "RINGSIDE: A phase 3 randomized, placebo-controlled trial of varegacestat for treatment of progressing desmoid tumors.",
+      "tumor": "Sarcoma",
+      "agent": "Varegacestat",
+      "china": false,
+      "sponsor": "Immunome Inc",
+      "therapy": []
+    },
+    {
+      "number": "11567",
+      "title": "Effect of pimicotinib on tumor response and physical function (PF) by tumor location in patients with tenosynovial giant cell tumor (TGCT): Results from the phase 3 MANEUVER trial.",
+      "tumor": "Sarcoma",
+      "agent": "Pimicotinib",
+      "china": false,
+      "sponsor": "Abbisko Therapeutics; Merck",
+      "therapy": []
+    },
+    {
+      "number": "11571",
+      "title": "Adverse events and their management in patients with tenosynovial giant cell tumor (TGCT) treated with pimicotinib, after longer-term follow-up from the global phase 3 MANEUVER trial.",
+      "tumor": "Sarcoma",
+      "agent": "Pimicotinib",
+      "china": false,
+      "sponsor": "Abbisko",
+      "therapy": []
+    },
+    {
+      "number": "TPS11588",
+      "title": "StrateGIST 3: A randomized, phase 3 study of velzatinib (IDRX-42) versus sunitinib in patients with advanced gastrointestinal stromal tumors after imatinib therapy.",
+      "tumor": "Sarcoma",
+      "agent": "TPS11588",
+      "china": true,
+      "sponsor": "GSK",
+      "therapy": [
+        "Targeted Therapy"
+      ]
+    },
+    {
+      "number": "TPS12162",
+      "title": "Hetrombopag in patients with chemotherapy-induced thrombocytopenia: A global phase 3, randomized, double-blind study.",
+      "tumor": "Supportive Care",
+      "agent": "TPS12162",
+      "china": true,
+      "sponsor": "Jiangsu Hengrui Pharmaceuticals.",
+      "therapy": [
+        "Chemotherapy"
+      ]
+    }
+  ],
+  "china": {
+    "total": 985,
+    "phase_dist": {
+      "Phase 3": 54,
+      "N/A": 505,
+      "Phase 1": 292,
+      "Phase 2": 134
+    },
+    "top_tumors": [
+      [
+        "Multi-tumor",
+        139
+      ],
+      [
+        "NSCLC",
+        110
+      ],
+      [
+        "GI Cancer",
+        109
+      ],
+      [
+        "GU Cancer",
+        100
+      ],
+      [
+        "Supportive Care",
+        98
+      ],
+      [
+        "Breast Cancer",
+        93
+      ],
+      [
+        "Colorectal Cancer",
+        60
+      ],
+      [
+        "Hematologic",
+        60
+      ],
+      [
+        "Head & Neck Cancer",
+        55
+      ],
+      [
+        "Gynecologic Cancer",
+        38
+      ]
+    ],
+    "top_agents": [
+      [
+        "HER22",
+        8
+      ],
+      [
+        "TP53",
+        6
+      ],
+      [
+        "CLDN18",
+        5
+      ],
+      [
+        "Trastuzumab",
+        4
+      ],
+      [
+        "Cadonilimab",
+        4
+      ],
+      [
+        "Ivonescimab",
+        3
+      ],
+      [
+        "Tislelizumab",
+        3
+      ],
+      [
+        "BRAFV600E",
+        3
+      ],
+      [
+        "QL1706",
+        3
+      ],
+      [
+        "ZG006",
+        3
+      ],
+      [
+        "YL201",
+        3
+      ],
+      [
+        "AK104",
+        2
+      ],
+      [
+        "CD19",
+        2
+      ],
+      [
+        "IBI363",
+        2
+      ],
+      [
+        "XNW27011; CLDN18",
+        2
+      ]
+    ]
+  },
+  "therapy": {
+    "Chemotherapy": 1018,
+    "Targeted Therapy": 1013,
+    "Immunotherapy": 805,
+    "Cell Therapy": 778,
+    "Radiotherapy": 360,
+    "Hormonal Therapy": 346,
+    "ADC": 250,
+    "Bispecific Antibody": 160,
+    "Stem Cell Transplant": 142,
+    "Vaccine/Virus Therapy": 48
+  }
+}
