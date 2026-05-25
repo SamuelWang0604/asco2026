@@ -340,37 +340,23 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
 
 <!-- ====== PAGE 4: TRACK COMPARISON ====== -->
 <div class="main page" id="pageTrack">
-  <div class="kpi-row" style="margin-bottom:16px;">
-    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
-      <div class="kpi-val" id="tkKpiTotal" style="font-size:28px;font-weight:700;color:var(--accent-light);">—</div>
-      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">赛道研究总数</div>
-    </div>
-    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
-      <div class="kpi-val" id="tkKpiP1" style="font-size:28px;font-weight:700;color:#10b981;">—</div>
-      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 1</div>
-    </div>
-    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
-      <div class="kpi-val" id="tkKpiP2" style="font-size:28px;font-weight:700;color:#f59e0b;">—</div>
-      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 2</div>
-    </div>
-    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
-      <div class="kpi-val" id="tkKpiP3" style="font-size:28px;font-weight:700;color:#ef4444;">—</div>
-      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Phase 3</div>
-    </div>
-    <div class="kpi" style="background:var(--bg-card);padding:16px 20px;border-radius:10px;">
-      <div class="kpi-val" id="tkKpiChina" style="font-size:28px;font-weight:700;color:#8b5cf6;">—</div>
-      <div class="kpi-label" style="font-size:11px;color:var(--text-muted);margin-top:2px;">中国参与</div>
-    </div>
+  <div class="kpi-row" id="tkKPIs">
+    <div class="kpi-card"><div class="kpi-label">赛道研究总数</div><div class="kpi-val" id="tkKpiTotal" style="color:var(--accent-light)">—</div><div class="kpi-sub">当前筛选</div></div>
+    <div class="kpi-card"><div class="kpi-label">Phase 1</div><div class="kpi-val" id="tkKpiP1" style="color:#10b981">—</div><div class="kpi-sub" id="tkKpiP1Sub"></div></div>
+    <div class="kpi-card"><div class="kpi-label">Phase 2</div><div class="kpi-val" id="tkKpiP2" style="color:#f59e0b">—</div><div class="kpi-sub" id="tkKpiP2Sub"></div></div>
+    <div class="kpi-card"><div class="kpi-label">Phase 3</div><div class="kpi-val" id="tkKpiP3" style="color:#ef4444">—</div><div class="kpi-sub" id="tkKpiP3Sub"></div></div>
+    <div class="kpi-card"><div class="kpi-label">中国参与</div><div class="kpi-val" id="tkKpiChina" style="color:#8b5cf6">—</div><div class="kpi-sub" id="tkKpiChinaSub"></div></div>
   </div>
 
   <!-- Filter bar -->
-  <div class="filter-bar" style="margin-bottom:16px;">
+  <div class="filter-bar">
     <div class="filter-section"><span class="filter-section-label">赛道类型</span>
       <select class="filter-select" id="tkFilterType" onchange="populateTkFilterTargets();onTrackCompareFilter()">
         <option value="target">靶点赛道</option>
         <option value="therapy">治疗模式</option>
       </select>
     </div>
+    <div class="filter-divider"></div>
     <div class="filter-section"><span class="filter-section-label">选择赛道</span>
       <select class="filter-select" id="tkFilterTarget" onchange="onTrackCompareFilter()"></select>
     </div>
@@ -378,18 +364,30 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
   </div>
 
   <!-- Charts grid -->
-  <div class="charts-grid" style="grid-template-columns: 1fr 1fr; margin-bottom:16px;">
-    <div class="chart-card"><div class="chart-title">瘤种分布</div><div class="chart-box" id="tkChartTumor" style="height:320px;"></div></div>
-    <div class="chart-card"><div class="chart-title">研究阶段分布</div><div class="chart-box" id="tkChartPhase" style="height:320px;"></div></div>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>瘤种分布</span><span class="chart-card-hint">赛道内瘤种占比</span></div>
+      <div class="chart-wrap tall" id="tkChartTumor"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>研究阶段分布</span><span class="chart-card-hint">Phase占比</span></div>
+      <div class="chart-wrap tall" id="tkChartPhase"></div>
+    </div>
   </div>
-  <div class="charts-grid" style="grid-template-columns: 1fr 1fr; margin-bottom:16px;">
-    <div class="chart-card"><div class="chart-title">Top 药物/分子</div><div class="chart-box" id="tkChartAgent" style="height:320px;"></div></div>
-    <div class="chart-card"><div class="chart-title">中国参与率（按瘤种）</div><div class="chart-box" id="tkChartChina" style="height:320px;"></div></div>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>Top 药物/分子</span><span class="chart-card-hint">按出现频次</span></div>
+      <div class="chart-wrap tall" id="tkChartAgent"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header"><span class="chart-card-title"><span class="dot"></span>中国参与率（按瘤种）</span><span class="chart-card-hint">参与比例</span></div>
+      <div class="chart-wrap tall" id="tkChartChina"></div>
+    </div>
   </div>
 
   <!-- Abstract list within track -->
   <div class="abstract-list-header"><span class="abstract-list-title">赛道研究列表</span><span class="abstract-list-count" id="tkListCount"></span></div>
-  <div class="abstract-cards" id="tkAbstractCards" style="max-height:calc(100vh - 780px)"></div>
+  <div class="abstract-cards" id="tkAbstractCards" style="max-height:calc(100vh - 680px)"></div>
 </div>
 
 <!-- Detail Modal -->
@@ -398,6 +396,9 @@ body { font-family: var(--font-ui); background: var(--bg-primary); color: var(--
 </div>
 <!-- Toast -->
 <div class="toast" id="toast"></div>
+
+<!-- Load embedded data before main script -->
+<script src="embedded_data.js" onerror="console.warn('embedded_data.js not found, relying on JSON fetch')"></script>
 
 <script>
 // ============================================================
@@ -883,12 +884,6 @@ function populateTkFilterTargets() {
   }
 }
 
-// Re-populate when type changes
-document.addEventListener('DOMContentLoaded', () => {
-  const typeSelect = document.getElementById('tkFilterType');
-  if (typeSelect) typeSelect.addEventListener('change', () => { populateTkFilterTargets(); onTrackCompareFilter(); });
-});
-
 function onTrackCompareFilter() {
   const type = document.getElementById('tkFilterType').value;
   const target = document.getElementById('tkFilterTarget').value;
@@ -912,6 +907,7 @@ function onTrackCompareFilter() {
 
   // Update KPIs
   document.getElementById('tkKpiTotal').textContent = tkFiltered.length;
+  const total = tkFiltered.length || 1;
   const phases = { p1: 0, p2: 0, p3: 0 };
   tkFiltered.forEach(a => {
     const p = normalizePhases(a.study_phase);
@@ -920,10 +916,14 @@ function onTrackCompareFilter() {
     if (p.includes('Phase 3')) phases.p3++;
   });
   document.getElementById('tkKpiP1').textContent = phases.p1;
+  document.getElementById('tkKpiP1Sub').textContent = `${(phases.p1*100/total).toFixed(0)}%`;
   document.getElementById('tkKpiP2').textContent = phases.p2;
+  document.getElementById('tkKpiP2Sub').textContent = `${(phases.p2*100/total).toFixed(0)}%`;
   document.getElementById('tkKpiP3').textContent = phases.p3;
+  document.getElementById('tkKpiP3Sub').textContent = `${(phases.p3*100/total).toFixed(0)}%`;
   const chinaN = tkFiltered.filter(a => a.china_participation === 'Yes').length;
-  document.getElementById('tkKpiChina').textContent = chinaN + (tkFiltered.length > 0 ? ` (${(chinaN*100/tkFiltered.length).toFixed(0)}%)` : '');
+  document.getElementById('tkKpiChina').textContent = chinaN;
+  document.getElementById('tkKpiChinaSub').textContent = `${(chinaN*100/total).toFixed(0)}%`;
 
   // Render charts
   renderTkChartTumor();
@@ -1453,7 +1453,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
   if (e.key === '/' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
     e.preventDefault();
-    const inputId = currentPage === 'overview' ? 'ovSearchInput' : currentPage === 'tracks' ? 'trSearchInput' : 'listSearchInput';
+    const inputId = currentPage === 'overview' ? 'ovSearchInput' : currentPage === 'tracks' ? 'trSearchInput' : currentPage === 'track' ? 'tkSearchInput' : 'listSearchInput';
     document.getElementById(inputId).focus();
   }
 });
@@ -1463,6 +1463,7 @@ document.addEventListener('keydown', e => {
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => { loadData(); });
 </script>
-<script src="embedded_data.js"></script>
+</body>
+</html>
 </body>
 </html>
