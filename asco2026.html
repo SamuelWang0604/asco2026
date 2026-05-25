@@ -1665,20 +1665,7 @@ function renderAbstractCard(a) {
 // ============================================================
 async function loadFullData() {
   if (FULL_DATA_MAP) return FULL_DATA_MAP;
-  // Try fetching full JSON (includes background/methods/results/conclusion)
-  try {
-    const resp = await fetch('all_abstracts_asco2026.json');
-    if (resp.ok) {
-      const fullData = await resp.json();
-      FULL_DATA_MAP = {};
-      fullData.forEach(a => { FULL_DATA_MAP[a.abstract_number] = a; });
-      console.log(`[loadFullData] Loaded ${Object.keys(FULL_DATA_MAP).length} full abstracts from JSON`);
-      return FULL_DATA_MAP;
-    }
-  } catch(e) {
-    console.warn('[loadFullData] JSON fetch failed, using slim data:', e);
-  }
-  // Fallback: use slim data from ALL_DATA (no full text)
+  // Full text is embedded in ALL_DATA (background/methods/results/conclusion included)
   FULL_DATA_MAP = {};
   ALL_DATA.forEach(a => { FULL_DATA_MAP[a.abstract_number] = a; });
   return FULL_DATA_MAP;
